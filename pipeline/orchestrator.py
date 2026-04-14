@@ -71,6 +71,21 @@ def run_pipeline(query: str) -> list[dict]:
         Verified list of theme dicts, each with:
         {theme_name, companies, rationale, citations}
     """
+    return run_pipeline_full(query)["reviewed_map"]
+
+
+def run_pipeline_full(query: str) -> dict:
+    """
+    Run the full Scout → Mapper → Critic pipeline and return the complete result.
+
+    Args:
+        query: Natural language market research query.
+
+    Returns:
+        Dict with keys:
+            reviewed_map: Verified list of theme dicts.
+            retrieved_docs: Documents retrieved by the Scout agent.
+    """
     global _pipeline
     if _pipeline is None:
         _pipeline = build_graph()
@@ -83,4 +98,7 @@ def run_pipeline(query: str) -> list[dict]:
         "error": None,
     }
     final_state = _pipeline.invoke(initial_state)
-    return final_state["reviewed_map"]
+    return {
+        "reviewed_map": final_state["reviewed_map"],
+        "retrieved_docs": final_state["retrieved_docs"],
+    }
