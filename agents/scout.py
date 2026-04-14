@@ -4,6 +4,7 @@ documents from the FAISS vector index built by data/scripts/ingest.py.
 """
 
 import pathlib
+import time
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 
@@ -23,16 +24,20 @@ class ScoutAgent:
             allow_dangerous_deserialization=True,
         )
 
-    def run(self, query: str) -> list[dict]:
+    def run(self, query: str) -> tuple[list[dict], dict]:
         """
         Args:
             query: Natural language market research query.
 
         Returns:
-            List of document dicts with keys: title, description, source_url,
-            tags, publish_date, snippet (the matched passage).
+            Tuple of (docs, stats) where docs is a list of document dicts with
+            keys: title, description, source_url, tags, publish_date, snippet,
+            score; and stats contains retrieval latency.
         """
+        t0 = time.perf_counter()
         results = self.index.similarity_search_with_score(query, k=self.top_k)
+        latency_ms = round((time.perf_counter() - t0) * 1000, 1)
+
         docs = []
         for doc, score in results:
             docs.append(
@@ -45,4 +50,5 @@ class ScoutAgent:
                     "score": float(score),
                 }
             )
-        return docs
+        stats = {"latency_ms": latency_ms, "docs_retrieved": len(docs)}
+        return docs, stats

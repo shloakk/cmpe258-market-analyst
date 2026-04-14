@@ -5,10 +5,14 @@ and ensures every remaining entry has a supporting citation.
 """
 
 import json
+import time
 from langchain_anthropic import ChatAnthropic
 from langchain.schema import HumanMessage, SystemMessage
 
 MODEL = "claude-sonnet-4-6"
+# Claude Sonnet pricing (per token)
+_INPUT_COST_PER_TOKEN = 3.0 / 1_000_000
+_OUTPUT_COST_PER_TOKEN = 15.0 / 1_000_000
 
 SYSTEM_PROMPT = """You are a rigorous fact-checker for market research reports.
 You will receive:
@@ -43,14 +47,15 @@ class CriticAgent:
     def __init__(self) -> None:
         self.llm = ChatAnthropic(model=MODEL, temperature=0)
 
-    def run(self, theme_map: list[dict], retrieved_docs: list[dict]) -> list[dict]:
+    def run(self, theme_map: list[dict], retrieved_docs: list[dict]) -> tuple[list[dict], dict]:
         """
         Args:
             theme_map: Output from the Mapper agent.
             retrieved_docs: The original source documents from the Scout agent.
 
         Returns:
-            Verified market map with unsupported claims removed.
+            Tuple of (verified_map, stats) where stats contains latency, token
+            counts, and estimated cost.
         """
         docs_text = "\n\n".join(
             f"[{i+1}] Title: {d['title']}\n{d['snippet']}"
@@ -62,18 +67,37 @@ class CriticAgent:
             f"Market map to verify:\n{map_json}\n\n"
             "Return the verified market map with unsupported entries removed."
         )
+        t0 = time.perf_counter()
         response = self.llm.invoke(
             [
                 SystemMessage(content=SYSTEM_PROMPT),
                 HumanMessage(content=user_message),
             ]
         )
+        latency_ms = round((time.perf_counter() - t0) * 1000, 1)
+
+        usage = response.usage_metadata or {}
+        input_tokens = usage.get("input_tokens", 0)
+        output_tokens = usage.get("output_tokens", 0)
+        cost_usd = round(
+            input_tokens * _INPUT_COST_PER_TOKEN
+            + output_tokens * _OUTPUT_COST_PER_TOKEN,
+            6,
+        )
+        stats = {
+            "model": MODEL,
+            "input_tokens": input_tokens,
+            "output_tokens": output_tokens,
+            "cost_usd": cost_usd,
+            "latency_ms": latency_ms,
+        }
+
         raw = response.content.strip()
         if raw.startswith("```"):
             raw = raw.split("```")[1]
             if raw.startswith("json"):
                 raw = raw[4:]
         try:
-            return json.loads(raw)
+            return json.loads(raw), stats
         except json.JSONDecodeError as e:
             raise ValueError(f"Critic returned invalid JSON: {e}\nRaw output:\n{raw}")
