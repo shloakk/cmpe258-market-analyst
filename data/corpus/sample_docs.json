@@ -1,0 +1,72 @@
+[
+  {
+    "title": "CrewAI: Role-Based Multi-Agent Orchestration",
+    "description": "CrewAI is an open-source framework that enables developers to build collaborative multi-agent systems where each agent has a defined role, goal, and backstory. Agents work together as a 'crew' to complete complex tasks through sequential or parallel workflows. CrewAI supports tool use, memory, and delegation, making it well-suited for automated research, content generation, and decision pipelines.",
+    "source_url": "https://crewai.com",
+    "tags": ["multi-agent", "orchestration", "LLM", "open-source", "role-based"],
+    "publish_date": "2025-03-15"
+  },
+  {
+    "title": "LangGraph: Stateful Agent Orchestration with Graphs",
+    "description": "LangGraph, built on top of LangChain, provides a graph-based abstraction for building reliable, stateful LLM agents. Developers define nodes (agent steps) and edges (transitions) in a directed graph, enabling cyclic workflows, human-in-the-loop checkpoints, and fine-grained state management. LangGraph is widely used for production-grade agentic pipelines requiring persistence and controllability.",
+    "source_url": "https://langchain-ai.github.io/langgraph",
+    "tags": ["multi-agent", "orchestration", "graph", "stateful", "LangChain"],
+    "publish_date": "2025-04-01"
+  },
+  {
+    "title": "Microsoft AutoGen: Conversational Multi-Agent Framework",
+    "description": "AutoGen (by Microsoft Research) is a framework for building LLM applications where multiple agents communicate via structured conversations. It supports customizable agent roles, code execution, and tool use. AutoGen v0.4 introduces a layered architecture with Core, AgentChat, and Extensions, enabling modular and extensible agent systems for coding assistants, research automation, and enterprise workflows.",
+    "source_url": "https://microsoft.github.io/autogen",
+    "tags": ["multi-agent", "conversational", "Microsoft", "code-execution", "enterprise"],
+    "publish_date": "2025-02-20"
+  },
+  {
+    "title": "LlamaIndex: Data Framework for RAG over Custom Corpora",
+    "description": "LlamaIndex provides data connectors, indexes, and query engines for building retrieval-augmented generation (RAG) applications over private or domain-specific data. It supports vector stores (FAISS, Pinecone, Chroma), document loaders, and structured output parsers. LlamaIndex is widely adopted for building enterprise search, chatbots, and knowledge assistants grounded in proprietary documents.",
+    "source_url": "https://www.llamaindex.ai",
+    "tags": ["RAG", "retrieval", "vector-store", "knowledge-base", "LlamaIndex"],
+    "publish_date": "2025-01-10"
+  },
+  {
+    "title": "Langfuse: Open-Source LLM Observability and Evaluation",
+    "description": "Langfuse is an open-source platform for tracing, evaluating, and monitoring LLM applications. It captures full traces of agent runs including prompts, completions, tool calls, and latency. Langfuse integrates with LangChain, LlamaIndex, and OpenAI SDK, and supports human annotation workflows for building evaluation datasets. It is used by teams to detect regressions, measure hallucination rates, and optimize prompt quality.",
+    "source_url": "https://langfuse.com",
+    "tags": ["observability", "evaluation", "tracing", "LLM", "open-source"],
+    "publish_date": "2025-03-01"
+  },
+  {
+    "title": "YC W25 Request for Startups: AI Infrastructure",
+    "description": "Y Combinator's Winter 2025 Request for Startups highlights AI infrastructure as a top investment thesis. Key areas include: developer tools for agentic AI (debugging, testing, deployment), evaluation frameworks for LLM reliability, multi-modal data pipelines, and cost-optimization layers for large language model inference. YC notes that startups solving agent observability and grounding are especially well-positioned.",
+    "source_url": "https://www.ycombinator.com/rfs",
+    "tags": ["YC", "investment", "AI-infrastructure", "agentic-AI", "evaluation"],
+    "publish_date": "2025-01-20"
+  },
+  {
+    "title": "Latent Space: The Rise of Agentic AI Platforms in 2025",
+    "description": "The Latent Space newsletter surveys the agentic AI platform landscape as of mid-2025. The analysis identifies three dominant approaches: (1) orchestration frameworks (CrewAI, AutoGen, LangGraph) focused on multi-agent coordination; (2) RAG-first platforms (LlamaIndex, Vertex AI Search) focused on grounding agents in enterprise data; and (3) evaluation-native platforms (Langfuse, Braintrust, PromptLayer) focused on reliability and measurement. The newsletter argues that evaluation will become the key differentiator as models commoditize.",
+    "source_url": "https://www.latent.space",
+    "tags": ["newsletter", "landscape", "orchestration", "RAG", "evaluation", "2025"],
+    "publish_date": "2025-06-15"
+  },
+  {
+    "title": "Composio: Tool Integration Layer for AI Agents",
+    "description": "Composio provides a managed integration layer that connects LLM agents to over 250 external tools and APIs (GitHub, Slack, Notion, Jira, etc.) with built-in authentication handling. It simplifies the tool-use layer of agentic pipelines, letting developers focus on agent logic rather than API plumbing. Composio integrates natively with CrewAI, LangChain, and AutoGen.",
+    "source_url": "https://composio.dev",
+    "tags": ["tool-use", "integrations", "agentic-AI", "API", "middleware"],
+    "publish_date": "2025-04-10"
+  },
+  {
+    "title": "Braintrust: Enterprise LLM Evaluation Platform",
+    "description": "Braintrust is an enterprise-grade evaluation platform for LLM applications that supports automated scoring, human review workflows, and regression tracking across model versions. Teams use Braintrust to define evaluation datasets, run scoring functions (LLM-as-judge, exact match, semantic similarity), and track quality metrics over time. It competes with Langfuse in the evaluation-native tooling space.",
+    "source_url": "https://braintrustdata.com",
+    "tags": ["evaluation", "LLM-as-judge", "enterprise", "scoring", "regression-tracking"],
+    "publish_date": "2025-05-05"
+  },
+  {
+    "title": "TechCrunch: Agentic AI Funding Surge in Early 2026",
+    "description": "TechCrunch reports that agentic AI startups raised over $4B in Q1 2026, with the majority of deals concentrated in orchestration infrastructure, enterprise RAG platforms, and agent evaluation tooling. Notable rounds include CrewAI's $100M Series B, a $60M raise by Composio, and continued growth at Langfuse. Investors cite the shift from single-turn chatbots to persistent, multi-step agents as the key driver of demand.",
+    "source_url": "https://techcrunch.com",
+    "tags": ["funding", "venture-capital", "agentic-AI", "2026", "market-trends"],
+    "publish_date": "2026-02-10"
+  }
+]

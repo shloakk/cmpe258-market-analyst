@@ -1,0 +1,101 @@
+[
+  {
+    "id": "q001",
+    "query": "List the main agentic AI platforms and group them by approach.",
+    "gold_entities": ["CrewAI", "LangGraph", "AutoGen", "LlamaIndex", "Composio"],
+    "gold_themes": ["multi-agent orchestration", "RAG and retrieval", "tool integration"],
+    "gold_snippets": [
+      "CrewAI is an open-source framework that enables developers to build collaborative multi-agent systems",
+      "LangGraph provides a graph-based abstraction for building reliable, stateful LLM agents",
+      "AutoGen is a framework for building LLM applications where multiple agents communicate via structured conversations"
+    ]
+  },
+  {
+    "id": "q002",
+    "query": "Which startups are focused on LLM evaluation and observability?",
+    "gold_entities": ["Langfuse", "Braintrust"],
+    "gold_themes": ["evaluation", "observability", "LLM-as-judge"],
+    "gold_snippets": [
+      "Langfuse is an open-source platform for tracing, evaluating, and monitoring LLM applications",
+      "Braintrust is an enterprise-grade evaluation platform for LLM applications that supports automated scoring"
+    ]
+  },
+  {
+    "id": "q003",
+    "query": "What are the key investment themes in agentic AI according to Y Combinator?",
+    "gold_entities": ["Y Combinator"],
+    "gold_themes": ["AI infrastructure", "agent observability", "evaluation frameworks", "cost optimization"],
+    "gold_snippets": [
+      "Key areas include: developer tools for agentic AI, evaluation frameworks for LLM reliability",
+      "startups solving agent observability and grounding are especially well-positioned"
+    ]
+  },
+  {
+    "id": "q004",
+    "query": "Compare multi-agent orchestration frameworks.",
+    "gold_entities": ["CrewAI", "LangGraph", "AutoGen"],
+    "gold_themes": ["multi-agent orchestration"],
+    "gold_snippets": [
+      "CrewAI enables developers to build collaborative multi-agent systems where each agent has a defined role",
+      "LangGraph provides a graph-based abstraction for building reliable, stateful LLM agents",
+      "AutoGen is a framework where multiple agents communicate via structured conversations"
+    ]
+  },
+  {
+    "id": "q005",
+    "query": "What companies are building RAG-based AI tools?",
+    "gold_entities": ["LlamaIndex"],
+    "gold_themes": ["RAG and retrieval", "knowledge-base", "vector-store"],
+    "gold_snippets": [
+      "LlamaIndex provides data connectors, indexes, and query engines for building retrieval-augmented generation applications"
+    ]
+  },
+  {
+    "id": "q006",
+    "query": "Which agentic AI platforms integrate with external tools and APIs?",
+    "gold_entities": ["Composio", "CrewAI", "AutoGen"],
+    "gold_themes": ["tool integration", "API middleware"],
+    "gold_snippets": [
+      "Composio provides a managed integration layer that connects LLM agents to over 250 external tools and APIs",
+      "Composio integrates natively with CrewAI, LangChain, and AutoGen"
+    ]
+  },
+  {
+    "id": "q007",
+    "query": "What are the main categories of agentic AI startups in 2025?",
+    "gold_entities": ["CrewAI", "AutoGen", "LangGraph", "LlamaIndex", "Langfuse", "Braintrust"],
+    "gold_themes": ["orchestration frameworks", "RAG-first platforms", "evaluation-native platforms"],
+    "gold_snippets": [
+      "The analysis identifies three dominant approaches: orchestration frameworks, RAG-first platforms, and evaluation-native platforms"
+    ]
+  },
+  {
+    "id": "q008",
+    "query": "How much funding did agentic AI startups raise in early 2026?",
+    "gold_entities": ["CrewAI", "Composio", "Langfuse"],
+    "gold_themes": ["funding", "venture capital", "market trends"],
+    "gold_snippets": [
+      "agentic AI startups raised over $4B in Q1 2026",
+      "Notable rounds include CrewAI's $100M Series B, a $60M raise by Composio"
+    ]
+  },
+  {
+    "id": "q009",
+    "query": "Which tools help developers observe and debug LLM agent runs?",
+    "gold_entities": ["Langfuse", "Braintrust"],
+    "gold_themes": ["observability", "tracing", "debugging"],
+    "gold_snippets": [
+      "Langfuse captures full traces of agent runs including prompts, completions, tool calls, and latency",
+      "Braintrust supports automated scoring, human review workflows, and regression tracking"
+    ]
+  },
+  {
+    "id": "q010",
+    "query": "What will differentiate agentic AI platforms as models commoditize?",
+    "gold_entities": ["Langfuse", "Braintrust"],
+    "gold_themes": ["evaluation", "reliability", "differentiation"],
+    "gold_snippets": [
+      "evaluation will become the key differentiator as models commoditize"
+    ]
+  }
+]
