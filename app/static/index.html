@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Market Research Analyst</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    header { text-align: center; margin-bottom: 2rem; }
+    header h1 { font-size: 1.8rem; font-weight: 700; }
+    header p { color: #555; margin-top: 0.4rem; }
+
+    .search-box {
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      gap: 0.5rem;
+    }
+    textarea {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      resize: vertical;
+      min-height: 60px;
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      align-self: flex-end;
+    }
+    button:disabled { background: #999; cursor: not-allowed; }
+
+    #status { margin-top: 1rem; color: #555; font-size: 0.9rem; min-height: 1.2em; }
+
+    #results {
+      width: 100%;
+      max-width: 720px;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .theme-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+    }
+    .theme-card h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .companies { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.75rem; }
+    .company-chip {
+      background: #e8f0fe;
+      color: #1a56db;
+      border-radius: 999px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .rationale { font-size: 0.9rem; color: #444; margin-bottom: 0.75rem; }
+    details summary {
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: #777;
+      user-select: none;
+    }
+    .citations { margin-top: 0.5rem; padding-left: 1rem; }
+    .citations li { font-size: 0.85rem; color: #555; margin-bottom: 0.2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Market Research Analyst</h1>
+    <p>Ask about the agentic AI startup landscape. Powered by a 3-agent LangGraph pipeline.</p>
+  </header>
+
+  <div class="search-box">
+    <textarea
+      id="queryInput"
+      placeholder='e.g. "Map the key players and approaches in agentic AI platforms"'
+    ></textarea>
+    <button id="submitBtn" onclick="submitQuery()">Analyze</button>
+  </div>
+  <div id="status"></div>
+  <div id="results"></div>
+
+  <script>
+    async function submitQuery() {
+      const input = document.getElementById("queryInput");
+      const btn = document.getElementById("submitBtn");
+      const status = document.getElementById("status");
+      const results = document.getElementById("results");
+
+      const query = input.value.trim();
+      if (!query) return;
+
+      btn.disabled = true;
+      status.textContent = "Running Scout → Mapper → Critic pipeline…";
+      results.innerHTML = "";
+
+      try {
+        const resp = await fetch("/query", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query }),
+        });
+        if (!resp.ok) {
+          const err = await resp.json();
+          throw new Error(err.detail || "Server error");
+        }
+        const data = await resp.json();
+        status.textContent = `Found ${data.themes.length} theme(s).`;
+        renderResults(data.themes);
+      } catch (e) {
+        status.textContent = `Error: ${e.message}`;
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function renderResults(themes) {
+      const container = document.getElementById("results");
+      themes.forEach(theme => {
+        const card = document.createElement("div");
+        card.className = "theme-card";
+
+        const chips = theme.companies
+          .map(c => `<span class="company-chip">${c}</span>`)
+          .join("");
+
+        const citationItems = theme.citations
+          .map(c => `<li>${c}</li>`)
+          .join("");
+
+        card.innerHTML = `
+          <h2>${theme.theme_name}</h2>
+          <div class="companies">${chips}</div>
+          <p class="rationale">${theme.rationale}</p>
+          <details>
+            <summary>Citations (${theme.citations.length})</summary>
+            <ul class="citations">${citationItems}</ul>
+          </details>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    document.getElementById("queryInput").addEventListener("keydown", e => {
+      if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) submitQuery();
+    });
+  </script>
+</body>
+</html>
