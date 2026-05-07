@@ -55,6 +55,7 @@ class QueryResponse(BaseModel):
     query: str
     themes: list[ThemeResult]
     stats: PipelineStats
+    trace_id: str
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -90,4 +91,5 @@ async def query_endpoint(request: QueryRequest):
         query=request.query,
         themes=[ThemeResult(**theme) for theme in result["reviewed_map"]],
         stats=pipeline_stats,
+        trace_id=result["trace_id"],
     )

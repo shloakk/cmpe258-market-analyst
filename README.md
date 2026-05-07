@@ -100,6 +100,7 @@ User Query
 - [x] Per-agent cost and latency tracking — Scout, Mapper, and Critic each report `latency_ms`; LLM agents report `input_tokens`, `output_tokens`, and `cost_usd` (Claude Sonnet pricing)
 - [x] Pipeline stats surfaced in API response (`PipelineStats` model with per-agent breakdown and totals)
 - [x] Web UI displays a Pipeline Stats panel after each query (latency, cost, token counts per agent)
+- [x] Langfuse observability: one trace per query with Scout, Mapper, Critic, and LLM generation spans
 
 ---
 
@@ -110,6 +111,65 @@ User Query
 - [ ] Integrate a second LLM (e.g., GPT-4o) and an open-source model (e.g., Llama 3) for side-by-side comparison
 - [ ] Add side-by-side LLM comparison panel to the web UI
 - [ ] Run full eval sweep and report aggregate accuracy, hallucination rate, cost/latency across models
+
+---
+
+## Observability
+
+Langfuse tracing is optional. The app runs normally when Langfuse variables are
+blank, but setting them creates one trace per query with nested Scout, Mapper,
+Critic, and LLM generation observations.
+
+```bash
+LANGFUSE_PUBLIC_KEY=pk-lf-...
+LANGFUSE_SECRET_KEY=sk-lf-...
+LANGFUSE_HOST=https://cloud.langfuse.com
+```
+
+For the demo, use the Langfuse Cloud free tier and open the trace by searching
+for the `trace_id` returned from `POST /query`.
+
+If graders cannot access the cloud dashboard, self-host Langfuse with the
+official compose file and point this app at `http://localhost:3000`:
+
+```yaml
+services:
+  langfuse-web:
+    image: docker.io/langfuse/langfuse:3
+    ports:
+      - "3000:3000"
+    environment:
+      NEXTAUTH_URL: http://localhost:3000
+      NEXTAUTH_SECRET: local-dev-secret # change outside local demos
+      SALT: local-dev-salt
+      ENCRYPTION_KEY: "0000000000000000000000000000000000000000000000000000000000000000"
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/postgres
+      CLICKHOUSE_URL: http://clickhouse:8123
+      CLICKHOUSE_MIGRATION_URL: clickhouse://clickhouse:9000
+      CLICKHOUSE_USER: clickhouse
+      CLICKHOUSE_PASSWORD: clickhouse
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_AUTH: myredissecret
+      LANGFUSE_S3_EVENT_UPLOAD_BUCKET: langfuse
+      LANGFUSE_S3_EVENT_UPLOAD_ENDPOINT: http://minio:9000
+      LANGFUSE_S3_EVENT_UPLOAD_ACCESS_KEY_ID: minio
+      LANGFUSE_S3_EVENT_UPLOAD_SECRET_ACCESS_KEY: miniosecret
+      LANGFUSE_S3_EVENT_UPLOAD_FORCE_PATH_STYLE: "true"
+      LANGFUSE_INIT_ORG_ID: cmpe258
+      LANGFUSE_INIT_PROJECT_ID: market-analyst
+      LANGFUSE_INIT_PROJECT_PUBLIC_KEY: pk-lf-local
+      LANGFUSE_INIT_PROJECT_SECRET_KEY: sk-lf-local
+
+  # Also include the official langfuse-worker, postgres, clickhouse, redis,
+  # and minio services from https://github.com/langfuse/langfuse/blob/main/docker-compose.yml.
+```
+
+```bash
+LANGFUSE_PUBLIC_KEY=pk-lf-local
+LANGFUSE_SECRET_KEY=sk-lf-local
+LANGFUSE_HOST=http://localhost:3000
+```
 
 ---
 

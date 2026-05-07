@@ -31,6 +31,8 @@ from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
 from langchain_anthropic import ChatAnthropic
 from langchain_openai import ChatOpenAI
 
+from agents.observability import observe, update_current_generation
+
 ModelId = Literal["claude", "gpt", "llama", "gemini"]
 
 # Maps the short model id used through the pipeline to the provider's concrete
@@ -156,6 +158,12 @@ class LLMClient:
             )
         raise ValueError(f"No client builder for model id: {self.model_id!r}")
 
+    @observe(
+        name="llm-invoke",
+        as_type="generation",
+        capture_input=False,
+        capture_output=False,
+    )
     def invoke(self, messages: list[BaseMessage]) -> LLMResponse:
         """Send a message list to the model and return a uniform response struct.
 
@@ -166,6 +174,11 @@ class LLMClient:
             ``LLMResponse`` with text, token counts, cost, latency, and the
             concrete provider model name.
         """
+        update_current_generation(
+            model=self.provider_model,
+            input=_messages_for_trace(messages),
+            metadata={"model_id": self.model_id, "temperature": self.temperature},
+        )
         t0 = time.perf_counter()
         response = self._client.invoke(messages)
         latency_ms = round((time.perf_counter() - t0) * 1000, 1)
@@ -196,7 +209,7 @@ class LLMClient:
         else:
             text = str(content)
 
-        return LLMResponse(
+        llm_response = LLMResponse(
             text=text,
             input_tokens=input_tokens,
             output_tokens=output_tokens,
@@ -204,6 +217,16 @@ class LLMClient:
             latency_ms=latency_ms,
             model=self.provider_model,
         )
+        update_current_generation(
+            output=_truncate_for_trace(text),
+            usage_details={
+                "input_tokens": input_tokens,
+                "output_tokens": output_tokens,
+            },
+            cost_details={"total_usd": cost_usd},
+            metadata={"latency_ms": latency_ms},
+        )
+        return llm_response
 
     def invoke_with_json_retry(
         self,
@@ -337,3 +360,37 @@ def truncate_docs_to_budget(
             new_d["snippet"] = snippet[:max_chars] + "... [truncated]"
         truncated.append(new_d)
     return truncated
+
+
+def _messages_for_trace(messages: list[BaseMessage]) -> list[dict[str, str]]:
+    """Convert LangChain messages into a compact trace-safe representation.
+
+    Args:
+        messages: Message list about to be sent to a provider.
+
+    Returns:
+        list[dict] with keys: role, content.
+    """
+    return [
+        {
+            "role": getattr(message, "type", message.__class__.__name__),
+            "content": _truncate_for_trace(str(message.content)),
+        }
+        for message in messages
+    ]
+
+
+def _truncate_for_trace(value: str, max_chars: int = 8_000) -> str:
+    """Limit prompt/response text stored in Langfuse observations.
+
+    Args:
+        value: Raw text to record.
+        max_chars: Maximum number of characters to keep.
+
+    Returns:
+        The original text if short enough, otherwise a truncated string with a
+        marker explaining that observability storage was capped.
+    """
+    if len(value) <= max_chars:
+        return value
+    return value[:max_chars] + "... [truncated for trace]"

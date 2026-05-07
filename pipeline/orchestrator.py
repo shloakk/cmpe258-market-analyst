@@ -20,6 +20,12 @@ from langgraph.graph import END, StateGraph
 from agents.critic import CriticAgent
 from agents.llm_client import ModelId
 from agents.mapper import MapperAgent
+from agents.observability import (
+    create_trace_id,
+    observe,
+    pipeline_observation,
+    update_current_span,
+)
 from agents.scout import ScoutAgent
 
 
@@ -39,6 +45,9 @@ class ResearchState(TypedDict):
         timings: Per-agent stats dict. Keys: scout, mapper, critic. Each value
             is a dict with at least latency_ms; LLM agents also include model,
             input_tokens, output_tokens, cost_usd.
+        trace_id: Langfuse-compatible trace id shared across all agent spans for
+            one query. Present even when Langfuse is not configured so API/eval
+            outputs can still correlate logs.
     """
 
     query: str
@@ -47,6 +56,7 @@ class ResearchState(TypedDict):
     reviewed_map: list[dict]
     error: Optional[str]
     timings: dict
+    trace_id: str
 
 
 def build_graph(model: ModelId = "claude"):
@@ -71,18 +81,36 @@ def build_graph(model: ModelId = "claude"):
     mapper = MapperAgent(model=model)
     critic = CriticAgent(model=model)
 
+    @observe(name="scout", as_type="span", capture_input=False, capture_output=False)
     def scout_node(state: ResearchState) -> ResearchState:
+        """Retrieve source documents and append Scout timing stats."""
         docs, stats = scout.run(state["query"])
+        update_current_span(
+            output={"docs_retrieved": len(docs)},
+            metadata={"trace_id": state["trace_id"], **stats},
+        )
         timings = {**state.get("timings", {}), "scout": stats}
         return {**state, "retrieved_docs": docs, "timings": timings}
 
+    @observe(name="mapper", as_type="span", capture_input=False, capture_output=False)
     def mapper_node(state: ResearchState) -> ResearchState:
+        """Convert retrieved documents into a draft theme map."""
         theme_map, stats = mapper.run(state["query"], state["retrieved_docs"])
+        update_current_span(
+            output={"themes": len(theme_map)},
+            metadata={"trace_id": state["trace_id"], **stats},
+        )
         timings = {**state.get("timings", {}), "mapper": stats}
         return {**state, "theme_map": theme_map, "timings": timings}
 
+    @observe(name="critic", as_type="span", capture_input=False, capture_output=False)
     def critic_node(state: ResearchState) -> ResearchState:
+        """Verify the draft map against source documents and store final themes."""
         reviewed, stats = critic.run(state["theme_map"], state["retrieved_docs"])
+        update_current_span(
+            output={"themes": len(reviewed)},
+            metadata={"trace_id": state["trace_id"], **stats},
+        )
         timings = {**state.get("timings", {}), "critic": stats}
         return {**state, "reviewed_map": reviewed, "timings": timings}
 
@@ -141,8 +169,11 @@ def run_pipeline_full(query: str, model: ModelId = "claude") -> dict:
             retrieved_docs: list[dict] of docs returned by Scout (so eval can
                 ground its hallucination metric against the same evidence).
             timings: per-agent stats dict (scout / mapper / critic).
+            trace_id: Langfuse-compatible id shared by all observations for
+                this query.
     """
     pipeline = _get_pipeline(model)
+    trace_id = create_trace_id()
 
     initial_state: ResearchState = {
         "query": query,
@@ -151,10 +182,20 @@ def run_pipeline_full(query: str, model: ModelId = "claude") -> dict:
         "reviewed_map": [],
         "error": None,
         "timings": {},
+        "trace_id": trace_id,
     }
-    final_state = pipeline.invoke(initial_state)
+    with pipeline_observation(trace_id=trace_id, query=query, model=model) as root_span:
+        final_state = pipeline.invoke(initial_state)
+        if root_span is not None:
+            root_span.update(
+                output={
+                    "themes": len(final_state["reviewed_map"]),
+                    "docs_retrieved": len(final_state["retrieved_docs"]),
+                }
+            )
     return {
         "reviewed_map": final_state["reviewed_map"],
         "retrieved_docs": final_state["retrieved_docs"],
         "timings": final_state["timings"],
+        "trace_id": final_state["trace_id"],
     }
