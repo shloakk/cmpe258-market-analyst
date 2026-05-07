@@ -21,8 +21,20 @@ jobs:
       - name: Build FAISS index
         run: python data/scripts/ingest.py
 
+      - name: Verify Groq API key
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          python -c "
+          from langchain_groq import ChatGroq
+          from langchain_core.messages import HumanMessage
+          r = ChatGroq(model='llama-3.3-70b-versatile').invoke([HumanMessage(content='ping')])
+          print('Groq OK:', r.content[:40])
+          "
+
       - name: Run evaluation suite
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           PYTHONPATH: ${{ github.workspace }}
+          PYTHONUNBUFFERED: "1"
         run: python eval/evaluator.py --model llama
