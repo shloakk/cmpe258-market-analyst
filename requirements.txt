@@ -13,3 +13,4 @@ httpx
 feedparser>=6.0
 trafilatura>=1.8
 langfuse>=3.64.0
+matplotlib
