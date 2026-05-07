@@ -1,0 +1,311 @@
+{
+  "timestamp": "20260507T102711Z",
+  "models": [
+    "gpt",
+    "llama"
+  ],
+  "results": {
+    "gpt": {
+      "model": "gpt",
+      "timestamp": "20260507T102355Z",
+      "queries_path": "/Users/matthewbernard/Documents/GitHub/cmpe258-market-analyst/data/eval/queries.json",
+      "per_query": [
+        {
+          "precision": 0.556,
+          "recall": 1.0,
+          "f1": 0.714,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.0,
+          "theme_purity": 0.134,
+          "cost_usd": 0.017545,
+          "latency_ms": 12048.2,
+          "query_id": "q001",
+          "model": "gpt",
+          "error": null
+        },
+        {
+          "precision": 0.667,
+          "recall": 1.0,
+          "f1": 0.8,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.667,
+          "theme_purity": 0.189,
+          "cost_usd": 0.012413,
+          "latency_ms": 9222.5,
+          "query_id": "q002",
+          "model": "gpt",
+          "error": null
+        },
+        {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.0,
+          "theme_purity": 0.129,
+          "cost_usd": 0.025255,
+          "latency_ms": 17460.3,
+          "query_id": "q003",
+          "model": "gpt",
+          "error": null
+        },
+        {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1": 0.857,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 1.0,
+          "theme_purity": 0.137,
+          "cost_usd": 0.019297,
+          "latency_ms": 13650.4,
+          "query_id": "q004",
+          "model": "gpt",
+          "error": null
+        },
+        {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.667,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.0,
+          "theme_purity": 0.144,
+          "cost_usd": 0.014695,
+          "latency_ms": 9449.6,
+          "query_id": "q005",
+          "model": "gpt",
+          "error": null
+        },
+        {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.0,
+          "theme_purity": 0.138,
+          "cost_usd": 0.011421,
+          "latency_ms": 6894.3,
+          "query_id": "q006",
+          "model": "gpt",
+          "error": null
+        },
+        {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1": 0.857,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.333,
+          "theme_purity": 0.115,
+          "cost_usd": 0.020088,
+          "latency_ms": 12845.7,
+          "query_id": "q007",
+          "model": "gpt",
+          "error": null
+        },
+        {
+          "precision": 0.333,
+          "recall": 1.0,
+          "f1": 0.5,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.0,
+          "theme_purity": 0.115,
+          "cost_usd": 0.019355,
+          "latency_ms": 13999.4,
+          "query_id": "q008",
+          "model": "gpt",
+          "error": null
+        },
+        {
+          "precision": 0.4,
+          "recall": 1.0,
+          "f1": 0.571,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.667,
+          "theme_purity": 0.2,
+          "cost_usd": 0.015852,
+          "latency_ms": 10325.0,
+          "query_id": "q009",
+          "model": "gpt",
+          "error": null
+        },
+        {
+          "precision": 0.222,
+          "recall": 1.0,
+          "f1": 0.364,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.667,
+          "theme_purity": 0.12,
+          "cost_usd": 0.022647,
+          "latency_ms": 14899.8,
+          "query_id": "q010",
+          "model": "gpt",
+          "error": null
+        }
+      ],
+      "aggregate": {
+        "mean_precision": 0.518,
+        "mean_recall": 0.9,
+        "mean_f1": 0.633,
+        "mean_hallucination_rate": 0.0,
+        "mean_theme_coverage": 0.333,
+        "mean_theme_purity": 0.142,
+        "total_cost_usd": 0.178568,
+        "mean_latency_ms": 12079.5,
+        "num_queries": 10
+      },
+      "output_path": "/Users/matthewbernard/Documents/GitHub/cmpe258-market-analyst/eval/results/gpt_20260507T102355Z.json"
+    },
+    "llama": {
+      "model": "llama",
+      "timestamp": "20260507T102556Z",
+      "queries_path": "/Users/matthewbernard/Documents/GitHub/cmpe258-market-analyst/data/eval/queries.json",
+      "per_query": [
+        {
+          "precision": 0.5,
+          "recall": 0.8,
+          "f1": 0.615,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.0,
+          "theme_purity": 0.118,
+          "cost_usd": 0.001621,
+          "latency_ms": 1654.2,
+          "query_id": "q001",
+          "model": "llama",
+          "error": null
+        },
+        {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.667,
+          "theme_purity": 0.188,
+          "cost_usd": 0.001211,
+          "latency_ms": 995.1,
+          "query_id": "q002",
+          "model": "llama",
+          "error": null
+        },
+        {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.25,
+          "theme_purity": 0.138,
+          "cost_usd": 0.001866,
+          "latency_ms": 2086.9,
+          "query_id": "q003",
+          "model": "llama",
+          "error": null
+        },
+        {
+          "precision": 0.333,
+          "recall": 1.0,
+          "f1": 0.5,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 1.0,
+          "theme_purity": 0.161,
+          "cost_usd": 0.001642,
+          "latency_ms": 1885.0,
+          "query_id": "q004",
+          "model": "llama",
+          "error": null
+        },
+        {
+          "precision": 0.111,
+          "recall": 1.0,
+          "f1": 0.2,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.0,
+          "theme_purity": 0.149,
+          "cost_usd": 0.001855,
+          "latency_ms": 1851.1,
+          "query_id": "q005",
+          "model": "llama",
+          "error": null
+        },
+        {
+          "precision": 0.333,
+          "recall": 1.0,
+          "f1": 0.5,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.5,
+          "theme_purity": 0.134,
+          "cost_usd": 0.001822,
+          "latency_ms": 11135.7,
+          "query_id": "q006",
+          "model": "llama",
+          "error": null
+        },
+        {
+          "precision": 0.667,
+          "recall": 1.0,
+          "f1": 0.8,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.667,
+          "theme_purity": 0.138,
+          "cost_usd": 0.001911,
+          "latency_ms": 14709.9,
+          "query_id": "q007",
+          "model": "llama",
+          "error": null
+        },
+        {
+          "precision": 0.25,
+          "recall": 0.667,
+          "f1": 0.364,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.0,
+          "theme_purity": 0.118,
+          "cost_usd": 0.001816,
+          "latency_ms": 15035.8,
+          "query_id": "q008",
+          "model": "llama",
+          "error": null
+        },
+        {
+          "precision": 0.4,
+          "recall": 1.0,
+          "f1": 0.571,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.667,
+          "theme_purity": 0.167,
+          "cost_usd": 0.001468,
+          "latency_ms": 11620.7,
+          "query_id": "q009",
+          "model": "llama",
+          "error": null
+        },
+        {
+          "precision": 0.222,
+          "recall": 1.0,
+          "f1": 0.364,
+          "hallucination_rate": 0.0,
+          "theme_coverage": 0.333,
+          "theme_purity": 0.138,
+          "cost_usd": 0.00187,
+          "latency_ms": 13447.4,
+          "query_id": "q010",
+          "model": "llama",
+          "error": null
+        }
+      ],
+      "aggregate": {
+        "mean_precision": 0.382,
+        "mean_recall": 0.847,
+        "mean_f1": 0.491,
+        "mean_hallucination_rate": 0.0,
+        "mean_theme_coverage": 0.408,
+        "mean_theme_purity": 0.145,
+        "total_cost_usd": 0.017082,
+        "mean_latency_ms": 7442.2,
+        "num_queries": 10
+      },
+      "output_path": "/Users/matthewbernard/Documents/GitHub/cmpe258-market-analyst/eval/results/llama_20260507T102556Z.json"
+    }
+  },
+  "output_paths": {
+    "gpt": "/Users/matthewbernard/Documents/GitHub/cmpe258-market-analyst/eval/results/gpt_20260507T102355Z.json",
+    "llama": "/Users/matthewbernard/Documents/GitHub/cmpe258-market-analyst/eval/results/llama_20260507T102556Z.json"
+  }
+}
