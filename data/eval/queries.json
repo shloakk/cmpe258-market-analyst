@@ -97,5 +97,343 @@
     "gold_snippets": [
       "evaluation will become the key differentiator as models commoditize"
     ]
+  },
+  {
+    "id": "q011",
+    "query": "Map the agent memory and context management landscape.",
+    "gold_entities": ["Mem0", "Zep", "LangChain"],
+    "gold_themes": ["memory-tools", "agent-runtime"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q012",
+    "query": "Group all agent observability and tracing tools by maturity level.",
+    "gold_entities": ["Langfuse", "Braintrust", "Humanloop"],
+    "gold_themes": ["observability", "eval-tools"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q013",
+    "query": "Map voice-agent startups by their target vertical.",
+    "gold_entities": ["Sierra", "Cresta"],
+    "gold_themes": ["voice-agents", "vertical-agents"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q014",
+    "query": "Map the RAG infrastructure stack from vector stores to query engines.",
+    "gold_entities": ["LlamaIndex", "Weaviate", "Chroma", "Qdrant"],
+    "gold_themes": ["rag", "infra"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q015",
+    "query": "Map coding-agent startups by their primary interaction model.",
+    "gold_entities": ["Cognition", "Reworkd"],
+    "gold_themes": ["coding-agents", "agent-runtime"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q016",
+    "query": "Group agentic AI startups by their go-to-market motion.",
+    "gold_entities": ["CrewAI", "Sierra", "Vellum", "Humanloop"],
+    "gold_themes": ["multi-agent-orchestration", "vertical-agents", "eval-tools"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q017",
+    "query": "Map the LLM eval tooling landscape by evaluation methodology.",
+    "gold_entities": ["Braintrust", "Langfuse", "Humanloop"],
+    "gold_themes": ["eval-tools", "observability"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q018",
+    "query": "Map YC-backed AI infrastructure startups by technical layer.",
+    "gold_entities": ["Y Combinator"],
+    "gold_themes": ["infra", "eval-tools"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q019",
+    "query": "Group multi-agent frameworks by whether they are graph-based or message-passing-based.",
+    "gold_entities": ["LangGraph", "AutoGen", "CrewAI"],
+    "gold_themes": ["multi-agent-orchestration"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q020",
+    "query": "Map agentic AI companies by primary deployment model (cloud vs self-hosted).",
+    "gold_entities": ["Langfuse", "CrewAI", "LangGraph"],
+    "gold_themes": ["infra", "agent-runtime"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q021",
+    "query": "Map tool-use and integration middleware platforms for AI agents.",
+    "gold_entities": ["Composio", "Exa"],
+    "gold_themes": ["agent-runtime", "infra"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q022",
+    "query": "Group enterprise-facing agentic AI companies by the industry they target.",
+    "gold_entities": ["Sierra", "Decagon", "Cresta", "Lindy"],
+    "gold_themes": ["vertical-agents"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q023",
+    "query": "Map RAG retrieval providers by their indexing approach.",
+    "gold_entities": ["Weaviate", "Qdrant", "Chroma", "Exa"],
+    "gold_themes": ["rag"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q024",
+    "query": "Map the agentic AI landscape covered in recent Latent Space newsletter issues.",
+    "gold_entities": [],
+    "gold_themes": ["multi-agent-orchestration", "infra"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q025",
+    "query": "Map agent prompt management and versioning tools.",
+    "gold_entities": ["Humanloop", "Vellum"],
+    "gold_themes": ["eval-tools", "infra"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q026",
+    "query": "Group open-source vs commercial agentic AI platforms.",
+    "gold_entities": ["LangGraph", "AutoGen", "CrewAI", "Langfuse"],
+    "gold_themes": ["multi-agent-orchestration", "observability"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q027",
+    "query": "Map AI agent sandboxing and execution runtime providers.",
+    "gold_entities": ["Cognition", "Imbue", "MultiOn", "Fixie"],
+    "gold_themes": ["agent-runtime", "coding-agents"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q028",
+    "query": "Map customer support automation startups built on agentic AI.",
+    "gold_entities": ["Sierra", "Decagon", "Cresta"],
+    "gold_themes": ["vertical-agents", "voice-agents"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q029",
+    "query": "Group agentic AI startups by their primary LLM provider dependency.",
+    "gold_entities": ["CrewAI", "LangGraph", "Composio"],
+    "gold_themes": ["multi-agent-orchestration", "infra"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q030",
+    "query": "Map the key players in agentic AI platforms covered in recent TechCrunch reporting.",
+    "gold_entities": [],
+    "gold_themes": ["infra", "multi-agent-orchestration"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q031",
+    "query": "List all open-source LLM agent frameworks.",
+    "gold_entities": ["LangGraph", "AutoGen", "CrewAI"],
+    "gold_themes": ["multi-agent-orchestration"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q032",
+    "query": "List YC W25 AI infrastructure startups.",
+    "gold_entities": [],
+    "gold_themes": ["infra"],
+    "gold_snippets": [
+      "Key areas include: developer tools for agentic AI, evaluation frameworks for LLM reliability"
+    ]
+  },
+  {
+    "id": "q033",
+    "query": "List tools that offer LLM-as-judge evaluation.",
+    "gold_entities": ["Braintrust", "Langfuse"],
+    "gold_themes": ["eval-tools"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q034",
+    "query": "List startups building agent integration middleware.",
+    "gold_entities": ["Composio"],
+    "gold_themes": ["agent-runtime", "infra"],
+    "gold_snippets": [
+      "Composio provides a managed integration layer that connects LLM agents to over 250 external tools"
+    ]
+  },
+  {
+    "id": "q035",
+    "query": "List enterprise-focused vertical agent startups.",
+    "gold_entities": ["Sierra", "Decagon", "Cresta", "Lindy"],
+    "gold_themes": ["vertical-agents"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q036",
+    "query": "List vector database providers used for RAG pipelines.",
+    "gold_entities": ["Weaviate", "Chroma", "Qdrant"],
+    "gold_themes": ["rag", "infra"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q037",
+    "query": "List startups building long-term memory for AI agents.",
+    "gold_entities": ["Mem0", "Zep"],
+    "gold_themes": ["memory-tools"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q038",
+    "query": "List AI startups building products specifically for software engineering workflows.",
+    "gold_entities": ["Cognition", "Reworkd"],
+    "gold_themes": ["coding-agents"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q039",
+    "query": "List prompt management and LLM fine-tuning platforms.",
+    "gold_entities": ["Humanloop", "Vellum"],
+    "gold_themes": ["eval-tools", "infra"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q040",
+    "query": "List agentic AI topics covered in recent Import AI newsletter issues.",
+    "gold_entities": [],
+    "gold_themes": ["infra"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q041",
+    "query": "List the companies mentioned in Anthropic's engineering blog posts.",
+    "gold_entities": [],
+    "gold_themes": ["agent-runtime", "eval-tools"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q042",
+    "query": "List AI agent startups that have raised Series B or later rounds.",
+    "gold_entities": ["CrewAI", "Composio", "Langfuse"],
+    "gold_themes": ["infra"],
+    "gold_snippets": [
+      "agentic AI startups raised over $4B in Q1 2026"
+    ]
+  },
+  {
+    "id": "q043",
+    "query": "List web-browsing and computer-use agent providers.",
+    "gold_entities": ["MultiOn", "Fixie"],
+    "gold_themes": ["agent-runtime"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q044",
+    "query": "List all platforms that support multi-agent task delegation.",
+    "gold_entities": ["CrewAI", "LangGraph", "AutoGen", "Lindy"],
+    "gold_themes": ["multi-agent-orchestration"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q045",
+    "query": "List AI search and knowledge retrieval APIs used by agents.",
+    "gold_entities": ["Exa"],
+    "gold_themes": ["rag"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q046",
+    "query": "Compare Langfuse and Braintrust for LLM evaluation.",
+    "gold_entities": ["Langfuse", "Braintrust"],
+    "gold_themes": ["eval-tools", "observability"],
+    "gold_snippets": [
+      "Langfuse is an open-source platform for tracing, evaluating, and monitoring LLM applications",
+      "Braintrust is an enterprise-grade evaluation platform for LLM applications"
+    ]
+  },
+  {
+    "id": "q047",
+    "query": "Compare open-source vs enterprise agent orchestration frameworks.",
+    "gold_entities": ["CrewAI", "LangGraph", "AutoGen"],
+    "gold_themes": ["multi-agent-orchestration"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q048",
+    "query": "Compare vector store options for RAG pipelines.",
+    "gold_entities": ["Weaviate", "Chroma", "Qdrant"],
+    "gold_themes": ["rag", "infra"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q049",
+    "query": "Compare funding rounds of top agentic AI startups in 2025-2026.",
+    "gold_entities": ["CrewAI", "Composio", "Langfuse"],
+    "gold_themes": ["infra"],
+    "gold_snippets": [
+      "agentic AI startups raised over $4B in Q1 2026",
+      "Notable rounds include CrewAI's $100M Series B"
+    ]
+  },
+  {
+    "id": "q050",
+    "query": "Compare graph-based vs conversation-based multi-agent coordination.",
+    "gold_entities": ["LangGraph", "AutoGen"],
+    "gold_themes": ["multi-agent-orchestration"],
+    "gold_snippets": [
+      "LangGraph provides a graph-based abstraction for building reliable, stateful LLM agents",
+      "AutoGen is a framework for building LLM applications where multiple agents communicate via structured conversations"
+    ]
+  },
+  {
+    "id": "q051",
+    "query": "What are the 2025-2026 trends in agent memory systems?",
+    "gold_entities": ["Mem0", "Zep"],
+    "gold_themes": ["memory-tools"],
+    "gold_snippets": []
+  },
+  {
+    "id": "q052",
+    "query": "How is the agentic AI investment landscape evolving in 2026?",
+    "gold_entities": ["CrewAI", "Composio"],
+    "gold_themes": ["infra"],
+    "gold_snippets": [
+      "agentic AI startups raised over $4B in Q1 2026"
+    ]
+  },
+  {
+    "id": "q053",
+    "query": "What trends are emerging in LLM evaluation tooling?",
+    "gold_entities": ["Langfuse", "Braintrust", "Humanloop"],
+    "gold_themes": ["eval-tools", "observability"],
+    "gold_snippets": [
+      "evaluation will become the key differentiator as models commoditize"
+    ]
+  },
+  {
+    "id": "q054",
+    "query": "What YC investment thesis themes are emerging for agentic AI in 2025?",
+    "gold_entities": ["Y Combinator"],
+    "gold_themes": ["infra", "eval-tools"],
+    "gold_snippets": [
+      "startups solving agent observability and grounding are especially well-positioned"
+    ]
+  },
+  {
+    "id": "q055",
+    "query": "What is driving enterprise demand for RAG platforms?",
+    "gold_entities": ["LlamaIndex"],
+    "gold_themes": ["rag", "vertical-agents"],
+    "gold_snippets": [
+      "LlamaIndex provides data connectors, indexes, and query engines for building retrieval-augmented generation applications over private or domain-specific data"
+    ]
   }
 ]
