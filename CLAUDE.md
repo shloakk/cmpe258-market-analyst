@@ -24,7 +24,7 @@ These rules must be followed in all code produced for this project to meet profe
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env   # add ANTHROPIC_API_KEY and OPENAI_API_KEY
+cp .env.example .env   # add ANTHROPIC_API_KEY
 
 # Must be run before using the pipeline — builds data/index/ from the corpus
 python data/scripts/ingest.py
@@ -73,7 +73,7 @@ Scout → Mapper → Critic
 
 ### Agents (`agents/`)
 
-- **`scout.py` — `ScoutAgent`**: Loads `data/index/` (FAISS), embeds the query with `text-embedding-3-small`, returns top-k docs as `list[dict]` with keys `title, source_url, tags, publish_date, snippet, score`.
+- **`scout.py` — `ScoutAgent`**: Loads `data/index/` (FAISS), embeds the query with `sentence-transformers/all-MiniLM-L6-v2` (local, no API key), returns top-k docs as `list[dict]` with keys `title, source_url, tags, publish_date, snippet, score`.
 - **`mapper.py` — `MapperAgent`**: Sends retrieved docs to Claude (`claude-sonnet-4-6`) with a structured prompt. Parses the JSON response into `list[dict]` with keys `theme_name, companies, rationale, citations`.
 - **`critic.py` — `CriticAgent`**: Sends the theme map + source docs to Claude. Returns a cleaned map with unsupported companies/themes removed. Uses same JSON schema as Mapper output.
 

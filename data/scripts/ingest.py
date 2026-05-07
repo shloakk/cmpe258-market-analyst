@@ -1,24 +1,18 @@
 """
 Ingestion script: loads the JSON corpus, embeds each document using
-OpenAI text-embedding-3-small, and saves a FAISS index to data/index/.
+sentence-transformers/all-MiniLM-L6-v2 (local, no API key required),
+and saves a FAISS index to data/index/.
 
 Usage:
     python data/scripts/ingest.py
-
-Environment variables required:
-    OPENAI_API_KEY
 """
 
 import json
-import os
 import pathlib
 
-from dotenv import load_dotenv
-from langchain_openai import OpenAIEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.schema import Document
-
-load_dotenv()
 
 CORPUS_DIR = pathlib.Path(__file__).parent.parent / "corpus"
 INDEX_DIR = pathlib.Path(__file__).parent.parent / "index"
@@ -94,7 +88,7 @@ def build_index(records: list[dict]) -> FAISS:
     Returns:
         FAISS index loaded with all document embeddings.
     """
-    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     docs = [doc_to_langchain(r) for r in records]
     print(f"Embedding {len(docs)} documents...")
     index = FAISS.from_documents(docs, embeddings)
@@ -116,15 +110,11 @@ def save_index(index: FAISS, directory: pathlib.Path) -> None:
 
 def main() -> None:
     """
-    Entry point: validates env, loads all corpus shards, builds and saves index.
+    Entry point: loads all corpus shards, builds and saves index.
 
     Raises:
-        EnvironmentError: If OPENAI_API_KEY is not set.
         FileNotFoundError: If no corpus JSON files are found.
     """
-    if not os.getenv("OPENAI_API_KEY"):
-        raise EnvironmentError("OPENAI_API_KEY is not set. Copy .env.example to .env and fill it in.")
-
     records = load_corpus(CORPUS_DIR)
     print(f"Loaded {len(records)} documents from corpus.")
 

@@ -1,11 +1,12 @@
 """
-Scout Agent: embeds the user query and retrieves the top-k most relevant
-documents from the FAISS vector index built by data/scripts/ingest.py.
+Scout Agent: embeds the user query using a local sentence-transformers model
+and retrieves the top-k most relevant documents from the FAISS index built
+by data/scripts/ingest.py.
 """
 
 import pathlib
 import time
-from langchain_openai import OpenAIEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
 INDEX_DIR = pathlib.Path(__file__).parent.parent / "data" / "index"
@@ -17,7 +18,7 @@ class ScoutAgent:
 
     def __init__(self, top_k: int = DEFAULT_TOP_K) -> None:
         self.top_k = top_k
-        embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+        embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
         self.index = FAISS.load_local(
             str(INDEX_DIR),
             embeddings,
