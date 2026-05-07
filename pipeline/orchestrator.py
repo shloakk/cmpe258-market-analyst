@@ -1,6 +1,7 @@
 """
 LangGraph orchestrator: wires Scout → Mapper → Critic into a stateful directed
-graph and runs it for a chosen LLM ("gemini" / "llama" / "qwen" / etc.).
+graph and runs it for a chosen LLM ("gemini" / "llama" / "qwen" / "nemotron",
+plus the opt-in paid "gpt").
 
 A separate compiled graph is built and cached per model. This keeps the
 graph compilation overhead a one-time cost per model and lets the agents

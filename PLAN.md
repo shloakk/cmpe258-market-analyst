@@ -8,7 +8,7 @@
 | Eval set | ≥50 queries with gold labels | 10 queries (`data/eval/queries.json`) | +40 queries |
 | Pipeline (Scout→Mapper→Critic) | LangGraph 3-agent | Implemented (`pipeline/orchestrator.py`) | Tracing, robustness |
 | Web UI | Market map + citations + 3-LLM comparison | Comparison UI implemented (`app/static/index.html`) | Eval polish |
-| Multi-LLM | 3 models incl. 1 open-source | `gemini`, `llama`, `qwen` (+ optional `nemotron`) | Run full eval sweep |
+| Multi-LLM | 3 models incl. 1 open-source | `gemini`, `llama`, `qwen` (+ optional `nemotron`, opt-in paid `gpt`) | Run full eval sweep |
 | Metrics | Entity P/R, theme quality, hallucination, cost, latency | P/R + hallucination + cost/latency (`eval/evaluator.py`) | Theme/cluster quality metric |
 | Observability | Langfuse | Not integrated | Add Langfuse |
 
@@ -53,6 +53,7 @@ Refactor `agents/mapper.py` and `agents/critic.py` to take a `model_id` construc
 - `llama-3.3-70b-versatile` via Groq (open-weight requirement)
 - `qwen/qwen3-coder:free` via OpenRouter (open-weight requirement)
 - Optional: `nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free` via OpenRouter
+- Opt-in paid: `gpt-5.4` via OpenAI for paid-vs-free baseline comparison; only used when `OPENAI_API_KEY` is set
 
 ### 2.2 Pipeline Parameterization
 
@@ -79,7 +80,7 @@ Add to `eval/evaluator.py`:
 
 ### 3.2 Per-Model Eval Runner
 
-Extend `run_eval` to loop `for model in ["gemini", "llama", "qwen"]` (optionally `nemotron`), writing results to `eval/results/<model>_<timestamp>.json` with: per-query metrics, aggregate scores, cost (from token usage × per-model rates), and latency (wall-clock per agent).
+Extend `run_eval` to loop `for model in ["gemini", "llama", "qwen"]` (optionally `nemotron`, plus `gpt` when `OPENAI_API_KEY` is set), writing results to `eval/results/<model>_<timestamp>.json` with: per-query metrics, aggregate scores, cost (from token usage × per-model rates), and latency (wall-clock per agent).
 
 ### 3.3 Report Generator
 
@@ -105,7 +106,7 @@ Use Langfuse Cloud free tier for the demo. Document a `docker-compose` self-host
 
 ### 5.1 New `/compare` Endpoint
 
-Add `POST /compare` to `app/main.py` with body `{query, models: ["gemini","llama","qwen"]}` plus optional `nemotron`. Returns `{model: {themes, latency_ms, cost_usd, trace_url}}`. Run the pipelines concurrently via `asyncio.gather` (each `run_pipeline` wrapped with `asyncio.to_thread`).
+Add `POST /compare` to `app/main.py` with body `{query, models: ["gemini","llama","qwen"]}` plus optional `nemotron` or `gpt`. Returns `{model: {themes, latency_ms, cost_usd, trace_url, error?}}`. Run the pipelines concurrently via `asyncio.gather` (each `run_pipeline` wrapped with `asyncio.to_thread`); per-model timeouts ensure one slow/failing provider never blocks the others.
 
 ### 5.2 Comparison Tab in UI
 

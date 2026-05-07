@@ -1,9 +1,9 @@
 """
 Mapper Agent: clusters retrieved documents into market themes using a
-configurable LLM (Gemini / Llama / Qwen).
+configurable LLM (Gemini / Llama / Qwen / Nemotron, plus optional GPT).
 
 The model is selected at construction time (for example, ``"gemini"``,
-``"llama"``, or ``"qwen"``)
+``"llama"``, ``"qwen"``, ``"nemotron"``, or the opt-in paid ``"gpt"``)
 so the same pipeline can be compiled per model and run side-by-side for the
 multi-LLM comparison view without changes to agent code.
 """

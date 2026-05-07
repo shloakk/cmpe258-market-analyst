@@ -17,7 +17,6 @@ import json
 import os
 import pathlib
 import time
-from datetime import datetime, timezone
 from typing import cast
 
 from fastapi import FastAPI, HTTPException
@@ -170,8 +169,10 @@ async def latest_eval_results() -> dict:
     """Return the latest saved evaluation dashboard JSON.
 
     Returns:
-        Dict with keys: generated_at, models. ``models`` maps model ids to
-        aggregate metric dicts.
+        Dict with keys: timestamp, models, results, output_paths. ``results``
+        maps model ids to per-query metrics + an ``aggregate`` dict consumed
+        by the dashboard. This shape matches
+        ``eval.evaluator.run_eval_for_models``.
 
     Raises:
         HTTPException: If no eval result file exists yet.
@@ -195,7 +196,8 @@ async def run_eval_endpoint(request: EvalRunRequest) -> dict:
             set to ``true``.
 
     Returns:
-        Saved dashboard JSON with keys: generated_at, models.
+        Saved dashboard JSON in the ``run_eval_for_models`` shape (keys:
+        timestamp, models, results, output_paths, latest_path).
 
     Raises:
         HTTPException: If eval runs are disabled or the evaluator fails.
@@ -357,29 +359,29 @@ def _trace_url(trace_id: str) -> str | None:
 def _run_eval_models(models: list[ModelId]) -> dict:
     """Run evaluator aggregates for one or more models and save dashboard JSON.
 
+    Delegates to ``eval.evaluator.run_eval_for_models`` so the saved
+    ``eval/results/latest.json`` matches the schema used by ``eval/report.py``
+    and the historical per-model artifacts on disk (e.g.
+    ``eval/results/gpt_*.json``). This avoids two divergent JSON shapes for
+    the same dashboard payload.
+
     Args:
         models: Short model ids evaluated by Mapper and Critic.
 
     Returns:
-        Dict with keys: generated_at, models. Each model value contains
-        aggregate metric keys returned by ``eval.evaluator.run_eval``.
+        Dict with keys: timestamp, models, results, output_paths, latest_path.
+        ``results[<model>]`` includes ``per_query`` and ``aggregate`` blocks.
     """
-    from eval.evaluator import run_eval
+    from eval.evaluator import run_eval_for_models
 
     EVAL_RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    results: dict[str, dict] = {}
-    generated_at = datetime.now(timezone.utc).isoformat()
-    for model in models:
-        aggregate = run_eval(lambda q, m=model: run_pipeline_full(q, model=m))
-        results[model] = {"aggregate": aggregate}
-
-    payload = {"generated_at": generated_at, "models": results}
-    timestamp = generated_at.replace(":", "").replace("+", "Z")
-    (EVAL_RESULTS_DIR / f"latest_{timestamp}.json").write_text(
-        json.dumps(payload, indent=2)
+    # The evaluator writes <model>_<timestamp>.json per model and a single
+    # latest.json aggregate; both are read by the dashboard and report tools.
+    return run_eval_for_models(
+        run_pipeline_full,
+        models=list(models),
+        results_dir=EVAL_RESULTS_DIR,
     )
-    (EVAL_RESULTS_DIR / "latest.json").write_text(json.dumps(payload, indent=2))
-    return payload
 
 
 def _default_model() -> ModelId:

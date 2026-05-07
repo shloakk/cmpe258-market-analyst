@@ -113,6 +113,7 @@
           <label><input type="checkbox" name="evalModel" value="llama" checked /> Llama</label>
           <label><input type="checkbox" name="evalModel" value="qwen" checked /> Qwen</label>
           <label><input type="checkbox" name="evalModel" value="nemotron" /> Nemotron</label>
+          <label><input type="checkbox" name="evalModel" value="gpt" /> GPT (paid)</label>
         </div>
         <button id="runBtn" onclick="runEval()">Run Eval</button>
       </div>
@@ -148,7 +149,7 @@
           throw new Error(err.detail || "No eval results found.");
         }
         const data = await resp.json();
-        status.textContent = `Loaded results from ${new Date(data.generated_at).toLocaleString()}`;
+        status.textContent = `Loaded results from ${formatTimestamp(data.timestamp)}`;
         renderDashboard(data);
       } catch (e) {
         status.textContent = e.message;
@@ -179,7 +180,7 @@
           throw new Error(err.detail || "Eval run failed.");
         }
         const data = await resp.json();
-        status.textContent = `Eval complete: ${new Date(data.generated_at).toLocaleString()}`;
+        status.textContent = `Eval complete: ${formatTimestamp(data.timestamp)}`;
         renderDashboard(data);
       } catch (e) {
         status.textContent = `Error: ${e.message}`;
@@ -193,8 +194,25 @@
         .map(input => input.value);
     }
 
+    // The evaluator writes a compact timestamp like "20260507T102711Z" that
+    // Date can't parse directly. Splice it back into ISO form before display.
+    function formatTimestamp(value) {
+      if (!value || typeof value !== "string") return "(unknown time)";
+      const compact = value.match(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/);
+      if (compact) {
+        const [, y, mo, d, h, mi, s] = compact;
+        const iso = `${y}-${mo}-${d}T${h}:${mi}:${s}Z`;
+        const parsed = new Date(iso);
+        if (!isNaN(parsed.getTime())) return parsed.toLocaleString();
+      }
+      const fallback = new Date(value);
+      return isNaN(fallback.getTime()) ? value : fallback.toLocaleString();
+    }
+
     function renderDashboard(data) {
-      const models = Object.entries(data.models || {});
+      // Schema: { timestamp, models: [...], results: { <model>: { aggregate, ... } } }
+      // ``models`` is the list ordering; ``results`` is the rich per-model data.
+      const models = Object.entries(data.results || {});
       if (!models.length) {
         renderEmpty();
         return;

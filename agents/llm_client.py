@@ -1,6 +1,6 @@
 """
-Unified LLM client wrapping free/free-tier providers behind a single
-``invoke()`` interface.
+Unified LLM client wrapping free/free-tier providers (plus optional paid
+OpenAI) behind a single ``invoke()`` interface.
 
 Why a thin custom wrapper instead of using LangChain's BaseChatModel directly?
 - We need consistent token-usage extraction across providers; each SDK exposes
@@ -13,7 +13,8 @@ Why a thin custom wrapper instead of using LangChain's BaseChatModel directly?
 
 Public surface:
 - ``ModelId`` — short id used through the pipeline ("gemini" / "llama" /
-  "qwen" / "nemotron").
+  "qwen" / "nemotron" / "gpt"). The first four are free or free-tier; "gpt"
+  is opt-in and only available when ``OPENAI_API_KEY`` is set.
 - ``LLMResponse`` — provider-agnostic response dataclass.
 - ``LLMClient`` — the wrapper itself, with ``invoke`` and
   ``invoke_with_json_retry``.
@@ -33,7 +34,7 @@ from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
 
 from agents.observability import observe, update_current_generation
 
-ModelId = Literal["gemini", "llama", "qwen", "nemotron"]
+ModelId = Literal["gemini", "llama", "qwen", "nemotron", "gpt"]
 
 # Maps the short model id used through the pipeline to the provider's concrete
 # model name. Adding a new model requires one entry here + one entry in
@@ -52,6 +53,9 @@ MODEL_REGISTRY: dict[ModelId, str] = {
     # Optional NVIDIA reasoning/multimodal model via OpenRouter. Keep unchecked
     # by default because the core class requirement is already met by 3 models.
     "nemotron": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+    # Opt-in paid path. Kept so historical eval artifacts (eval/results/gpt_*.json)
+    # remain reproducible; only used when OPENAI_API_KEY is configured.
+    "gpt": "gpt-5.4",
 }
 
 # Per-1M-token USD pricing. Verified against provider docs on 2026-05-06.
@@ -64,6 +68,10 @@ _PRICING: dict[str, dict[str, float]] = {
         "input": 0.0,
         "output": 0.0,
     },
+    # OpenAI public list price for gpt-5.4 (per 1M tokens). Keep aligned with
+    # the historical figures used in eval/results/gpt_*.json so cost trends
+    # remain comparable across runs.
+    "gpt-5.4": {"input": 2.50, "output": 15.00},
 }
 
 # Conservative input-token budgets per model. Real context windows are larger
@@ -75,6 +83,7 @@ _CONTEXT_BUDGETS: dict[str, int] = {
     "gemini-2.0-flash": 100_000,         # Conservative; keep prompts stable for JSON.
     "qwen/qwen3-coder:free": 100_000,    # OpenRouter free models vary; stay conservative.
     "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": 100_000,
+    "gpt-5.4": 380_000,                  # 400k window, 20k headroom for output
 }
 
 
@@ -132,6 +141,10 @@ class LLMClient:
             self.provider_model = os.getenv("OPENROUTER_MODEL") or MODEL_REGISTRY[model]
         elif model == "nemotron":
             self.provider_model = os.getenv("NEMOTRON_MODEL") or MODEL_REGISTRY[model]
+        elif model == "gpt":
+            # Allow pinning a specific OpenAI snapshot from .env without
+            # requiring a code change when the provider rotates default ids.
+            self.provider_model = os.getenv("OPENAI_MODEL") or MODEL_REGISTRY[model]
         else:
             self.provider_model = MODEL_REGISTRY[model]
         self.temperature = temperature
@@ -140,9 +153,9 @@ class LLMClient:
     def _build_client(self):
         """Instantiate the provider SDK client for the selected model.
 
-        ``langchain_groq`` is imported lazily so a user without ``GROQ_API_KEY``
-        installed (or without the package) can still run the Gemini / Qwen
-        paths without an ImportError at module load.
+        Each provider SDK is imported lazily so a user without that provider's
+        API key (or without its package) can still run the other paths without
+        an ImportError at module load.
         """
         if self.model_id == "llama":
             _require_any_env(["GROQ_API_KEY"], "llama")
@@ -163,6 +176,13 @@ class LLMClient:
                 temperature=self.temperature,
                 google_api_key=api_key,
             )
+        if self.model_id == "gpt":
+            _require_any_env(["OPENAI_API_KEY"], "gpt")
+            # Lazy import so users on the free lineup don't need langchain-openai
+            # in their environment to import this module.
+            from langchain_openai import ChatOpenAI
+
+            return ChatOpenAI(model=self.provider_model, temperature=self.temperature)
         if self.model_id in {"qwen", "nemotron"}:
             _require_any_env(["OPENROUTER_API_KEY"], self.model_id)
             return None
@@ -522,5 +542,6 @@ def _require_any_env(names: list[str], model_id: str) -> None:
     joined = " or ".join(names)
     raise ValueError(
         f"Missing API key for model {model_id!r}. Set {joined} in .env, "
-        "or use a configured model by setting DEFAULT_MODEL=gemini/llama/qwen/nemotron."
+        "or use a configured model by setting "
+        "DEFAULT_MODEL=gemini/llama/qwen/nemotron/gpt."
     )

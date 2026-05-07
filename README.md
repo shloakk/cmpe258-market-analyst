@@ -80,6 +80,7 @@ User Query
 - Llama 3.3 70B (`llama`) — open-weight Mapper/Critic model via Groq
 - Qwen (`qwen`) — open-weight Mapper/Critic model via OpenRouter free models
 - Nemotron (`nemotron`) — optional NVIDIA reasoning model via OpenRouter free models
+- GPT (`gpt`, paid) — opt-in OpenAI snapshot used for paid-vs-free comparison; only active when `OPENAI_API_KEY` is set
 - `sentence-transformers/all-MiniLM-L6-v2` — local Scout embedding model
 
 **Frameworks:** LangGraph, LangChain, FAISS, FastAPI
@@ -194,7 +195,7 @@ cmpe258-market-analyst/
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env   # fill in keys; set DEFAULT_MODEL to gemini/llama/qwen/nemotron
+cp .env.example .env   # fill in keys; set DEFAULT_MODEL to gemini/llama/qwen/nemotron (or gpt if OPENAI_API_KEY is configured)
 
 # Build the FAISS index from the seed corpus
 python data/scripts/ingest.py

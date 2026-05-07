@@ -2,11 +2,11 @@
 Critic Agent: reviews the Mapper's theme map against the retrieved documents
 and removes claims/companies/themes that lack grounding in the source text.
 
-The model is configurable (for example, ``"gemini"``, ``"llama"``, or ``"qwen"``)
-for the multi-LLM
-comparison view. By default Critic uses the same model as Mapper to keep the
-ablation honest, but the constructor exposes the choice so a downstream caller
-can mix models (e.g. cheap Mapper + strong Critic) for cost ablations.
+The model is configurable (for example, ``"gemini"``, ``"llama"``, ``"qwen"``,
+``"nemotron"``, or the opt-in paid ``"gpt"``) for the multi-LLM comparison
+view. By default Critic uses the same model as Mapper to keep the ablation
+honest, but the constructor exposes the choice so a downstream caller can mix
+models (e.g. cheap Mapper + strong Critic) for cost ablations.
 """
 
 import json

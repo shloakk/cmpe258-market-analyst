@@ -24,7 +24,7 @@ These rules must be followed in all code produced for this project to meet profe
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env   # add GOOGLE_API_KEY, GROQ_API_KEY, and OPENROUTER_API_KEY
+cp .env.example .env   # add GOOGLE_API_KEY, GROQ_API_KEY, OPENROUTER_API_KEY (optional OPENAI_API_KEY for the paid `gpt` baseline)
 
 # Must be run before using the pipeline — builds data/index/ from the corpus
 python data/scripts/ingest.py
@@ -74,9 +74,9 @@ Scout → Mapper → Critic
 ### Agents (`agents/`)
 
 - **`scout.py` — `ScoutAgent`**: Loads `data/index/` (FAISS), embeds the query with `sentence-transformers/all-MiniLM-L6-v2` (local, no API key), returns top-k docs as `list[dict]` with keys `title, source_url, tags, publish_date, snippet, score`.
-- **`mapper.py` — `MapperAgent`**: Sends retrieved docs to the configured model (`gemini`, `llama`, or `qwen`) with a structured prompt. Parses the JSON response into `list[dict]` with keys `theme_name, companies, rationale, citations`.
+- **`mapper.py` — `MapperAgent`**: Sends retrieved docs to the configured model (`gemini`, `llama`, `qwen`, `nemotron`, or opt-in paid `gpt`) with a structured prompt. Parses the JSON response into `list[dict]` with keys `theme_name, companies, rationale, citations`.
 - **`critic.py` — `CriticAgent`**: Sends the theme map + source docs to the configured model. Returns a cleaned map with unsupported companies/themes removed. Uses same JSON schema as Mapper output.
-  - You can switch the LLM provider by running eval/pipeline with `--model gemini`, `--model llama`, or `--model qwen` and setting the matching API key.
+  - You can switch the LLM provider by running eval/pipeline with `--model gemini|llama|qwen|nemotron|gpt` and setting the matching API key (`OPENAI_API_KEY` is required only for `gpt`).
   - If you see `404 ... model is not found`, run ListModels and set `GEMINI_MODEL` in `.env` to one of the returned ids (for example `gemini-2.0-flash`).
 
 Both Mapper and Critic strip markdown code fences from the LLM response before `json.loads()`.
@@ -108,6 +108,6 @@ Three exported functions:
 ## Key Design Decisions
 
 - **FAISS index is not committed** — it must be rebuilt with `ingest.py` whenever the corpus changes.
-- **Both Mapper and Critic use the same configured LLM** for a given pipeline run. The comparison view runs separate cached graphs for `gemini`, `llama`, and `qwen`.
-- **Agent classes are stateless** — `ScoutAgent` loads the FAISS index at `__init__` time; Mapper and Critic instantiate a new `ChatGroq` client each call. For production, these should be singletons.
+- **Both Mapper and Critic use the same configured LLM** for a given pipeline run. The comparison view runs separate cached graphs for any subset of `gemini`, `llama`, `qwen`, `nemotron`, and (when configured) `gpt`.
+- **Agent classes are stateless** — `ScoutAgent` loads the FAISS index at `__init__` time; Mapper and Critic instantiate a new provider client each call. For production, these should be singletons.
 - **JSON parsing is strict** — if the LLM returns malformed JSON, agents raise `ValueError` with the raw output. The FastAPI handler converts this to a 500 response.
