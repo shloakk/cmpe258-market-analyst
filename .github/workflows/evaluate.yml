@@ -21,20 +21,23 @@ jobs:
       - name: Build FAISS index
         run: python data/scripts/ingest.py
 
-      - name: Verify Groq API key
+      - name: Verify Gemini API key
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GEMINI_MODEL: models/gemini-3.1-flash-lite-preview
         run: |
           python -c "
-          from langchain_groq import ChatGroq
           from langchain_core.messages import HumanMessage
-          r = ChatGroq(model='llama-3.3-70b-versatile').invoke([HumanMessage(content='ping')])
-          print('Groq OK:', r.content[:40])
+          from agents.llm_client import LLMClient
+          c = LLMClient(model='gemini')
+          r = c.invoke([HumanMessage(content='ping')])
+          print('Gemini OK:', str(r.text)[:40])
           "
 
       - name: Run evaluation suite
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GEMINI_MODEL: models/gemini-3.1-flash-lite-preview
           PYTHONPATH: ${{ github.workspace }}
           PYTHONUNBUFFERED: "1"
-        run: python eval/evaluator.py --model llama
+        run: python eval/evaluator.py --model gemini --cache-dir eval/cache/gemini

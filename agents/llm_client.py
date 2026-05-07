@@ -12,7 +12,7 @@ Why a thin custom wrapper instead of using LangChain's BaseChatModel directly?
   Langfuse ``@observe()`` instrumentation without polluting agent code.
 
 Public surface:
-- ``ModelId`` — short id used through the pipeline ("claude" / "gpt" / "llama").
+- ``ModelId`` — short id used through the pipeline ("claude" / "gpt" / "llama" / "gemini").
 - ``LLMResponse`` — provider-agnostic response dataclass.
 - ``LLMClient`` — the wrapper itself, with ``invoke`` and
   ``invoke_with_json_retry``.
@@ -22,6 +22,7 @@ Public surface:
 
 from __future__ import annotations
 
+import os
 import time
 from dataclasses import dataclass
 from typing import Callable, Literal, TypeVar
@@ -30,7 +31,7 @@ from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
 from langchain_anthropic import ChatAnthropic
 from langchain_openai import ChatOpenAI
 
-ModelId = Literal["claude", "gpt", "llama"]
+ModelId = Literal["claude", "gpt", "llama", "gemini"]
 
 # Maps the short model id used through the pipeline to the provider's concrete
 # model name. Adding a new model requires one entry here + one entry in
@@ -44,6 +45,10 @@ MODEL_REGISTRY: dict[ModelId, str] = {
     # Llama 3.3 70B via Groq satisfies the "one open-source model" requirement
     # and Groq's throughput (~280 tok/s) keeps the demo latency tolerable.
     "llama": "llama-3.3-70b-versatile",
+    # Google AI Studio (Gemini Developer API).
+    # Default to a widely-available Flash model; override with env GEMINI_MODEL
+    # if your account exposes different ids (see ListModels).
+    "gemini": "gemini-2.0-flash",
 }
 
 # Per-1M-token USD pricing. Verified against provider docs on 2026-05-06.
@@ -63,6 +68,7 @@ _CONTEXT_BUDGETS: dict[str, int] = {
     "claude-sonnet-4-6": 180_000,        # 200k window, 20k headroom for output
     "gpt-5.4": 380_000,                  # 400k window, 20k headroom for output
     "llama-3.3-70b-versatile": 100_000,  # 131k window, 31k headroom for output
+    "gemini-2.0-flash": 100_000,         # Conservative; keep prompts stable for JSON.
 }
 
 
@@ -112,7 +118,12 @@ class LLMClient:
                 f"Unknown model id: {model!r}. Available: {list(MODEL_REGISTRY)}"
             )
         self.model_id: ModelId = model
-        self.provider_model: str = MODEL_REGISTRY[model]
+        # Allow overriding concrete provider model via env vars for local experiments.
+        # Useful for Gemini where model availability can differ across accounts.
+        if model == "gemini":
+            self.provider_model = os.getenv("GEMINI_MODEL") or MODEL_REGISTRY[model]
+        else:
+            self.provider_model = MODEL_REGISTRY[model]
         self.temperature = temperature
         self._client = self._build_client()
 
@@ -131,6 +142,18 @@ class LLMClient:
             from langchain_groq import ChatGroq
 
             return ChatGroq(model=self.provider_model, temperature=self.temperature)
+        if self.model_id == "gemini":
+            # Google AI Studio uses the Gemini Developer API. The LangChain wrapper
+            # reads the key from the environment (commonly GOOGLE_API_KEY). We also
+            # accept GEMINI_API_KEY as an alias to reduce local setup friction.
+            from langchain_google_genai import ChatGoogleGenerativeAI
+
+            api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+            return ChatGoogleGenerativeAI(
+                model=self.provider_model,
+                temperature=self.temperature,
+                google_api_key=api_key,
+            )
         raise ValueError(f"No client builder for model id: {self.model_id!r}")
 
     def invoke(self, messages: list[BaseMessage]) -> LLMResponse:
@@ -156,10 +179,22 @@ class LLMClient:
         output_tokens = int(usage.get("output_tokens", 0) or 0)
         cost_usd = self._compute_cost(input_tokens, output_tokens)
 
-        # Some providers (notably Anthropic with tool blocks) return content
-        # as a list of blocks rather than a string. Coerce to str so the
-        # downstream parser always sees the same shape.
-        text = response.content if isinstance(response.content, str) else str(response.content)
+        # Some providers return content as a list of blocks rather than a string
+        # (e.g. Gemini often returns `[{"type":"text","text":"..."}]`). Normalize
+        # to plain text so the downstream JSON parser sees a stable shape.
+        content = response.content
+        if isinstance(content, str):
+            text = content
+        elif isinstance(content, list):
+            parts: list[str] = []
+            for block in content:
+                if isinstance(block, dict) and isinstance(block.get("text"), str):
+                    parts.append(block["text"])
+                else:
+                    parts.append(str(block))
+            text = "".join(parts)
+        else:
+            text = str(content)
 
         return LLMResponse(
             text=text,

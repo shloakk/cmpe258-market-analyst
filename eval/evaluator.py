@@ -8,14 +8,34 @@ Metrics:
 - run_eval: runs all queries in the eval set and prints aggregate results
 
 Usage:
-    python eval/evaluator.py
+    python eval/evaluator.py [--model llama] [--cache-dir eval/cache/llama]
 """
 
 import json
 import pathlib
-from typing import Callable
+import sys
+import time
+from typing import Callable, Optional
 
 EVAL_PATH = pathlib.Path(__file__).parent.parent / "data" / "eval" / "queries.json"
+
+# When executed as `python eval/evaluator.py`, Python sets `sys.path[0]` to the
+# `eval/` directory, which prevents importing sibling packages like `pipeline/`.
+# Adding the repo root keeps imports working both locally and in CI.
+REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+# Load environment variables (notably GROQ_API_KEY) for local runs.
+# In GitHub Actions we also rely on environment variables, but loading `.env`
+# locally makes `python eval/evaluator.py` work out of the box.
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv(REPO_ROOT / ".env")
+except Exception:
+    # If python-dotenv isn't installed, we fall back to the existing environment.
+    pass
 
 
 def entity_precision_recall(
@@ -99,20 +119,32 @@ def hallucination_rate(
 def run_eval(
     pipeline_fn: Callable[[str], dict],
     queries_path: pathlib.Path = EVAL_PATH,
+    cache_dir: Optional[pathlib.Path] = None,
+    sleep_on_rate_limit: bool = False,
 ) -> dict:
     """
     Run the pipeline on every query in the eval set and compute aggregate metrics.
+
+    When ``cache_dir`` is provided, pipeline results are persisted as
+    ``<cache_dir>/<query_id>.json`` on the first call and read back on
+    subsequent calls, eliminating redundant LLM API calls across CI runs.
+    Cache files should be committed to the repo so CI never hits rate limits.
 
     Args:
         pipeline_fn: Callable that takes a query string and returns a dict with
             keys ``reviewed_map`` (list[dict]) and ``retrieved_docs`` (list[dict]).
         queries_path: Path to the JSON eval query file.
+        cache_dir: Optional directory for caching per-query pipeline results.
+            If None, caching is disabled and the pipeline is always called live.
 
     Returns:
         Dict with mean precision, recall, f1, hallucination rate, and theme coverage.
     """
     with open(queries_path) as f:
         queries = json.load(f)
+
+    if cache_dir:
+        cache_dir.mkdir(parents=True, exist_ok=True)
 
     results = []
     for item in queries:
@@ -121,28 +153,71 @@ def run_eval(
         gold_themes = item.get("gold_themes", [])
         print(f"Running: {query[:60]}...")
 
-        try:
-            pipeline_result = pipeline_fn(query)
-            reviewed_map = pipeline_result["reviewed_map"]
-            retrieved_docs = pipeline_result["retrieved_docs"]
+        # Cache is keyed by query_id so renaming a query (same id) correctly
+        # invalidates the entry, while reordering queries does not.
+        cache_file = (cache_dir / f"{item['id']}.json") if cache_dir else None
 
-            predicted_entities = [
-                company
-                for theme in reviewed_map
-                for company in theme.get("companies", [])
-            ]
-            predicted_themes = [
-                theme.get("theme_name", "") for theme in reviewed_map
-            ]
+        while True:
+            try:
+                if cache_file and cache_file.exists():
+                    pipeline_result = json.loads(cache_file.read_text())
+                    print("  (cached)")
+                else:
+                    pipeline_result = pipeline_fn(query)
+                    if cache_file:
+                        cache_file.write_text(json.dumps(pipeline_result))
 
-            metrics = entity_precision_recall(gold_entities, predicted_entities)
-            h_rate = hallucination_rate(reviewed_map, retrieved_docs)
-            t_coverage = theme_coverage(gold_themes, predicted_themes)
-        except Exception as e:
-            print(f"  ERROR: {e}")
-            metrics = {"precision": 0.0, "recall": 0.0, "f1": 0.0}
-            h_rate = 1.0
-            t_coverage = 0.0
+                reviewed_map = pipeline_result["reviewed_map"]
+                retrieved_docs = pipeline_result["retrieved_docs"]
+
+                predicted_entities = [
+                    company
+                    for theme in reviewed_map
+                    for company in theme.get("companies", [])
+                ]
+                predicted_themes = [
+                    theme.get("theme_name", "") for theme in reviewed_map
+                ]
+
+                metrics = entity_precision_recall(gold_entities, predicted_entities)
+                h_rate = hallucination_rate(reviewed_map, retrieved_docs)
+                t_coverage = theme_coverage(gold_themes, predicted_themes)
+                break
+            except Exception as e:
+                msg = str(e)
+                is_rate_limit = ("rate_limit_exceeded" in msg) or ("Error code: 429" in msg)
+                if is_rate_limit and sleep_on_rate_limit:
+                    # Groq errors often include: "Please try again in 2m41.56s"
+                    wait_s = 180.0
+                    try:
+                        marker = "Please try again in "
+                        if marker in msg:
+                            tail = msg.split(marker, 1)[1]
+                            num = ""
+                            for ch in tail:
+                                if ch.isdigit() or ch in ".m s":
+                                    num += ch
+                                else:
+                                    break
+                            num = num.strip()
+                            if "m" in num:
+                                m_part, s_part = num.split("m", 1)
+                                wait_s = float(m_part.strip()) * 60.0 + float(s_part.replace("s", "").strip())
+                            elif num.endswith("s"):
+                                wait_s = float(num[:-1])
+                    except Exception:
+                        pass
+
+                    wait_s = max(1.0, wait_s)
+                    print(f"  Rate limited (429). Sleeping {round(wait_s, 1)}s then retrying...")
+                    time.sleep(wait_s)
+                    continue
+
+                print(f"  ERROR: {e}")
+                metrics = {"precision": 0.0, "recall": 0.0, "f1": 0.0}
+                h_rate = 1.0
+                t_coverage = 0.0
+                break
 
         results.append({
             **metrics,
@@ -183,14 +258,39 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run the evaluation suite.")
     parser.add_argument(
         "--model",
-        choices=["claude", "gpt", "llama"],
+        choices=["claude", "gpt", "llama", "gemini"],
         default="llama",
         help=(
             "LLM used by Mapper and Critic. Defaults to 'llama' (Groq, free) "
             "so the eval CI only needs GROQ_API_KEY. Use --model claude or "
-            "--model gpt locally when you have the relevant API key."
+            "--model gpt locally when you have the relevant API key, or "
+            "--model gemini (Google AI Studio) with GOOGLE_API_KEY."
+        ),
+    )
+    parser.add_argument(
+        "--cache-dir",
+        default=None,
+        help=(
+            "Directory for caching per-query pipeline results. Results are "
+            "written on cache miss and read on cache hit, so repeated runs "
+            "(e.g. in CI) never re-call the LLM. Commit the cache directory "
+            "to avoid hitting daily token limits across runs. "
+            "Example: eval/cache/llama"
+        ),
+    )
+    parser.add_argument(
+        "--sleep-on-429",
+        action="store_true",
+        help=(
+            "If set, automatically sleeps and retries when the LLM provider "
+            "returns a 429 rate-limit error. Useful for local runs; avoid in CI."
         ),
     )
     args = parser.parse_args()
     model: ModelId = args.model
-    run_eval(lambda q: run_pipeline_full(q, model=model))
+    cache_dir = pathlib.Path(args.cache_dir) if args.cache_dir else None
+    run_eval(
+        lambda q: run_pipeline_full(q, model=model),
+        cache_dir=cache_dir,
+        sleep_on_rate_limit=bool(args.sleep_on_429),
+    )

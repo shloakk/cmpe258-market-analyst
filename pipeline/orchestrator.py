@@ -13,7 +13,7 @@ Usage:
     full = run_pipeline_full("...", model="gpt")  # includes timings + docs
 """
 
-from typing import TypedDict
+from typing import Optional, TypedDict
 
 from langgraph.graph import END, StateGraph
 
@@ -45,7 +45,7 @@ class ResearchState(TypedDict):
     retrieved_docs: list[dict]
     theme_map: list[dict]
     reviewed_map: list[dict]
-    error: str | None
+    error: Optional[str]
     timings: dict
 
 

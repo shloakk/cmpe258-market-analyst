@@ -3,6 +3,7 @@ langchain>=0.3
 langchain-anthropic
 langchain-openai
 langchain-groq
+langchain-google-genai
 sentence-transformers
 langchain-community
 faiss-cpu

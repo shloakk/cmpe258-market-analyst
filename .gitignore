@@ -15,6 +15,10 @@ build/
 venv/
 env/
 
+# Local caches (pip, HF models, bytecode prefix)
+.cache/
+.pycache/
+
 # FAISS index (rebuilt from corpus)
 data/index/
 
@@ -29,3 +33,6 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+.claude/
+memory.md

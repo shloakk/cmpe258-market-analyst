@@ -24,7 +24,7 @@ These rules must be followed in all code produced for this project to meet profe
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env   # add GROQ_API_KEY
+cp .env.example .env   # add GROQ_API_KEY (Groq) or GOOGLE_API_KEY (Google AI Studio)
 
 # Must be run before using the pipeline — builds data/index/ from the corpus
 python data/scripts/ingest.py
@@ -76,6 +76,8 @@ Scout → Mapper → Critic
 - **`scout.py` — `ScoutAgent`**: Loads `data/index/` (FAISS), embeds the query with `sentence-transformers/all-MiniLM-L6-v2` (local, no API key), returns top-k docs as `list[dict]` with keys `title, source_url, tags, publish_date, snippet, score`.
 - **`mapper.py` — `MapperAgent`**: Sends retrieved docs to Groq (`llama-3.3-70b-versatile`) with a structured prompt. Parses the JSON response into `list[dict]` with keys `theme_name, companies, rationale, citations`.
 - **`critic.py` — `CriticAgent`**: Sends the theme map + source docs to Groq. Returns a cleaned map with unsupported companies/themes removed. Uses same JSON schema as Mapper output.
+  - You can switch the LLM provider by running eval/pipeline with `--model gemini` (Google AI Studio) and setting `GOOGLE_API_KEY`.
+  - If you see `404 ... model is not found`, run ListModels and set `GEMINI_MODEL` in `.env` to one of the returned ids (for example `gemini-2.0-flash`).
 
 Both Mapper and Critic strip markdown code fences from the LLM response before `json.loads()`.
 
