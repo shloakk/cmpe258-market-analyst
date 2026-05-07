@@ -74,31 +74,47 @@ TAG_TAXONOMY: list[str] = [
 # Each tuple: (display_name, homepage_url, tags)
 # tags must be subset of TAG_TAXONOMY
 STARTUP_TARGETS: list[tuple[str, str, list[str]]] = [
-    ("CrewAI",      "https://crewai.com",                          ["multi-agent-orchestration"]),
-    ("AutoGen",     "https://microsoft.github.io/autogen",         ["multi-agent-orchestration"]),
-    ("LangGraph",   "https://langchain-ai.github.io/langgraph",    ["multi-agent-orchestration", "agent-runtime"]),
-    ("LlamaIndex",  "https://www.llamaindex.ai",                   ["rag"]),
-    ("Cognition",   "https://cognition.ai",                        ["coding-agents"]),
-    ("Adept",       "https://adept.ai",                            ["agent-runtime"]),
-    ("Sierra",      "https://sierra.ai",                           ["vertical-agents", "voice-agents"]),
-    ("Lindy",       "https://lindy.ai",                            ["multi-agent-orchestration"]),
-    ("Decagon",     "https://decagon.ai",                          ["vertical-agents"]),
-    ("Cresta",      "https://cresta.com",                          ["vertical-agents", "voice-agents"]),
-    ("Imbue",       "https://imbue.com",                           ["agent-runtime"]),
-    ("MultiOn",     "https://multion.ai",                          ["agent-runtime"]),
-    ("Fixie",       "https://fixie.ai",                            ["agent-runtime"]),
-    ("Reworkd",     "https://reworkd.ai",                          ["multi-agent-orchestration"]),
-    ("Vellum",      "https://vellum.ai",                           ["eval-tools", "infra"]),
-    ("Humanloop",   "https://humanloop.com",                       ["eval-tools", "observability"]),
-    ("Langfuse",    "https://langfuse.com",                        ["observability", "eval-tools"]),
-    ("Braintrust",  "https://braintrustdata.com",                  ["eval-tools"]),
-    ("Composio",    "https://composio.dev",                        ["agent-runtime", "infra"]),
-    ("Mem0",        "https://mem0.ai",                             ["memory-tools"]),
-    ("Zep",         "https://getzep.com",                          ["memory-tools"]),
-    ("Weaviate",    "https://weaviate.io",                         ["rag", "infra"]),
-    ("Chroma",      "https://trychroma.com",                       ["rag"]),
-    ("Qdrant",      "https://qdrant.tech",                         ["rag", "infra"]),
-    ("Exa",         "https://exa.ai",                              ["rag"]),
+    ("CrewAI",        "https://crewai.com",                          ["multi-agent-orchestration"]),
+    ("AutoGen",       "https://microsoft.github.io/autogen",         ["multi-agent-orchestration"]),
+    ("LangGraph",     "https://langchain-ai.github.io/langgraph",    ["multi-agent-orchestration", "agent-runtime"]),
+    ("LlamaIndex",    "https://www.llamaindex.ai",                   ["rag"]),
+    ("Cognition",     "https://cognition.ai",                        ["coding-agents"]),
+    ("Adept",         "https://adept.ai",                            ["agent-runtime"]),
+    ("Sierra",        "https://sierra.ai",                           ["vertical-agents", "voice-agents"]),
+    ("Lindy",         "https://lindy.ai",                            ["multi-agent-orchestration"]),
+    ("Decagon",       "https://decagon.ai",                          ["vertical-agents"]),
+    ("Cresta",        "https://cresta.com",                          ["vertical-agents", "voice-agents"]),
+    ("Imbue",         "https://imbue.com",                           ["agent-runtime"]),
+    ("MultiOn",       "https://multion.ai",                          ["agent-runtime"]),
+    ("Fixie",         "https://fixie.ai",                            ["agent-runtime"]),
+    ("Reworkd",       "https://reworkd.ai",                          ["multi-agent-orchestration"]),
+    ("Vellum",        "https://vellum.ai",                           ["eval-tools", "infra"]),
+    ("Humanloop",     "https://humanloop.com",                       ["eval-tools", "observability"]),
+    ("Langfuse",      "https://langfuse.com",                        ["observability", "eval-tools"]),
+    ("Braintrust",    "https://braintrustdata.com",                  ["eval-tools"]),
+    ("Composio",      "https://composio.dev",                        ["agent-runtime", "infra"]),
+    ("Mem0",          "https://mem0.ai",                             ["memory-tools"]),
+    ("Zep",           "https://getzep.com",                          ["memory-tools"]),
+    ("Weaviate",      "https://weaviate.io",                         ["rag", "infra"]),
+    ("Chroma",        "https://trychroma.com",                       ["rag"]),
+    ("Qdrant",        "https://qdrant.tech",                         ["rag", "infra"]),
+    ("Exa",           "https://exa.ai",                              ["rag"]),
+    # Additional targets added to reach 200-300 corpus records
+    ("Cohere",        "https://cohere.com",                          ["agent-runtime", "infra"]),
+    ("Together AI",   "https://together.ai",                         ["infra"]),
+    ("Perplexity",    "https://www.perplexity.ai",                   ["rag", "agent-runtime"]),
+    ("Pinecone",      "https://www.pinecone.io",                     ["rag", "infra"]),
+    ("Weights & Biases", "https://wandb.ai",                         ["observability", "eval-tools"]),
+    ("Anyscale",      "https://anyscale.com",                        ["infra", "agent-runtime"]),
+    ("Modal",         "https://modal.com",                           ["infra"]),
+    ("Replicate",     "https://replicate.com",                       ["infra"]),
+    ("Arize AI",      "https://arize.com",                           ["observability", "eval-tools"]),
+    ("Galileo",       "https://www.rungalileo.io",                   ["eval-tools", "observability"]),
+    ("Tavily",        "https://tavily.com",                          ["rag", "agent-runtime"]),
+    ("Mistral",       "https://mistral.ai",                          ["agent-runtime", "infra"]),
+    ("Groq",          "https://groq.com",                            ["infra"]),
+    ("Cursor",        "https://cursor.com",                          ["coding-agents"]),
+    ("Replit",        "https://replit.com",                          ["coding-agents"]),
 ]
 
 # Each tuple: (display_name, rss_url, tags)
@@ -110,17 +126,24 @@ NEWSLETTER_RSS_FEEDS: list[tuple[str, str, list[str]]] = [
 ]
 
 NEWS_RSS_FEEDS: list[tuple[str, str, list[str]]] = [
-    ("TechCrunch AI",  "https://techcrunch.com/category/artificial-intelligence/feed/", ["infra"]),
-    ("VentureBeat AI", "https://venturebeat.com/category/ai/feed/",                     ["infra"]),
+    ("TechCrunch AI",    "https://techcrunch.com/category/artificial-intelligence/feed/",  ["infra"]),
+    # VentureBeat blocks scrapers with 429; replaced with sources that serve RSS freely
+    ("The Verge AI",     "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", ["infra"]),
+    ("Wired AI",         "https://www.wired.com/feed/tag/ai/latest/rss",                    ["infra"]),
+    ("MIT Tech Review",  "https://www.technologyreview.com/feed/",                          ["infra"]),
 ]
 
 # Each tuple: (display_name, blog_index_url, post_path_prefix, tags)
 TECH_BLOG_TARGETS: list[tuple[str, str, str, list[str]]] = [
-    ("Anthropic Blog",   "https://www.anthropic.com/blog",     "/blog/",      ["agent-runtime", "eval-tools"]),
-    ("OpenAI Blog",      "https://openai.com/blog",            "/blog/",      ["agent-runtime"]),
-    ("LangChain Blog",   "https://blog.langchain.dev",         "/",           ["multi-agent-orchestration"]),
-    ("LlamaIndex Blog",  "https://medium.com/llamaindex-blog", "/",           ["rag"]),
-    ("HuggingFace Blog", "https://huggingface.co/blog",        "/blog/",      ["infra"]),
+    # Anthropic/OpenAI/LlamaIndex-Medium block scrapers via robots.txt; replaced with open blogs
+    ("LangChain Blog",    "https://blog.langchain.dev",              "/",           ["multi-agent-orchestration"]),
+    ("HuggingFace Blog",  "https://huggingface.co/blog",             "/blog/",      ["infra"]),
+    ("Cohere Blog",       "https://cohere.com/blog",                 "/blog/",      ["agent-runtime", "infra"]),
+    ("Mistral Blog",      "https://mistral.ai/news",                 "/news/",      ["agent-runtime", "infra"]),
+    ("Weights & Biases",  "https://wandb.ai/fully-connected",        "/fully-connected/", ["observability", "eval-tools"]),
+    ("Pinecone Blog",     "https://www.pinecone.io/blog",            "/blog/",      ["rag", "infra"]),
+    ("Weaviate Blog",     "https://weaviate.io/blog",                "/blog/",      ["rag", "infra"]),
+    ("Qdrant Blog",       "https://qdrant.tech/blog",                "/blog/",      ["rag", "infra"]),
 ]
 
 # YC sources: RFS page + batch blog announcement posts
@@ -568,7 +591,7 @@ def scrape_startups(
 
             # Discover blog posts from the homepage HTML
             if page_url == homepage:
-                blog_links = discover_blog_links(html_str, homepage, "/blog", max_links=2)
+                blog_links = discover_blog_links(html_str, homepage, "/blog", max_links=4)
                 for blog_url in blog_links:
                     bnorm = normalize_url(blog_url)
                     if bnorm in seen_urls:
@@ -643,7 +666,7 @@ def scrape_yc(
         blog_html = fetch_html(YC_BLOG_URL, client, rate_limiter)
         if blog_html:
             # Discover posts linked from the blog index that mention batch or AI
-            links = discover_blog_links(blog_html, YC_BLOG_URL, "/blog", max_links=10)
+            links = discover_blog_links(blog_html, YC_BLOG_URL, "/blog", max_links=20)
             for link in links:
                 lnorm = normalize_url(link)
                 if lnorm in seen_urls:
@@ -776,7 +799,7 @@ def scrape_news(
 
         count = 0
         for entry in feed.entries:
-            if count >= 25:
+            if count >= 50:
                 break
             link = getattr(entry, "link", "")
             if not link:
