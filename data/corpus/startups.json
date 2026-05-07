@@ -1,0 +1,802 @@
+[
+  {
+    "title": "LlamaIndex — about",
+    "description": "Sept 16, 2025\nLlamaParse One Year Later: The Complete Document Automation PlatformWe help developers automate document processing.\nLlamaIndex is the platform enterprises choose to leverage AI Agents for document OCR + AI workflows.\nMission\nOur mission is to automate knowledge work, beginning with the hardest frontier: documents .\nWe’re building the world’s best agentic document OCR : turning messy, multi-modal documents into structured, reliable data that powers intelligent, production-ready agents.\nThrough LlamaAgents, we enable developers and enterprises to build reliable workflows around documents — from ingestion and extraction to reasoning and automation.\nWhile we ship quickly, we pride ourselves on delivering thoughtful , reliable , and scalable products that are built for production.\nOur team might be small in numbers but drives far reaching impact.\n-\n25M+\npackage downloads a month\n-\n300k+\nLlamaParse users\n-\n1.5k+\ncontributors\n-\n20k+\ncommunity members\nCareers\nHelp shape the future of LlamaIndex\nWe are looking for individuals looking to push the frontier of innovation. Read more about careers at LlamaIndex.\nResources",
+    "source_url": "https://www.llamaindex.ai/about",
+    "tags": [
+      "rag"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cognition — cognition.ai",
+    "description": "Our team is small and talent-dense. Our founding team has 10 IOI gold medals and includes leaders and builders who have worked at the cutting edge of applied AI at companies like Cursor, Scale AI, Lunchclub, Modal, Google DeepMind, Waymo, and Nuro.\nBuilding Devin is just the first step—our hardest challenges still lie ahead. If you’re excited to solve some of the world’s biggest problems and build AI that can reason, learn more about our team and apply to one of the roles below.",
+    "source_url": "https://cognition.ai",
+    "tags": [
+      "coding-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cognition Blog — 1",
+    "description": "Cognition is expanding its APAC presence from Singapore, where enterprise demand, developer talent, and national AI adoption are converging. With Richard Spence leading the region, we’re helping teams across Asia-Pacific bring autonomous software engineering into production.\nMercedes-Benz is deploying Devin and Windsurf across its global engineering organization, starting with legacy modernization, cloud-native development, and logistics.\nStart a Devin session in your terminal. When the work outgrows your laptop, hand the same session off to the cloud and keep going.\nBuilding cloud agents is difficult. We share some learnings from building Devin.\n10 months ago I argued against building multi-agent systems. Today, a narrower class works, where agents contribute intelligence while writes stay single-threaded. I want to share what we've learned building them at Cognition.\nLocal agents make you faster. Cloud agents do the work while you're not there.\nSmaller specialized models can match or beat frontier generalists on the tasks they're trained for. Working with Applied Compute, we RL-trained SWE-check, a bug detection model that matches Opus 4.6 on our internal evals while running ~10x",
+    "source_url": "https://cognition.ai/blog/1",
+    "tags": [
+      "coding-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cognition Blog — singapore",
+    "description": "Across Asia, software demand is outpacing the engineering capacity available to deliver it. Singapore sits at the center of that shift, with strong enterprise demand, a highly skilled developer base, and clear national commitment to AI adoption.\nSingapore's government has positioned the country as a global AI leader with a clear vision: use AI to augment its workforce and multiply what teams can deliver. The developer community is highly engaged, and enterprises are moving fast. It is the right place to anchor Cognition's presence across Asia Pacific.\nThis is the next step in our mission to bring autonomous software engineering to the world's leading engineering teams, and to be on the ground with the customers already transforming how software gets built. Unlike traditional coding tools, Devin takes ownership of end-to-end software tasks, from planning through deployment.\nLeading our Asia-Pacific business is Richard Spence, Vice President and General Manager, APAC, based in Singapore and responsible for driving Cognition's regional strategy, customer engagement, and market expansion across Southeast Asia and key markets including Australia, India, and South Korea.\nAfter launching ",
+    "source_url": "https://cognition.ai/blog/singapore",
+    "tags": [
+      "coding-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cognition Blog — mercedes-benz-cognition",
+    "description": "Mercedes-Benz, one of the world's most iconic automotive and technology companies, has partnered with Cognition to deploy Devin and Windsurf across its global engineering teams. The rollout spans engineering teams across continents, from the United States to Europe and Asia, and represents one of the most extensive deployments of AI software engineering in the automotive industry.\nMercedes-Benz's engineering organization builds and maintains the software powering everything from R&D to logistics, cloud infrastructure, and enterprise operations. Their teams need to simultaneously ensure reliability, stability, and security while integrating new tools and moving with speed.\nIn an initial four-week pilot, both Devin and Windsurf demonstrated significant productivity gains. For example, Devin analyzed over 200,000 lines of COBOL code and cut modernization time down from an estimated eight months to eight days.\nNow, Mercedes-Benz is doubling down on its strategic partnership with Cognition by deploying the full product suite in R&D and IT: Windsurf as a development environment for teams building cloud-native applications, microservices, and modern web and mobile solutions; Devin as the ",
+    "source_url": "https://cognition.ai/blog/mercedes-benz-cognition",
+    "tags": [
+      "coding-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cognition Blog — devin-for-terminal",
+    "description": "Run Devin right where you already work. When the work outgrows your laptop, hand the same session off to the cloud.\ncurl -fsSL https://cli.devin.ai/install.sh | bash\nWe took everything we learned building Devin and rebuilt it for working together with your agent, right in your shell.\nDevin for Terminal is a local coding agent with full access to your codebase, your tools, and your environment. Choose between any frontier model, including Opus 4.7, GPT-5.5, and our own SWE-1.6. We wrote a custom terminal rendering library in Rust to make the UI as fast and snappy as possible.\nThe difference is what happens when local isn't enough.\nWhen the work outgrows your laptop, hand the session to a cloud agent with its own computer. Devin keeps working while you don't, so you come back to a finished PR.\nHandoff to cloud agents changes what's possible with a terminal agent:\nrm -rf\nbecause the agent works in its own sandbox, not yours.Devin for Terminal gives you access to agents in the cloud with their own computer, so they can keep working even when you close your laptop.\nGet started in under a minute:\ncurl -fsSL https://cli.devin.ai/install.sh | bash\nP.S. We got Devin running on a VT-100, the",
+    "source_url": "https://cognition.ai/blog/devin-for-terminal",
+    "tags": [
+      "coding-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Decagon — decagon.ai",
+    "description": "The AI concierge for every customer\nBuild, optimize, and scale AI agents that treat every customer like the only one.\nI’ve applied your\nmembership perks.\nmembership perks.\nExtending your rental\nfor the weekend.\nfor the weekend.\nYou’re rebooked for\na spa appointment.\na spa appointment.\n“\nWith Decagon Voice, we’re able to combine high performance and seamless brand customization with cross-channel memory, ensuring every interaction is connected and true to Chime’s member-first values.\n70%\nchat and voice resolution\nRead story\n“\nWith the previous vendor, at least half my week was dedicated to maintaining their system. With Decagon, it’s been a night-and-day difference.\n80%\ndeflection rate\nRead story\n“\nThough we already had a robust Voice of the Customer program and an understanding of customer inquiries we thought we could deflect, we saw 10x higher deflection at launch than we anticipated.\n95%\ncost reduction\nRead story\n“\n“What started as a customer support initiative is quickly showing real revenue potential. Early data suggests that AI-led conversations are influencing how customers buy and contributing to net new revenue, creating opportunities that simply didn’t exist in traditiona",
+    "source_url": "https://decagon.ai",
+    "tags": [
+      "vertical-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Decagon Blog — fine-tuning-ai-agents",
+    "description": "Engineering fast, performant AI agents through fine-tuning\nNovember 21, 2025\nAt Decagon, we don't rely on a single, monolithic model to power our agents. Instead, our architecture is built around a network of specialized models that work in coordination. Each is responsible for a distinct function, such as interpreting user intent, executing workflows, detecting hallucinations, or determining when to escalate to a human. This orchestration allows our agents to deliver precise, reliable, and controllable behavior, which a single large model can't guarantee on its own.\nGreat AI-driven experiences prioritize accuracy above all, because even a fast response is useless if it's wrong. But latency still matters, since the right answer must arrive quickly enough to keep the experience seamless and engaging. This is especially true for voice channels and other real-time applications, where every millisecond matters. Every component model in the agent architecture must be optimized for both performance and correctness.\nFine-tuning is critical to achieving that optimization. The process transforms general-purpose models into highly specialized experts that not only operate faster but also out",
+    "source_url": "https://decagon.ai/blog/fine-tuning-ai-agents",
+    "tags": [
+      "vertical-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Decagon — about",
+    "description": "Our mission\nEmpower every brand to deliver concierge customer experiences\nIn the era of AI agents, businesses can make every customer feel like they’re the only customer.\nAbout Decagon\nOur mission\nIn the era of AI agents, businesses can make every customer feel like they’re the only customer.\nAbout Decagon",
+    "source_url": "https://decagon.ai/about",
+    "tags": [
+      "vertical-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cresta — cresta.com",
+    "description": "TransformAutomateAnalyzeAugmentTransform every customerexperience with AI agents\nSave money, increase revenue, and build customer loyalty with the only unified platform for human and AI Agents built for enterprise scale.\nLower cost-to-serve, deepen client relationships, and drive lifetime value with the only unified platform for human and AI Agents built for the complexity and\nregulatory rigor of financial services.\nTransformAutomateAnalyzeAugmentTransform every customerexperience with AI agents\nSave money, increase revenue, and build customer loyalty with the only unified platform for human and AI Agents built for enterprise scale.\nTransformAutomateAnalyzeAugmentTransform every customerexperience with AI agents\nSave money, increase revenue, and build customer loyalty with the only unified platform for human and AI Agents built for enterprise scale.\nPowering the world's leading customer experiences\nPowering the world's leading customer experiences\nPowering the world's leading travel & hospitality brands\nLorem ipsum cras tellus orci tincidunt nibh enim.\nPowering the world's leading customer experiences\nPowering the world’s leading financial institutions\nLorem ipsum cras tellus orci ",
+    "source_url": "https://cresta.com",
+    "tags": [
+      "vertical-agents",
+      "voice-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cresta Blog — cresta-named-one-of-americas-best-startup-employers-for-the-third-year-in-a-row",
+    "description": "We’re proud to share that Cresta has been named to Forbes’ list of America’s Best Startup Employers 2026 — and this year, we’ve climbed to #58 out of 500 companies nationwide.\nThis marks our third consecutive year on the list. And each year, we’ve moved up.\nBreaking into the top 100 startup employers in the country is an incredible milestone, and one that reflects something far more meaningful than a number: the strength of our team, our culture, and the impact we’re building together.\nWhat This Recognition Means\nThe Forbes list, produced in partnership with Statista, evaluates more than 20,000 eligible startups across the U.S., narrowing them down to 2,700 for detailed analysis and ultimately selecting just 500 companies for the final ranking.\nRankings are determined using more than 7 million data points, with companies evaluated across three core pillars:\n- Employer Reputation\n- Employee Satisfaction\n- Company Growth\nThe scoring model combines social listening, employee review data, and measurable growth indicators like headcount, hiring momentum, and web traffic.\nIn other words, this isn’t a popularity contest. It’s a data-driven assessment of which startups are building strong,",
+    "source_url": "https://cresta.com/blog/cresta-named-one-of-americas-best-startup-employers-for-the-third-year-in-a-row",
+    "tags": [
+      "vertical-agents",
+      "voice-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cresta Blog — iq-credit-union-now-is-the-time-for-generative-ai-in-credit-union-contact-centers",
+    "description": "Introduction\nIQ Credit Union (IQCU) has long been a leader in innovating in the financial services space, striving to enhance both the member and employee experience. This commitment to innovation led to IQCU exploring their options to modernize their contact center operations. With increasing member expectations and growing competition from fintechs and larger financial institutions, the team saw generative AI as a transformational opportunity to improve efficiency, customer service quality, and employee satisfaction.\nWhy IQCU Invested in Generative AI\nFor Kim Slorey, Vice President of Member Support, and Ali Migaki, Chief Experience Officer, the decision to explore AI was driven by a core challenge: the limitations of traditional contact center operations.These limitations manifested in a number of ways across their organization. Kim, who describes her job as “figuring out ways to augment the human experience”, explained how their legacy technology led to inaccurate transcriptions, difficulty coaching agents in effective ways, and time lost across the organization to tedious, time-consuming tasks. They also struggled with adequately onboarding and training new agents, with little",
+    "source_url": "https://cresta.com/blog/iq-credit-union-now-is-the-time-for-generative-ai-in-credit-union-contact-centers",
+    "tags": [
+      "vertical-agents",
+      "voice-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cresta Blog — optimum-partners-with-cresta-to-drive-ai-powered-sales-conversions-and-revenue-growth",
+    "description": "Optimum, one of the largest broadband and video service providers in the United States, is teaming up with Cresta to reshape how they serve and support customers.\nThis collaboration marks a significant milestone in Optimum’s commitment to delivering a more seamless, personalized, and efficient customer experience.\nEmpowering People with Technology\nAt the heart of this initiative is the goal of enabling Optimum’s agents to perform at their best. Cresta’s generative AI solutions analyze conversations as they happen, providing agents with immediate suggestions, streamlining post-call work, and surfacing coaching opportunities for continuous improvement.\n“By leveraging Cresta’s generative AI-powered solutions, we’re enhancing sales effectiveness, streamlining post-call processes, and empowering our agents to focus on what matters most—building stronger relationships with our customers,” said Mike Parker, President of Consumer Services at Optimum.\nThis approach demonstrates how AI, when applied thoughtfully, can augment human talent rather than replace it—ensuring that customer experience remains both high-touch and high-tech.\nStrengthening Competitive Advantage\nWith Cresta, Optimum is ",
+    "source_url": "https://cresta.com/blog/optimum-partners-with-cresta-to-drive-ai-powered-sales-conversions-and-revenue-growth",
+    "tags": [
+      "vertical-agents",
+      "voice-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cresta — about",
+    "description": "Cresta by the numbers\n0M+\ndollars raised\n0+\nemployees\n0+\nteam hubs\nTurning every conversation into a competitive advantage\nExceptional customer experiences are the foundation of every great business. That's why we're on a mission to unlock the full potential of every customer conversation. How? With human-centric agentic AI that delights customers with intelligent automation, empowers humans to work smarter and faster, and turns strategic insights into better business outcomes.\nView careers\nOur story\n2017\n- Cresta is born at Stanford’s AI Lab, co-founded by Sebastian Thrun\n- He's joined by co-founders Tim Shi, an early researcher at OpenAI, and Zayd Enam\n2018\n- Cresta deploys a transformer-based model for real-time Agent Assist at Intuit, its first customer\n2020\n- Cresta emerges from stealth with Series A backing from Greylock and a16z\n2021\n- Cresta raises its Series B from Sequoia as revenue quadruples\n- Expands beyond digital with Voice Agent Assist\n2022\n- Cresta raises Series C led by Tiger Global\n- Secures multiple conversational AI patents\n2023\n- Ping Wu (Co-founder of Google CCAI) becomes CEO\n- Launches Opera, a no-code AI orchestration engine, and conversation intelligence\n2",
+    "source_url": "https://cresta.com/about",
+    "tags": [
+      "vertical-agents",
+      "voice-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Imbue — imbue.com",
+    "description": "We're building toward a future where AI agents are open and accountable to their users, so people have more power in the digital world.\nWe're building toward a future where AI agents are open and accountable to their users, so people have more power in the digital world.\nThe missing UI for parallel agents\nFilter (and heal) your Twitter feed\nRun any coding agent in parallel, anywhere\nImbue drives change\nThe companies that control AI are accumulating unprecedented power. Our policy work seeks to counter that by building legal frameworks that protect individual liberty and helping policymakers understand what's actually at stake.\nWe aim to increase human agency in the world, beginning with how we work: with radical openness, freedom, choice, and play. We’re looking for people who build from first principles, question the status quo, and operate with conviction and care.",
+    "source_url": "https://imbue.com",
+    "tags": [
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Imbue Blog — empowering-humans-in-the-age-of-ai",
+    "description": "We founded Imbue in 2021 to build an AGI future where humans remain at the helm, shaping powerful AI systems rather than being subordinated to them.\nWe believed that AI could multiply productivity and help everyone prosper. But as capabilities began to accelerate, a nagging worry set in: we felt forces dragging us all toward a future where powerful AI capabilities become concentrated in the hands of a few, giving them outsized control over what our chatbots say, what our AI agents do, and ultimately what institutions, societies, and lives we build. In this future, most people quietly become less free.\nWe’ve now come to understand something crucial: the core challenge of AI lies in managing how it shifts power.\nAI makes software systems dramatically more powerful. That power flows, by default, to those who can build and own those systems. This concentrates power, which leads to exploitation and disempowerment. We’re starting to see it play out today: tech platforms use basic AI agents in the form of recommendation algorithms to hijack our attention, creating addictive experiences we simultaneously crave and resent. We have little control over how these algorithms operate — and they ",
+    "source_url": "https://imbue.com/blog/empowering-humans-in-the-age-of-ai#none",
+    "tags": [
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Imbue Blog — 2026-04-24-podcast-episode-38-jamie-simon-and-daniel-kunin",
+    "description": "Deep learning works extraordinarily well. We still largely don’t know why.\nNeural networks write code, diagnose disease, translate language, produce photographs. The machinery is, in principle, legible: architecture, data, objective, learning rule. Yet we have no unified framework for why training works, what the resulting networks will do, or how to predict their behaviour from first principles. The field trains by intuition, folklore, trial and error, scale.\nToday, researchers from Berkeley, Harvard, NYU, Stanford, the Flatiron Institute, Penn, and the Astera Institute are publishing a paper that argues this is about to change.\nThere Will Be a Scientific Theory of Deep Learning, by Jamie Simon, Daniel Kunin, and twelve co-authors, names an emerging discipline: learning mechanics. It consolidates five converging lines of evidence that a rigorous theory of deep learning is not merely desirable, but beginning to emerge.\nImbue is committed to supporting this research. Deterministic engineering of deep learning systems will make them easier to build openly, harder to monopolize. To accompany the paper, Jamie and Dan discuss the ideas on Generally Intelligent:\nSolvable toy models revea",
+    "source_url": "https://imbue.com/blog/2026-04-24-podcast-episode-38-jamie-simon-and-daniel-kunin",
+    "tags": [
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Imbue Blog — 2026-02-27-arc-agi-2-evolution",
+    "description": "The ARC-AGI (Abstraction and Reasoning Corpus) benchmark was proposed by François Chollet in his 2019 paper ”On the Measure of Intelligence” as a way to measure what he calls general fluid intelligence - the ability of a system to efficiently learn solutions to novel problems.\nToday, we share our work on using code evolution to solve ARC-AGI tasks. Our evolution method uses a combination of fitness-based sampling and code mutation to iteratively improve upon an initial solution. The mutation step is driven by an underlying base LLM, but is agnostic to the specific model chosen.\nOur approach achieves a 2.8x improvement over the base performance of Kimi K2.5, a 1.8x improvement for Gemini 3 Flash, and achieves a 95% score when using Gemini 3.1 Pro:\nAll numbers shown are on the ARC-AGI-2 public evaluation set (source). We also submitted our solution for evaluation on the semi-private data set, but have been informed that the evaluation of new community submissions is currently on hold.\nSince not all models and refinements have published results on the public evaluation set, we also show our results super-imposed over the official ARC-AGI-2 leaderboard below. This graph is meant for co",
+    "source_url": "https://imbue.com/blog/2026-02-27-arc-agi-2-evolution",
+    "tags": [
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Imbue Blog — a-healthy-ecosystem-for-ai-agents-introducing-the-afi",
+    "description": "At Imbue, we believe that AI agents will radically reshape society in the coming decades. In this future, a healthy ecosystem of open agents and software will be necessary for individuals to have control over the technologies that shape our lives.\nBuilding toward this future motivates our work. It’s why we released Sculptor, with the ambition for it to be the best way to build, modify, and run agents — when the barrier to creating and sharing open agents drops, everyone can benefit from them. It’s why we also work on the conditions that sustain open agents, including business models for open software and fundamental machine learning research to make neural networks understandable.\nThe future for AI agents isn’t guaranteed. The decisions that we make now, about the things we build (and not build) and the rules that govern them, will shape the world they enter and transform. We need good judgment, humility, and the ability to hold meaningful conversations between builders and policymakers to make these choices wisely.\nLast week we joined Anthropic, Intuit, Edgerunner AI, Unstructured, Shift5, and Lilt AI to launch the Agentic Futures Initiative (AFI) to help shape clear, practical, a",
+    "source_url": "https://imbue.com/blog/a-healthy-ecosystem-for-ai-agents-introducing-the-afi",
+    "tags": [
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Imbue — about",
+    "description": "Today, the software and agents in our lives don’t work for us—they work for the company that built them. Closed platforms lock you into their ecosystems, limit what you can do, and serve their incentives over yours.\nWe're building the alternative: an open agent ecosystem where you can understand, modify, and verify your agents, so they work only in your interest.\nWe founded Imbue in 2021 to build an AGI future where humans remain at the helm, shaping powerful AI systems rather than being subordinated to them.\nWe aim to increase human agency in the world, beginning with how we work: with radical openness, freedom, choice, and play. We’re looking for people who build from first principles, question the status quo, and operate with conviction and care.",
+    "source_url": "https://imbue.com/about",
+    "tags": [
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "MultiOn — multion.ai",
+    "description": "AI-native\nOur goal is to enable the era of AI-native devices with agents that are fully-private, trustworthy and run locally - ushering in true decentralization of intelligence.\nFocused on everyday life\nOur first product AGI-0 is a personalized, proactive AI co-worker that gets things done on your smartphone - now available in early access!\nPowering the vision to bring AGI to everyday life\nBuild the future of AGI",
+    "source_url": "https://multion.ai",
+    "tags": [
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "MultiOn Blog — android-world",
+    "description": "AGI reaches 97.4% task success on AndroidWorld benchmark, setting a new global record. (Leaderboard)\nOur AGI-0 Agent has achieved state-of-the-art performance on the AndroidWorld leaderboard, surpassing every previous system (as of October 8, 2025).\nAndroidWorld shows the ability of our AGI agent to do useful tasks on a mobile screen by tapping, swiping, and typing like a human would. AndroidWorld is one of the most complete environments for benchmarking autonomous agents on mobile devices.\nThe benchmark covers 116 diverse tasks across 20 real-world Android apps, such as Calendar, Notes, Maps, VLC, Messages, Settings, Web Browser, and more.\nEach task is written in natural language, for example:\nMost top agents rely on both the screenshot and the phone's accessibility tree to understand screen structure.\nWe built our agent to operate entirely from screenshots- no accessibility trees or hidden UI metadata. Our agent interprets the raw screenshot through a multimodal vision-language model that's fine-tuned specifically for UI understanding. The model learns visual hierarchies and clickable regions directly from image context, removing the dependency on system metadata. This means it c",
+    "source_url": "https://multion.ai/blog/android-world",
+    "tags": [
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "MultiOn Blog — agi-inc-visa",
+    "description": "We believe the way people shop and transact online is about to change. In the near future most purchases won’t start with a search box or an app. They’ll start with an agent acting on your behalf. From booking flights and hotels to ordering groceries or buying a gift, your agent will handle the details so you don’t have to.\nFor this shift to work, every action needs to be reliable. A missed reservation or failed payment isn’t just an inconvenience, it erodes trust. That’s why we’re partnering with Visa to make agent-led transactions seamless, secure with close to 100% reliability.\nAI agents today can answer questions and draft emails, but when it comes to commerce the stakes are higher. Money moves. Commitments are made. A single error can break the experience.\nReliability is what unlocks confidence. Without it, agentic commerce won’t scale:\nOur REAL Eval high-fidelity environments test agents against real-world conditions. This is how we ensure agents perform with precision and reliability where it matters most.\nWith Visa, we’re embedding trust directly into these agent flows. Visa’s expertise in secure payments paired with our agent infrastructure means every booking, purchase an",
+    "source_url": "https://multion.ai/blog/agi-inc-visa",
+    "tags": [
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "MultiOn Blog — apps-are-dead",
+    "description": "I have a confession to make.\nfor the past year I've been quietly working on something that I think will make most of what you do on your phone... unnecessary.\nnot unnecessary like \"oh that's a nice optimization.\" unnecessary like \"why would I ever do that myself again.\"\nlet me explain.\nhere's what happened to software.\nsomewhere along the way we convinced ourselves that the best human-computer interaction was... tapping on little colored squares. downloading a different one every time we wanted to do something new.\nwant to order food? use this app. want to book a flight? download this other app. want to check if your friend is free? another colored square.\nwe have literally trained an entire generation to be professional app navigators.\nand here's the thing that kills me: every single one of these apps does the same thing at the core. they take your intent and translate it into actions. that's it. that's the whole game.\n\"I want thai food delivered\" → tap tap scroll tap confirm tap tap done.\n\"I want to fly to tokyo in march\" → tap tap search tap filter tap compare tap tap tap tap book.\nyou're the middleware, man. you're the translation layer between what you want and what happens. y",
+    "source_url": "https://multion.ai/blog/apps-are-dead",
+    "tags": [
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "MultiOn Blog — agi-inc-announces-collaboration-with-qualcomm-to-bring-agentic-ai-to-snapdragon-powered-devices",
+    "description": "We believe every phone, every PC, every device should be intelligent.\nNot just something you talk to, but something that acts for you.\nAt AGI, Inc., we’re building an AI agent that can see your screen, understand what you’re doing, and take action across any app on your behalf.\nToday, we’re announcing a collaboration with Qualcomm Technologies to bring AGI’s agent stack to devices powered by Snapdragon® platforms.\nTogether, we’re working to enable agentic AI across smartphones, PCs, and next-generation AI-native devices — fully private, fully on-device.\nThis is a major step toward our vision of realizing truly native on-device intelligence.\nMost AI assistants today are cloud-dependent.\nThey send your data to a server, process it remotely, and send back a response. They rely on internet connectivity. They introduce latency, reliability and privacy tradeoffs.\nThat model was necessary. It’s no longer sufficient.\nOn-device changes the equation:\nFor device manufacturers, this collaboration makes agentic intelligence part of their device platform itself, without a cloud or a third-party API dependency.\nFor developers, this means access to native agent capabilities through Snapdragon plat",
+    "source_url": "https://multion.ai/blog/agi-inc-announces-collaboration-with-qualcomm-to-bring-agentic-ai-to-snapdragon-powered-devices",
+    "tags": [
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Fixie — fixie.ai",
+    "description": "Speech-Native\nVoice AI Agents\nDeveloper-friendly APIs. Agentic-ready primitives. Human-like conversations. Join thousands of teams building natural, conversational voice AI experiences.\nSpeech-Native\nVoice AI Agents\nDeveloper-friendly APIs. Agentic-ready primitives. Human-like conversations. Join thousands of teams building natural, conversational voice AI experiences.\nHuman conversations are fast, fluent, and flexible.\nVoice AI should be, too.\nWe're a research lab and product company dedicated to empowering real-time voice AI experiences.\nWe train the world's smartest speech model and run it on dedicated, purpose-built infrastructure.\nWe're the secret behind some of the world's best performing voice agents:\n\"\"|\n— 11x, Head of Growth\nThe Voice AI Problem\nHuman Speech ≠ Text\nMost Voice AI systems are designed to convert speech to text before an LLM can process it. This approach introduces two problems:\n1) Transcribing speech to text adds latency, slowing the conversation before inference can even begin.\n2) Paralinguistic signals that influence meaning, like tone, cadence, and pitch, are lost when speech is transcribed.\nThis is why most Voice AI agents feel slow and robotic. Achievin",
+    "source_url": "https://fixie.ai",
+    "tags": [
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Fixie — about",
+    "description": "Speech-Native\nVoice AI Agents\nDeveloper-friendly APIs. Agentic-ready primitives. Human-like conversations. Join thousands of teams building natural, conversational voice AI experiences.\nSpeech-Native\nVoice AI Agents\nDeveloper-friendly APIs. Agentic-ready primitives. Human-like conversations. Join thousands of teams building natural, conversational voice AI experiences.\nHuman conversations are fast, fluent, and flexible.\nVoice AI should be, too.\nWe're a research lab and product company dedicated to empowering real-time voice AI experiences.\nWe train the world's smartest speech model and run it on dedicated, purpose-built infrastructure.\nWe're the secret behind some of the world's best performing voice agents:\n\"\"|\n— 11x, Head of Growth\nThe Voice AI Problem\nHuman Speech ≠ Text\nMost Voice AI systems are designed to convert speech to text before an LLM can process it. This approach introduces two problems:\n1) Transcribing speech to text adds latency, slowing the conversation before inference can even begin.\n2) Paralinguistic signals that influence meaning, like tone, cadence, and pitch, are lost when speech is transcribed.\nThis is why most Voice AI agents feel slow and robotic. Achievin",
+    "source_url": "https://fixie.ai/about",
+    "tags": [
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Reworkd — reworkd.ai",
+    "description": "End-to-end\ndata extractiondata extraction\nEffortlessly extract web data at scale. No code. No maintenance. No worries.\nCurrent Public Services\n143-24A\nAult Farms Operations Services\n143-24A\nAult Farms Operations Services\n456-78B\nXYZ Corporation IT Services\n456-78B\nXYZ Corporation IT Services\n901-23C\nABC Company Marketing Campaign\n901-23C\nABC Company Marketing Campaign\n789-12D\nDEF Company Consulting Services\n789-12D\nDEF Company Consulting Services\n345-67E\nGHI Corporation Design Services\n345-67E\nGHI Corporation Design Services\n678-90F\nJKL Company Development Services\n678-90F\nJKL Company Development Services\n234-56G\nMNO Corporation Marketing Services\n234-56G\nMNO Corporation Marketing Services\n567-89H\nPQR Company Training Services\n567-89H\nPQR Company Training Services\n901-23I\nSTU Corporation Support Services\n901-23I\nSTU Corporation Support Services\nPaul Graham\nCo-founder, Y Combinator\nNat Friedman\nEx-CEO, GitHub\nDaniel Gross\nCo-founder, SSI\nWhats the problem?\nWeb data is difficult\nCollecting, monitoring, and maintaining data can be complex, time-consuming, and costly. When you have hundreds or thousands of sites to crawl, there’s a lot to consider.\nHow can you solve it?\nLet Reworkd\ndo ",
+    "source_url": "https://reworkd.ai",
+    "tags": [
+      "multi-agent-orchestration"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Vellum — vellum.ai",
+    "description": "> [MEM·EP01] Logged: helped junior debug 3hrs, calendar cleared> [MEM·SE02] Learned: TypeScript preferred, YAML avoided, graph-based thinking> [MEM·PR03] Pattern: tests > code > refactor, auto-drafting enabled> [MEM·EM04] Observed: silence = processing, hold all pings> [MEM·PS05] Scheduled: Jun 12 recital, flowers ordered, PM blocked> [MEM·BH06] Routine: 3:15pm walk daily, notifications paused> [MEM·NR07] Identity: recovering perfectionist, shipping > perfecting> [MEM·SH08] Rule: no pings before 9am, auto-enforced> [MEM·EP01] Logged: helped junior debug 3hrs, calendar cleared> [MEM·SE02] Learned: TypeScript preferred, YAML avoided, graph-based thinking> [MEM·PR03] Pattern: tests > code > refactor, auto-drafting enabled> [MEM·EM04] Observed: silence = processing, hold all pings> [MEM·PS05] Scheduled: Jun 12 recital, flowers ordered, PM blocked> [MEM·BH06] Routine: 3:15pm walk daily, notifications paused> [MEM·NR07] Identity: recovering perfectionist, shipping > perfecting> [MEM·SH08] Rule: no pings before 9am, auto-enforced> [MEM·EP01] Logged: helped junior debug 3hrs, calendar cleared> [MEM·SE02] Learned: TypeScript preferred, YAML avoided, graph-based thinking> [MEM·PR03] Pattern:",
+    "source_url": "https://vellum.ai",
+    "tags": [
+      "eval-tools",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Humanloop — humanloop.com",
+    "description": "We are thrilled to announce that the Humanloop team is joining Anthropic!\nFrom the start, our mission at Humanloop has been to enable the safe and rapid adoption of AI. Now, as the pace of AI progress accelerates, we think Anthropic is the ideal home to amplify our impact.\nWe've had the privilege of working with customers who continually push the boundaries of AI adoption. We owe a huge debt of gratitude for their trust and invaluable feedback along the way. As we sunset the Humanloop platform, we will continue to work closely with our customers to make their transition as smooth as possible.\nWe are grateful to our investors: Albion, Index, YC, Local Globe, UCLTF and many fantastic angels. Building this company has been an incredible journey and we were fortunate to have investors who trusted and supported us at every step.\nReflecting on our journey, we're immensely proud of what we built. We were the first development platform for LLM applications and we shaped industry standards for how to manage and evaluate AI. We're excited about this next chapter, joining Anthropic to help build an AI future that benefits everyone.\nRaza, Jordan, Peter\nand the whole Humanloop team",
+    "source_url": "https://humanloop.com",
+    "tags": [
+      "eval-tools",
+      "observability"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Humanloop — about",
+    "description": "Our mission\nEnable the safe and rapid implementation of AI across the economy\nWe're building the future in which AI does not replace humans\nbut gives people the tools to achieve things that today are\nrestricted to a tiny group of people with specialist expertise.\nFounders\nOur team brings experience from working on some of the largest AI projects at Google and Amazon, along with advanced academic research in machine learning.\nJordan Burgess\nCPO, ML MPhil, Cambridge\nRaza Habib\nCEO, ML PhD, UCL\nPeter Hayes\nCTO, ML PhD, UCL\nInvestors & Advisors\nWe're backed by investors with a deep understanding of the intersection between AI and product development.\nProf. Emine Yilmaz\nTuring Fellow and Amazon Scholar\nProf. David Barber\nDirector of the UCL Center for AI\nWade Foster\nZapier CEO\nOlivier Pomel\nDatadog CEO\nCalvin French-Owen\nSegment founder\nMatt Robinson\nGoCardless founder\nJoin us\nJoin us in building the foundation on how AI-powered products are built\nWe believe that the reason we'll succeed is because we're committed to learning and growing as quickly as possible. We know there's lots we don't know. What we're doing is fundamentally new and will require overcoming many hurdles. This excite",
+    "source_url": "https://humanloop.com/about",
+    "tags": [
+      "eval-tools",
+      "observability"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Langfuse — about",
+    "description": "About us\nLangfuse is building the open source LLM engineering platform to help teams build production-grade LLM applications faster (Why Langfuse?).\nWe are excited about the potential of LLMs and generative AI and the impacts it will have on all of us. Doing our part in accelerating this shift is our mission.\nWe initially realized the pains of solving problems with LLMs during Y Combinator's W23 batch in San Francisco. We now have two offices, a larger one in Berlin, Germany (with a focus on product & engineering) and a smaller one in San Francisco (with a focus on marketing & sales). We hire product & engineering remotely across Europe, with a week onsite per month in Berlin.\nIn January 2026, we joined ClickHouse to accelerate even further. Learn more about our story and mission.\nTeam\nBacked by\nWe were backed by a fantastic group of investors:\n- Lightspeed Venture Partners – why Alex partnered with us\n- General Catalyst\n- Y Combinator\nNow, we're part of Clickhouse, the leading open-source database for real-time analytics - why we joined Clickhouse\nRead our Handbook\n1\nWhy does Langfuse exist?\n2\nWho are our customers?\n3\nHow did we get here?\n4\nWhy do customers choose Langfuse?\n5\nWhy ",
+    "source_url": "https://langfuse.com/about",
+    "tags": [
+      "observability",
+      "eval-tools"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Weaviate — weaviate.io",
+    "description": "FOR AI ENGINEERS\nturning ideas into products\nDesign, build, and ship complete AI experiences with Weaviate\nOne foundation for search, RAG, agents, and everything that comes next\nProduction-ready\nAI applications, faster\nSpin up a cluster, point it at your data, and go. Weaviate can take care of embeddings, ranking, and auto-scaling so you can ship features, not infrastructure.\nTry Weaviate CloudWeaviate Quickstart# Select collectioncollection = client.collections.get(\"SupportTickets\")# Pure vector searchresponse = collection.query.near_vector(near_vector=[0.1, 0.1, 0.1],limit=5)# Semantic searchresponse = collection.query.near_text(query=\"login issues after OS upgrade\",limit=5)# Hybrid search (vector + keyword)response = collection.query.hybrid(query=\"login issues after OS upgrade\",alpha=0.75,limit=5)\nLanguage agnostic by design\nUse SDKs for Python, Go, TypeScript, or JavaScript—or connect to GraphQL or REST APIs.\nSeamless model integration\nConnect your ML models of choice, or use our built-in embedding service.\nDatabase Agents\nReduce manual work with pre-built agents that interact with and improve your data.\nEasy start, boundless scale, deploy anywhere\nAI-first features under one r",
+    "source_url": "https://weaviate.io",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Weaviate Blog — weaviate-agent-skills",
+    "description": "It has never been easier to build software. With tools like Claude Code, Cursor, and GitHub Copilot, we’ve moved into a high-velocity workflow often called ‘vibe coding.’ You describe a feature, an agent blueprints the logic, and the app comes to life.\nBut this speed usually hits a wall when it meets specialized infrastructure. While agents are great at general boilerplate, they struggle with the nuances of working with specialized tools. They often hallucinate legacy v3 Weaviate syntax, guess at hybrid search alpha parameters, or fail to implement efficient multivector embedding strategies. When you’re trying to manage three parallel agentic workflows, you don't have time to be a full-time debugger for an agent’s hallucinations. You need the implementation to be right on the first try.\nTo solve this, we are introducing Weaviate Agent Skills. This repository acts as a bridge between the most popular coding agents and Weaviate’s infrastructure.\nAgent Skills has become one of the most popular tools to help coding agents write better code. The Agent Skills format, developed by Anthropic, works with Claude Code, Cursor, GitHub Copilot, VS Code, Gemini CLI, and many other tools. Our new",
+    "source_url": "https://weaviate.io/blog/weaviate-agent-skills",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Weaviate Blog — building-core-of-ai-native-stack",
+    "description": "I’ve been working in the world of vector embeddings for over a decade. In that time, I’ve seen their role shift and expand in some fascinating ways. What started as a way to represent single words has evolved into something far more powerful—capturing the relationships between words in a sentence, the interplay between pixels in an image, or even patterns across modalities. However, at its core, the concept remains unchanged: vector embeddings remain a foundational element of machine learning, and now AI more broadly.\nAs context windows grow and architectures evolve, AI use cases are rapidly expanding across industries. Through it all, vector embeddings haven’t faded; they’ve become more central than ever. To extend your model’s knowledge, Weaviate has become the essential integrated foundation: not just for storing and retrieving embeddings, but for powering every layer of an AI-native application. That includes generating embeddings with managed services, reasoning over data with intelligent agents, and scaling effortlessly, whether you're building your first prototype or operating at global scale. Weaviate brings it all together so you can focus on building, not stitching system",
+    "source_url": "https://weaviate.io/blog/building-core-of-ai-native-stack",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Chroma — trychroma.com",
+    "description": "Open-source search infrastructure for AI\nFast, serverless, and scalable infrastructure supporting vector, full-text, regex, and metadata search. Built on object storage and trusted by millions of developers. Open-source Apache 2.0.\nOr, get started locally.\nAI App\nChroma\nknowledge_base - 1,277,467 records\nawaiting query input\n15M+ monthly downloads\nApache 2.0\n27k Github stars\n27k Github stars\nLow latency search\nFast queries over billions of multi-tenant indexes.\nUp to 10x cheaper\nBuilt on object storage with automatic data tiering.\nNo engineering ops\nScales with your data and traffic. SOC 2 Type II.\nFeatures\n◇\nSparse vector search\nLexical search (BM25, SPLADE)\n◆\nVector search\nSemantic similarity search\n●\nFull-text search\nTrigram and regex search\n◐\nMetadata search\nFiltering and faceted search\n◊\nForking\nDataset versioning, A/B testing, and roll-outs\n▣\nCLI\nCommand-line tools for development\n// configure client and collection for sparse embeddings (BM25, SPLADE)\n// Add documents with sparse embeddings (BM25)\nawait collection.add({\nids: [\"id1\", \"id2\"],\ndocuments: [\"Document about databases\", \"ML tutorial\"]\n})\n// Query with sparse vector\nconst sparseRank = Knn({ query: \"ML\", key: \"sparse_",
+    "source_url": "https://trychroma.com",
+    "tags": [
+      "rag"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Chroma — about",
+    "description": "Log in to Chroma\nContinue with Google\nContinue with Github\nContinue with SSO\nContinue with email\nBy logging in, you agree to our\nterms of service\n,\nprivacy policy\n, and\ndata processing addendum",
+    "source_url": "https://trychroma.com/about",
+    "tags": [
+      "rag"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Qdrant — qdrant.tech",
+    "description": "High-Performance Vector Search at Scale\nQdrant helps you build the AI retrieval you want. Ship high performance, full-feature vector search at any scale and with any deployment model.\nBuild for Production-Grade AI Search\nEngineered for real-time retrieval with the speed, accuracy, and scale that modern AI demands.\nExpansive Metadata Filters\nStore metadata in JSON and use advanced filters, such as nested\n, text\n, geo\n, has_vector\n, and more.\nNative Hybrid Search (Dense + Sparse)\nBlend keyword and vector search in one query – use dense or sparse vectors. Supports BM25, SPLADE++, and miniCOIL.\nExplore Hybrid SearchBuilt-in Multivector\nSet new standards for relevance; make the retrieval layer more expressive, flexible, and multimodal with multiple vectors per object.\nSee DocumentationEfficient, One-Stage Filtering\nFilters are applied during HNSW traversal — no pre- or post-filtering. High recall with low latency, even under complex conditions.\nSee DocumentationFull-Spectrum Reranking\nInfuse business logic with score boosting, achieve token-level precision with late interaction models (e.g. ColBERT), diversify results with Maximum Marginal Relevance (MMR)\nSee DocumentationOne Engine, En",
+    "source_url": "https://qdrant.tech",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Qdrant Blog — blog",
+    "description": "Now Available on Qdrant Cloud: GPU Indexing, Multi-AZ, and Audit Logging\nDaniel Azoulai\nApril 28, 2026\nDiscover how Data Graphs built a true Hybrid Graph RAG platform using Qdrant's Hybrid Cloud deployment, payload filtering, and Terraform automation to deliver cited, domain-aware AI responses.\nDaniel Azoulai\nApril 22, 2026\nFrom building scalable RAG pipelines to enabling real-time AI memory and next-gen context engineering, we’re covering the full spectrum of modern vector-native search.\nQdrant\nApril 21, 2026\nWe analyzed 110+ community threads from Hacker News and Reddit to test the 'just use pgvector' heuristic. pgvector is a reasonable default, but only when six specific conditions hold simultaneously. Most applications hit its limits sooner than expected.\nNathan LeRoy\nMarch 17, 2026\nQdrant Edge, Twelve Labs Marengo 3.0, NVIDIA Metropolis VSS, and Vultr Cloud GPUs come together for real-time video anomaly detection. Detect what you've never seen before.\nThierry Damiba\nMarch 15, 2026\nQdrant announces $50M in Series B funding led by AVP to build composable vector search as foundational infrastructure for production AI — from agentic workflows to edge devices.\nAndre Zayarni\nMarch 1",
+    "source_url": "https://qdrant.tech/blog/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Qdrant Blog — case-study-tripadvisor",
+    "description": "How Tripadvisor Drives 2 to 3x More Revenue with Qdrant-Powered AI\nDaniel Azoulai\n·May 13, 2025\nOn this page:\nHow Tripadvisor Is Reimagining Travel with Qdrant\nTripadvisor, the world’s largest travel guidance platform, is undergoing a deep transformation. With hundreds of millions of monthly users and over a billion reviews and contributions, it holds one of the richest datasets in the travel industry. And until recently, that data, particularly its unstructured content, had incredible untapped potential. Now, with the rise of generative AI and the adoption of tools like Qdrant’s vector database, Tripadvisor is unlocking its full potential to deliver intelligent, personalized, and high-impact travel experiences.\nActivating Billions of Data Assets\nThe shift was driven by Rahul Todkar, Head of Data and AI who had previously overseen global AI teams. With a background in building complex data and AI products, including LinkedIn’s data, AI and vector systems, he immediately recognized the opportunity at Tripadvisor: a billion user reviews and contributions - including hundreds of millions of images - and years of behavioral data across hotels, restaurants, and experiences.\nThe goal was",
+    "source_url": "https://qdrant.tech/blog/case-study-tripadvisor/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Qdrant Blog — case-study-hubspot",
+    "description": "HubSpot & Qdrant: Scaling an Intelligent AI Assistant\nAndre Zayarni\n·March 24, 2025\nOn this page:\nHubSpot, a global leader in CRM solutions, continuously enhances its product suite with powerful AI-driven features. To optimize Breeze AI, its flagship intelligent assistant, HubSpot chose Qdrant as its vector database.\nChallenges Scaling an Intelligent AI\nAs HubSpot expanded its AI capabilities, it faced several critical challenges in scaling Breeze AI to meet growing user demands:\n- Delivering highly personalized, context-aware responses required a robust vector search solution that could retrieve data quickly while maintaining accuracy.\n- With increasing user interactions, HubSpot needed a scalable system capable of handling rapid data growth without performance degradation.\n- Integration with HubSpot’s existing AI infrastructure had to be swift and easy to support fast-paced development cycles.\n- HubSpot sought a future-proof vector search solution that could adapt to emerging AI advancements while maintaining high availability.\nThese challenges made it essential to find a high-performance, developer-friendly vector database that could power Breeze AI efficiently.\nWhy HubSpot Chos",
+    "source_url": "https://qdrant.tech/blog/case-study-hubspot/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Qdrant Blog — case-study-deutsche-telekom",
+    "description": "How Deutsche Telekom Built a Multi-Agent Enterprise Platform Leveraging Qdrant\nManuel Meyer\n·March 07, 2025\nOn this page:\nHow Deutsche Telekom Built a Scalable, Multi-Agent Enterprise Platform Leveraging Qdrant—Powering Over 2 Million Conversations Across Europe\nArun Joseph, who leads engineering and architecture for Deutsche Telekom’s AI Competence Center (AICC), faced a critical challenge: how do you efficiently and scalably deploy AI-powered assistants across a vast enterprise ecosystem? The goal was to deploy GenAI for customer sales and service operations to resolve customer queries faster across the 10 countries where Deutsche Telekom operates in Europe.\nTo achieve this, Telekom developed Frag Magenta OneBOT (Eng: Ask Magenta), a platform that includes chatbots and voice bots, built as a Platform as a Service (PaaS) to ensure scalability across Deutsche Telekom’s ten European subsidiaries.\n“We knew from the start that we couldn’t just deploy RAG, tool calling, and workflows at scale without a platform-first approach,” Arun explains. “When I looked at the challenge, it looked a lot like a distributed systems and engineering challenge, not just an AI problem.”\nKey Requirements ",
+    "source_url": "https://qdrant.tech/blog/case-study-deutsche-telekom/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Exa — exa.ai",
+    "description": "Powering agents with fast, high-quality web search\nSearch API\n\"content\": {\"companies\": [{\"company_name\": \"General Electric\",\"ceo_name\": \"Larry Culp\",\"founded_year\": 1892},{\"company_name\": \"RTX\",\"ceo_name\": \"Christopher T. Calio\",\"founded_year\": 2020},{\"company_name\": \"Boeing\",\"ceo_name\": \"Kelly Ortberg\",\"founded_year\": 1916}]},\nExtracts structured outputs from Exa's database of 70M+ companies\nStructured outputs enable complex enrichment workflows requiring web search.\nSearch with structured outputs →Powers their coding agents with Exa's low-latency web search\nDedicated high quality web indexes for every use case: people, companies, code docs, financial data, and news.\nUse Exa's web indexes →Highlights: On\nairplanes , rotorcraft , rockets , satellites , and missiles worldwide. The company also provides leasing and product support services. Boeing is among the largest global aerospace manufacturers ; it is the fourth-largest defense contractor in the world based on 2022 revenue and is the largest exporter in the United States by dollar value. Boeing was founded in 1916 by William E. Boeing in Seattle , Washington.\nUses highlights to reduce their token budgets and LLM costs by over 50",
+    "source_url": "https://exa.ai",
+    "tags": [
+      "rag"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Exa Blog — highlights-for-agents",
+    "description": "Agents use Exa for web grounding: searching the web and reasoning over the contents from those pages to give informed responses. Recent research efforts at Exa have led us to improvements in highlights. Highlights are snippets from a page, that now offer higher quality results for ~94% fewer tokens on some evals, significantly reducing costs and leading to latency benefits.\nWe've found this is especially important in agentic search use cases, where doing multiple rounds of search is the norm and reducing context bloat is critical. Dense excerpts allow agents to effectively reason and achieve higher accuracy.\nOn benchmarks like SimpleQA, 500 characters of Exa's highlights match the accuracy of the first 8000 characters of the page, and use 16x fewer tokens. In addition, we found that 4k characters of highlights is better than 32k characters of full text.\nToday's highlights model is the product of many rounds of research. We explored a wide range of architectures and training recipes before landing on the current approach.\nHighlights are Exa's in-house method to extract the most relevant excerpts from web pages. They run for every request to maximize relevance to the query (not cache",
+    "source_url": "https://exa.ai/blog/highlights-for-agents",
+    "tags": [
+      "rag"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Exa Blog — anara-exa",
+    "description": "Anara integrates Exa's Search and Content APIs to power fast, accurate retrieval and summarization of research papers, helping researchers traverse the vast academic landscape while correctly citing works and discovering hidden gems at the frontier.\n\"Exa's strong coverage and flexible API have been a key differentiator for us. Scientists trust our product further when the relevant papers they expect to see are available to them in the right workflows. There are use cases where we require the full document, others a summary. The ability to customize search based on the use case easily, is important.\"— Naveed Janmohamed, Founder & CEO of Anara\nAbout Anara\nAI workspace for scientific research\nAnara is an AI workspace for scientists, students, and research teams, helping users find and interact with scientific documents using AI. Powered by major academic databases like PubMed, arXiv, and JSTOR, Anara enables collaborative learning by creating searchable libraries for projects and generating tailored quizzes.\nUse cases\n- Citations - Identify and retrieve original sources to drive accurate citation in writing\n- Workflow agents - Power agents that search papers and suggest next steps in ",
+    "source_url": "https://exa.ai/blog/anara-exa",
+    "tags": [
+      "rag"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Exa — about",
+    "description": "Dear curious internet wanderer,\nWelcome to Exa. Exa is an applied AI lab building a search engine unlike the world has ever seen.\nWe don't have ads. We sell our search as an API, optimized exclusively for quality, latency, and customizability. That's why customers like Cursor, Lovable, and thousands of others use us to power agents and workflows.\nBut that's just today. Exa's ultimate goal is perfect search.\nWhat is perfect search? It's simple – you should be able to know anything about the world. Literally anything, like:\nPerfect search is highly controllable, unbiased, comprehensive. Because we lack it, we each walk around with an incomplete understanding of nearly everything.\nBuilding perfect search will be extremely hard. But it's also necessary. It's critical civilizational infrastructure for our new AI reality.\nPolitics is fragmenting, wars are raging, and technology is accelerating -- we need tools that deeply inform us what's going on. If we don't gain control over the planet's information, we will lose control over our planet.\nIn short, the world needs perfect search. It needs an organization with pure incentives to build it. And because no one else is doing it, that's why ",
+    "source_url": "https://exa.ai/about",
+    "tags": [
+      "rag"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cohere — cohere.com",
+    "description": "Own your AI\nYour data. Your infrastructure. Cohere keeps it that way.\nTrusted by industry leaders and developers worldwide\nSafe. Flexible. Independent.\nSecurity\nYour data stays under your control with multi-layered protection and industry-certified security standards.\nDeployment\nSecure within your virtual private cloud (VPC), on-premises, or dedicated, Cohere-managed Model Vault.\nCustomization\nTrain on your proprietary data and build unique AI solutions made for your use cases, needs, and infrastructure.\nYour sovereign AI workplace\nAll your tools connected, nothing outsourced. North brings everything together on your terms.\nPowering progress across industries\nOur models. Your business.\n- High-performance generative models that give your organization full control\n- Supports 23 languages for global communication and discovery\n- Seamlessly integrates into existing systems without disruption\n- Powers AI applications that reason, act, and generate insights anchored in your data\n- Transcribe with confidence with high-fidelity speech-to-text\n- Quickly converts audio data into highly accurate text outputs\n- Supports 14 languages and is robust to real-world conversational environments\n- Int",
+    "source_url": "https://cohere.com",
+    "tags": [
+      "agent-runtime",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cohere Blog — fujitsu-partnership",
+    "description": "Jul 16, 2024\n1 minute read\nCohere and Fujitsu Announce Strategic Partnership To Provide Japanese Enterprise AI Services\nFujitsu and Cohere partner to develop Japanese AI models for global enterprises with secure and private deployment options.\nJul 16, 2024\n1 minute read\nFujitsu and Cohere partner to develop Japanese AI models for global enterprises with secure and private deployment options.",
+    "source_url": "https://cohere.com/blog/fujitsu-partnership",
+    "tags": [
+      "agent-runtime",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cohere — about",
+    "description": "About\nWhere enterprise AI meets real-world purpose\nCohere builds foundational models and AI solutions that help teams turn everyday effort into extraordinary impact.\nOur Mission\nWe believe AI’s highest purpose is to enhance human wellbeing. We’re committed to realizing that potential by empowering businesses to scale innovation, boost productivity, and drive progress that reaches everyone.\nOur story\nFrom Toronto startup to enterprise AI\n2019\nFoundations\nCohere was founded in 2019 in Toronto with a bold vision: to do whatever it takes to scale intelligence to serve humanity.\nSince then, we’ve remained focused on building enterprise AI that enhances human judgment, accelerates execution, and extends what individuals and teams can achieve on their own.\n2021 – 2024\nEarly growth\nThis support has enabled us to scale our teams, expand globally, and continually develop cutting-edge models that power practical AI applications for the world’s leading enterprises.\n2022\nResearch focus\n2025 – present\nAgentic AI for the enterprise\n2024 Nobel Laureate in Physics\nUniversity Professor Emeritus, Computer Science, University of Toronto\nVery large language models are now giving computers a much better",
+    "source_url": "https://cohere.com/about",
+    "tags": [
+      "agent-runtime",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Together AI — together.ai",
+    "description": "Build what's next\non the AI Native Cloud\nFull-stack AI platform, powered by cutting-edge research.\nFull-stack cloud\nPowering every step of the AI development journey —from experimentation to massive scale.\nThe fastest way to run open-source models on demand. Powered by cutting-edge inference research. No infrastructure to manage, no long-term commitments.\nCost-effectively process massive workloads asynchronously. Scale to 30 billion tokens per model with any serverless model or private deployment.\nDeploy models on dedicated infrastructure. Purpose-built for teams who need speed, control, and the best economics in the market.\nGPU infrastructure purpose-built for generative media workloads. Deploy video, audio, and image models with performance acceleration powered by Together Research.\nScale from self-serve instant clusters to thousands of GPUs, all optimized for better performance with Together Kernel Collection.\nUse fast, secure code sandboxes at scale to set up full-scale development environments for AI apps and agents.\nHigh-performance managed storage for AI-native workloads. Object storage and parallel filesystems optimized for AI, with zero egress fees.\nFine-tune open-source m",
+    "source_url": "https://together.ai",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Together AI Blog — flashattention-4",
+    "description": "Modern accelerators like Blackwell GPUs continue the trend of asymmetric hardware scaling, where tensor core throughput grows far faster than other resources such as shared memory bandwidth, special function units (SFUs) for transcendental operations like exponential, and general-purpose integer and floating-point ALUs. From the Hopper H100 to the Blackwell B200, for instance, BF16 tensor core throughput increases from 1 to 2.25 PFLOPs, while both the SFU count and shared memory bandwidth remains unchanged.\nThis scaling asymmetry has profound implications for optimizing complex kernels like attention for the Blackwell architecture. At its core, attention comprises two GEMMs $(S=Q \\cdot K^T$ and $O=P \\cdot V)$ with softmax in-between; in practice, it also involves substantial plumbing and bookkeeping: data movement, synchronization, layout transforms, element-wise ops, scheduling, masking, etc.\nA naive viewpoint on attention might be that the speed of the GEMMs completely controls the kernel performance and one can effectively disregard these other attention components, at least to first order. However, doing a “feeds and speeds” analysis for B200 in fact shows the opposite: the mai",
+    "source_url": "https://together.ai/blog/flashattention-4",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Together AI Blog — introducing-together-ai-new-look",
+    "description": "If you’ve visited our website or explored our products recently, you might notice something new today. We’ve introduced a refreshed look for Together AI — one that better reflects our mission and approach. Today, we’re excited to share the story behind this evolution.\nOur mission\nTogether AI was founded on the promise of open innovation — helping AI‑native builders create groundbreaking products and experiences across every domain. From day one, we’ve believed that progress happens faster when the tools to build are open and when AI research can quickly be converted into products to deliver faster and better end-user experiences.\nIn an ecosystem often divided between closed systems and open experimentation, we intentionally chose the open path. Many frontier AI application builders want customization and control — so they can more effectively control the experience for their users as well as manage unit economics as their apps see massive adoption. Additionally, with the field moving so swiftly and new models and technical breakthroughs coming every month, if not every week, these builders need a way to quickly integrate those into their workflows.\nTogether AI is the AI Native Clou",
+    "source_url": "https://together.ai/blog/introducing-together-ai-new-look",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Together AI Blog — adaptive-learning-speculator-system-atlas",
+    "description": "At Together AI, the AI Native Cloud, we’re obsessed with performance. Making large language models faster, cheaper, and more efficient is not a one-trick problem — it requires optimizing along multiple axes. That is the philosophy behind Together Turbo, our suite of inference innovations that draw from research in algorithms, architectures, and modeling recipes. We’re excited to introduce the AdapTive-LeArning Speculator System (ATLAS), the first speculator of its kind that gives automatic performance improvements without any manual tuning.\nATLAS offers a new way of doing speculative decoding — one that dynamically improves at runtime — and it fits seamlessly alongside our other Turbo techniques like the proprietary Together Turbo Speculator or Custom Speculators. But why create an adaptive-learning speculator system?\nStandard speculators are trained for general workloads. Custom speculators are trained on your specific data, but only for a specific snapshot in time. However, as the workload evolves (codebase grows, traffic patterns shift, request distributions change), even highly customized speculators can fall behind. In contrast, ATLAS evolves automatically with usage, learning",
+    "source_url": "https://together.ai/blog/adaptive-learning-speculator-system-atlas",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Together AI Blog — together-instant-clusters-ga",
+    "description": "Standing up multi‑node GPU clusters has historically been too manual and brittle — tickets, contract steps, and complex setup – taking valuable time away from AI engineers and researchers. Today, we are excited to announce the General Availability of Together Instant Clusters, offering an API-first developer experience. Instant Clusters deliver self‑service automation for AI infrastructure—from single‑node (8 GPUs) to large multi‑node clusters with hundreds of interconnected GPUs, with support for NVIDIA Hopper and NVIDIA Blackwell GPUs.\nAI Native companies can now manage sudden demand, whether it’s a training run or increased inference traffic, adding capacity fast and bringing a cluster online automatically with the right orchestration (K8s or Slurm) and networking. Instant Clusters can be provisioned in minutes, without long procurement cycles or manual approvals, and preconfigured for low-latency inference and high-goodput distributed training.\n“We train models to reason like clinicians over troves of multi-modal data. That means capturing subtle preferences, like how to resolve multiple diagnoses or align with payer-specific logic. With Together Instant Clusters, we can run la",
+    "source_url": "https://together.ai/blog/together-instant-clusters-ga",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Together AI — about",
+    "description": "Building the AI Native Cloud\nThe full stack platform for production AI, powered by cutting-edge systems research.\nOur mission\nWe design a full-stack AI platform powered by cutting edge system research — helping teams ship faster, scale reliably and achieve superior unit economics.\nOur values\nOpen and responsible development\nEmpower innovation\nEverything works best when we help the open-source community work better together.\nDiscover the magic\nOur wonder, curiosity, and hope drive us to find ways to make everyone’s lives better.\nDo more with less\nWe are optimizers, making the most with what we have and not taking more than what we need.\nModel stewardship\nWe build everything with the purpose of benefiting society.\nOur partners\nFeatured partners that help us scale\nOur team\nMeet our leaders, researchers and engineers building the systems behind Together AI.\nVipul Ved Prakash\nCe Zhang\nChris Ré\nTri Dao\nPercy Liang\nCharles Zedlewski\nKai Mak\nMeicheng Shi\nNicolette Lea\nVanessa Hsu\nMahadev Konar\nAlon Gavrielov\nAlbert Meixner\nDan Fu\nLeon Song\nMax Ryabinin\nSusan Lee\nDerek Chamorro\nPrem Prakash\nArielle Fidel\nJon Fields\nNamrata Ram\nJames Barker\nSarung Tripathi",
+    "source_url": "https://together.ai/about",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Pinecone — www.pinecone.io",
+    "description": "cached_at: 1777663501\nexpires_at: 1777749901\nhit_count: 0\nlast_hit_at: 0\nquery: “. what is a corporation?”\nFast retrieval. Accurate results. Lower costs. Start in seconds.\nEstimate the cost of your workload.\nMonitor performance, explore your data, and manage indexes from a clean, fast console — or stay in the terminal. Your call.\nPinecone is a fully managed vector database built for AI. Writes are instantly searchable, indexing is automatic, and queries stay fast at any scale.\n01 · WRITE\n<100ms\nacknowledgment\nAcknowledged in under 100ms, searchable within seconds.\nvector throughput, streaming in\n02 · INDEX\nAutomatic\nno tuning required\nAlgorithms selected per data size, upgraded in the background automatically.\nindex continuously rebalancing\n03 · QUERY\nConsistent\nat any scale\nAll data searched in parallel. Speed holds steady regardless of scale.\np99 latency, improving with scale\nMeet the compliance, security, and scale requirements to bring enterprise AI to market faster.\nEncryption at rest and in transit, SSO, RBAC, CMEK, private networking.\nSOC 2 Type II, HIPAA, GDPR, and ISO 27001 certified.\nUptime SLAs, support SLAs, and dedicated customer success built in.\nCreate your first ind",
+    "source_url": "https://www.pinecone.io",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Pinecone Blog — blog",
+    "description": "Blog\nLatest from\nProduct\nMay 7, 2026\nFull Text Search in Pinecone, Now in Public Preview\nLea, Harry\nMay 7, 2026\nFull Text Search: Architecture and Design\nAmir, Harry, Edo\nProduct\nMay 6, 2026\nBuilder Plan: for the stage between prototype and scale\nHarshita Daddala\nProduct\nMay 5, 2026\nIntroducing Pinecone Marketplace: Getting to Production in Minutes\nRoie Schwaber-Cohen\nEngineering\nMay 4, 2026\nBetter Models Won’t Save Your Agent\nJeff, Siva\nCompany\nMay 4, 2026\nPinecone Nexus: The Knowledge Engine for Agents\nAsh, Edo\nProduct\nApr 15, 2026\nFour New GA Features for Dedicated Read Nodes That Give Teams More Control and Observability\nGavin Johnson\nProduct\nApr 15, 2026\nPinecone Dedicated Read Nodes: Now Generally Available\nGavin Johnson\nEngineering\nApr 14, 2026\nLoad Balancing AI Services for Availability and Speed\nAvi, Lea\nStart building knowledgeable AI today\nCreate your first index for free, then pay as you go when you're ready to scale.",
+    "source_url": "https://www.pinecone.io/blog/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Weights & Biases — wandb.ai",
+    "description": "AI is easy to productionize\nThe AI developer platform to build AI agents, applications,\nand models with confidence\nimport weave\nweave.init(\"quickstart\")\n@weave.op()\ndef llm_app(prompt):\npass # Track LLM calls, document retrieval, agent steps\nimport wandb\nrun = wandb.init(project=\"my-model-training-project\")\nrun.config = {\"epochs\": 1337, \"learning_rate\": 3e-4}\nrun.log({\"metric\": 42})\nmy_model_artifact = run.log_artifact(\"./my_model.pt\", type=\"model\")\nThe world’s leading AI teams trust Weights & Biases\nWeights & Biases AI developer platform\nModels\nBuild and manage AI models\nTraining\nFine-tune AI models on agentic tasks\nInference\nServe hosted & fine-tuned AI models\nWeave\nIterate, evaluate and monitor agents\nRegistry\nDatasets | Models | Prompts | Code | Metadata\nCore\nReports | Automations | SDK | Skills for coding agents\nSecure deployment\nSaas | Dedicated | Customer-managed\nModels\nBuild and manage AI models\nTraining\nFine-tune with serverless RL\nInference\nAccess and explore hosted AI models\nWeave\nIterate, evaluate and monitor agents\nRegistry\nDatasets | Models | Prompts | Code | Metadata\nCore\nReports | Automations | SDK\nSecure deployment\nSaas | Dedicated | Customer-managed\nNow available:",
+    "source_url": "https://wandb.ai",
+    "tags": [
+      "observability",
+      "eval-tools"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Weights & Biases — about",
+    "description": "Weights & Biases, developer tools for machine learning",
+    "source_url": "https://wandb.ai/about",
+    "tags": [
+      "observability",
+      "eval-tools"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Anyscale — anyscale.com",
+    "description": "Multimodal data curation\nLarge-scale pipelines for curating and preparing multimodal data across videos, images, text, and audio.\nPowered by Ray, the world’s most widely adopted AI compute engine.\nLarge-scale pipelines for curating and preparing multimodal data across videos, images, text, and audio.\nOrchestrate model training across GPU clusters with elastic scaling, last-mile data preprocessing, and GPU observability.\nProcess and generate embeddings at scale for downstream search, retrieval, or training use cases.\nRun LLM inference and training on post-training frameworks like SkyRL and veRL, natively built on Ray.\nAnyscale enables us to push the boundaries of what’s possible in generative AI by giving us the flexibility to scale workloads seamlessly. This removes the risk around our infrastructure and allows our team to focus on innovation rather than infrastructure bottlenecks”\nOptimize distributed training, data curation, and batch inference pipelines with Ray on Anyscale.\nScale existing AI libraries like PyTorch, vLLM, SGLang, and XGBoost with Python APIs across thousands of nodes.\nRay is the world’s most trusted AI compute engine for building, running and scaling data-intens",
+    "source_url": "https://anyscale.com",
+    "tags": [
+      "infra",
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Anyscale Blog — announcing-anyscale-agent-skills-ray",
+    "description": "Today we're announcing the general availability of Anyscale Agent Skills, equipping popular AI coding agents with the Ray and Anyscale expertise needed to write, deploy, debug, and optimize workloads at scale. Agent Skills are distributed as a first-party feature of the Anyscale CLI, and are available today on Claude Code and Cursor.\nThree skill groups, generally available today, support the full development lifecycle from generating workloads to deploying and debugging in production:\nWorkload Skills → Generate code and configs for LLM serving, multimodal data processing, distributed training, batch inference, and embedding generation\nPlatform Skills → Debug, fix, and redeploy live workloads using logs, metrics, and managed workspaces\nInfra Skills → Deploy Ray on Kubernetes or VMs with guided, production-ready setup\nWorking together in sync, Workload and Platform Skills achieves 5x development speed compared to general-purpose agents like Claude Code and Cursor.\nGet started by installing these skills via the Anyscale CLI:\npip install -U anyscale\nanyscale login\nanyscale skills install --platform claude-code\n# or\nanyscale skills install --platform cursor\nIn parallel, Anyscale is laun",
+    "source_url": "https://anyscale.com/blog/announcing-anyscale-agent-skills-ray?utm_source=anyscaleeyebrow",
+    "tags": [
+      "infra",
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Anyscale — about",
+    "description": "Machine learning and AI are urgent competitive necessities, but companies struggle with scale, production, and expertise. With Ray and Anyscale, developers of all skill levels can easily build applications that run at any scale, from a laptop to a data center.\nWe believe that every developer and every team should be able to succeed with AI without worrying about building and managing infrastructure.\nMake scalable computing effortless\nBuild the future of distributed computing for AI and ML workflows\nWe developed Ray, an open source project, at the UC Berkeley RISELab to solve ML and AI scaling challenges.\nTo make the toughest problems in distributed computing even easier for developers to solve, we built Anyscale: a fully-managed compute platform for Ray.\nFast forward to today, where developers at industry leaders like Uber, OpenAI, Shopify, and Amazon are building their next-generation ML platforms using Ray. And we’re going to keep building—because the future of computing is distributed.\nSan Francisco HQ 600 Harrison Street, 4th Floor San Francisco, CA 94107 (415) 267-9902\nFor media inquiries, please contact press@anyscale.com\nIf you’re excited about enabling every developer and e",
+    "source_url": "https://anyscale.com/about",
+    "tags": [
+      "infra",
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Modal — modal.com",
+    "description": "AI infrastructure that\ndevelopers love\nDesigned to help AI teams\ndeploy faster.\nProgrammable infra\nDefine everything in code, no YAML or config files. Keep environment and hardware requirements in sync.\nBuilt for performance\nLaunch and scale containers in seconds to keep feedback loops tight and latency low.\nElastic GPU scaling\nElastic GPU capacity and access to thousands of GPUs across clouds. No quotas or reservations. Scale back to zero when not in use.\nUnified observability\nIntegrated logging and full visibility into every function, container, and workload.\nPowering any ML workload\nBuild on a powerful foundation\nFrom filesystem to runtime, every layer of Modal’s platform is engineered to give you the tools to build robust, scalable data applications.\nAI-native runtime\nBuilt-in storage layer\nFirst-party integrations\nMulti-cloud capacity pool\nSecurity and governance\n“We use Modal to run edge inference with <10ms overhead and batch jobs at large scale. Our team loves the platform for the power and flexibility it gives us.”\nBrian Ichter, Co-founder\n“Modal makes it easy to write code that runs on 100s of GPUs in parallel, transcribing podcasts in a fraction of the time.”\nMike Cohen,",
+    "source_url": "https://modal.com",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Modal Blog — quora-case-study",
+    "description": "How Quora uses Modal to run thousands of Python sandboxes simultaneously\nQuora is a Q&A platform where users can ask, answer, and peruse questions on a variety of topics. With 400 million monthly unique visitors, it’s an invaluable contributor to the world’s knowledge-sharing. Quora uses Modal Sandboxes to securely execute LLM-generated code in Poe, their AI chatbot platform. The team shipped months earlier using Modal rather than building in-house. They’re also saving an ongoing 2 engineers’ worth of infrastructure maintenance time!\nHello, Poe\nIn 2023, Quora launched Poe, an AI chatbot platform where anyone can deploy a public chatbot. With millions of monthly active users, Poe is the default destination for many AI builders to experiment with different models. Quora has since raised $75M to keep expanding Poe.\nA code interpreter for Poe\nMany of the LLM bots in Poe can generate code, and users expected to run that code in Poe rather than copy-pasting it to their editors. The Quora team needed a way to safely execute code in Poe in a completely isolated way, keeping that code separate from both the main Quora infrastructure and any other user’s session.\nThere were three key require",
+    "source_url": "https://modal.com/blog/quora-case-study",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Modal Blog — ramp-case-study",
+    "description": "How Ramp automated receipt processing with fine-tuned LLMs\nRamp uses Modal to fine-tune their LLMs and scale batch processing. With Modal, Ramp was able to accelerate development of their text-to-structured-JSON model for receipt management, driving down receipts requiring manual intervention by 34%.\nAbout Ramp\nRamp is rebuilding the CFO suite. It combines corporate cards and expense management, vendor management and price intelligence, procurement, bill payments, and accounting integrations into a unified platform designed to save time and money with every click. Businesses use Ramp as their primary spend management solution to fully automate non-payroll spend and streamline their financial operations. Time consuming tasks for finance teams like uploading receipts, paying vendors, and tracking spend are managed seamlessly in Ramp’s user-friendly interface.\nThe problem: Fine-tuning with custom code is a pain\nOne of Ramp’s flagship products is its intelligent receipt submissions flow, which uses an LLM to transform OCR data to structured JSON.\nRamp initially tried LLM providers like OpenAI but were not able to get the customizability they wanted and were also concerned about cost, r",
+    "source_url": "https://modal.com/blog/ramp-case-study",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Modal Blog — substack-case-study",
+    "description": "Why Substack moved their AI and ML pipelines to Modal\nSubstack is a popular online platform for writers to publish newsletters, with over 17k writers and $300M in paid subscription volume.\nSubstack employs ML for various purposes, including spam detection, newsletter recommendations, audio transcription, sentiment analysis, and image generation. For nearly all these models Substack has moved both training and deployment from AWS SageMaker to Modal.\nThe challenges deploying AI and ML before Modal\nPreviously, Substack’s training and deployment pipelines were built on AWS SageMaker and orchestrated with Airflow. Adding or updating models was a slow and painful process for a few reasons.\nOne, the developer experience on SageMaker was convoluted. Engineers had to navigate to the SageMaker product, create a notebook, specify machine requirements, and wait for that machine to turn on, all before a single line of code could be written. Not to mention the difficulty of juggling multiple remote environments—from the Jupyter notebooks to the SageMaker training machines to the final production infra.\nTwo, collaborating was difficult. Mike Cohen, Head of AI and MLE at Substack, found that his t",
+    "source_url": "https://modal.com/blog/substack-case-study",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Modal Blog — lovable-case-study",
+    "description": "How Modal powered 250,000 Lovable app creations in a weekend\nLovable is one of the fastest growing startups in history, having hit $75M ARR a mere 7 months after they launched. Lovable is on a mission to build the “last piece of software,” enabling anyone to create fully functional applications without writing code. Users enter a prompt describing the app they want, and Lovable generates the code, spins up the application, and enables real-time visual edits. Lovable uses Modal Sandboxes at massive scale to run LLM-generated code for thousands of apps in safe and isolated sandboxes.\nThe problem: performance and reliability at scale\nIn June 2025, Lovable had a major promotional weekend event coming up, in collaboration with Anthropic, OpenAI, and Google. This event was set to dramatically increase user activity.\nUnfortunately, Lovable’s existing code sandbox provider—a distributed cloud VM platform—raised concerns around scalability and operational risk. The team wasn’t confident the provider could scale fast enough to meet the expected demand, and with only this single vendor in place, Lovable was exposed to high risk of service disruption.\nBuild vs. buy\nLovable explored building th",
+    "source_url": "https://modal.com/blog/lovable-case-study",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Galileo — www.rungalileo.io",
+    "description": "Don't just monitor AI failures. Stop them.\nGalileo is the AI observability and eval engineering platform where offline evals become production guardrails.\nCapture your groundtruth\nBuild your datasets from synthetic, development, and live production data. Capture subject matter expert annotations to create a living asset that continuously grounds your AI systems.\nBuild accurate evals\nDon't settle for generic evals with less than 70% F1 scores. Galileo auto-tunes metrics from live feedback to create evals that are fit to your environments.\nGo from evals to guardrails\nToday’s evals are tomorrow’s guardrails. But only if you can run them at scale. Distill your optimized evals into Luna models that monitor 100% of your traffic at 97% lower cost.\nSolve the AI measurement problem\nYou can't ship when you're flying blind. Start with 20+ out-of-box evals for RAG, agents, safety, and security—then build the custom evaluators to encode your domain expertise. Only Galileo distills expensive LLM-as-judge evaluators into compact Luna models that run with low-latency and low-cost.\nAccelerate your deployments\nDevelopers need to know what to fix. So Galileo's insights engine analyzes agent behavior ",
+    "source_url": "https://www.rungalileo.io",
+    "tags": [
+      "eval-tools",
+      "observability"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Galileo — about",
+    "description": "Building the Future of Reliable AI\nAI systems will reinvent how work gets done, but non-deterministic LLMs introduce risk. The key to success is reliability. Teams need a new workflow that puts reliability at the heart of AI initiatives.\nDriven to innovate\nAt Galileo, we believe that AI can be trustworthy, safe, and observable. We're helping builders create that future with workflows that span evaluation, monitoring, observability, and real-time guardrails. AI systems will only grow in complexity, and our mission is to sift through all the signals to help developers fix unexpected behaviors.\nAI applications continue to change quickly. LLMs advance every week, and so do user expectations. It's hard to know if your app is ready for tomorrow. The key to success is continuous improvement, blocking mistakes in production and then immediately bringing that learning back into the development cycle. By bringing the power of evaluation to the whole development lifecycle, Galileo delivers a loop of fast feedback, so you can drive rapid improvement based on real user experiences.\nThere's no faster way to ship reliable AI applications.\nLeadership\nGalileo was founded in 2021 to pursue a vision ",
+    "source_url": "https://www.rungalileo.io/about",
+    "tags": [
+      "eval-tools",
+      "observability"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Tavily — tavily.com",
+    "description": "Trusted by 1M+ developers around the world\n/the web access layer for agents\nRetrieve live web data, extract relevant content, and return it structured and chunked for models, so agents reason over facts without hallucinating.\nA production-grade retrieval stack with real-time search, intelligent caching, and indexing keeps latency predictable as traffic grows.\nRequests pass through security, privacy, and content validation layers that block PII leakage, prompt injection, and malicious sources.\n/benchmarks\n/proof is in the numbers\n100M+\nmonthly requests handled\n99.99% uptime\nSLA powering mission-critical systems\n180 ms\np50 on Tavily /search making us fastest on the market\n1M+\ndevelopers using Tavily\nBillions\nof pages crawled and extracted without downtime\nDrop-in integration\nwith leading LLM providers (OpenAI, Anthropic, Groq)",
+    "source_url": "https://tavily.com",
+    "tags": [
+      "rag",
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Tavily Blog — accelerate-ai-development-databricks-discover-govern-and-build-mcp-and-agent-bricks",
+    "description": "Connect your AI agents to a growing ecosystem of governed external services via the new MCP Catalog and Databricks Marketplace\nby Elise Gonzales, Nikhil Gaekwad and Harish Gaur\nData intelligence is transforming how enterprises operate, allowing organizations to build AI agents that reason over vast amounts of proprietary data. A critical component of this evolution is the ability for AI agents to connect to external services and third-party data assets to take real-world actions. This is where the Model Context Protocol (MCP) shines, acting as a standardized way for LLMs to access external tools.\nHowever, leveraging MCP at scale presents three major enterprise challenges:\nDatabricks now addresses these challenges with a secure, unified, and scalable MCP experience within Agent Bricks: the MCP Catalog (Beta) for discovery and governance, an MCP in Databricks Marketplace (Public Preview) to access a growing ecosystem of external tools, and integration with the Supervisor Agent (Beta) to enable agentic orchestration.\nThis launch, part of Databricks’ Week of Agents, advances our vision for AI that accurately reasons on your data. By unifying governance, discovery, and real-time action ",
+    "source_url": "https://www.databricks.com/blog/accelerate-ai-development-databricks-discover-govern-and-build-mcp-and-agent-bricks",
+    "tags": [
+      "rag",
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Tavily Blog — jetbrains-tavily",
+    "description": "JetBrains + Tavily\nJetBrains built its AI Assistant to help developers code faster, but keeping answers up to date was a challenge. By integrating Tavily’s real-time web and scoped documentation search, JetBrains delivered accurate, current responses directly inside the IDE, saving months of engineering effort and delighting developers.\nAI Assistants: Supporting Real-Time Knowledge Integration\nJetBrains is known worldwide for its powerful development tools and IDEs, including IntelliJ IDEA, PyCharm, and ReSharper. The company’s mission has always been clear: help developers write better code, faster.\nAs part of its AI strategy, JetBrains set out to build JetBrains AI Assistant, bringing cutting-edge AI capabilities directly into IDEs. One recurring request from customers was ensuring the assistant could access current information from the web—especially developer documentation. That’s when JetBrains turned to Tavily.\nInitially, the assistant struggled to answer questions about recent releases or framework updates. Developers quickly noticed the gap when asking straightforward queries like “What’s the latest version of Kotlin?” or “How do I do this in NumPy?” JetBrains explored seve",
+    "source_url": "https://www.tavily.com/blog/jetbrains-tavily",
+    "tags": [
+      "rag",
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Tavily — about",
+    "description": "/about us\nThe agentic web is vast and unstructured. Tavily delivers high-quality, fresh, and structured web context, making it easy for agents to stay grounded as they scale from prototypes to production.\n/our mission\nOur mission is to help AI agents navigate the web quickly and efficiently by shaping the context they see. We prioritize relevance, freshness, and efficiency so agents reason accurately without wasting tokens.\n/team\nWe’re a team of collaborators, builders, and deep thinkers, obsessed with making reliable web access possible for AI agents in the real world. We move quickly, support each other, and stay focused on shipping systems that deliver real impact in production.",
+    "source_url": "https://tavily.com/about",
+    "tags": [
+      "rag",
+      "agent-runtime"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Mistral — mistral.ai",
+    "description": "Frontier AI.In your hands.\nWe help organizations build tailored AI systems\nto solve the world’s hardest problems.\nYour AI future belongs in your hands.\nFrontier intelligence, customized to you.\nMake your AI your own. Train, distill, fine-tune, and build with state-of-the-art open source models.\nEnterprise agents with deep context.\nDeploy agents that execute, adapt, and deliver real results—with powerful orchestration, tooling, and safety.\nSelf-contained private deployments.\nBuild privately anywhere—on-premises, cloud, edge, devices, and more—while retaining full control of your data.\nDeeply engaged solutioning and value delivery.\nHands-on assistance from the world’s foremost applied AI scientists across deployment, solutioning, safety, and beyond.\nDeployed in production.\nRead all",
+    "source_url": "https://mistral.ai",
+    "tags": [
+      "agent-runtime",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Mistral — about",
+    "description": "Frontier AI. For all of us.\nWe exist to make frontier AI accessible to everyone.\nWe believe in a future where AI is abundant and accessible.\nWe aspire to empower the world to build with—and benefit from—the most significant technology of our time.\nWe are Mistral AI, a pioneering French artificial intelligence startup founded in April 2023 by three visionary researchers: Arthur Mensch, Guillaume Lample, and Timothée Lacroix.\nUnited by their shared academic roots at École Polytechnique and experiences at Google DeepMind and Meta, they envisioned a different, audacious approach to artificial intelligence—to challenge the opaque-box nature of ‘big AI’, and making this cutting-edge technology accessible to all.\nThis manifested into the company’s mission of democratizing artificial intelligence through open-source, efficient, and innovative AI models, products, and solutions.\n800+\n800+\nTeam members\n30+\n30+\nDifferent nationalities\n50%\n50%\nFemale leaders",
+    "source_url": "https://mistral.ai/about",
+    "tags": [
+      "agent-runtime",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Groq — groq.com",
+    "description": "Speed at a winning cost\nInference is Fuel for AI\nGroq delivers fast, low cost inference that doesn’t flake when things get real.\nBorn for this. Literally.\nTo deliver different results, you need a different stack.\nOthers rely on GPUs alone. Our edge? Custom silicon.\nGroq pioneered the LPU in 2016, the first chip purpose-built for inference. Every design choice focuses on keeping intelligence fast and affordable.\nBenchmarks don’t ship. Workloads do.\nInstant intelligence. Deployed worldwide.\nInference works best when it’s local. Groq’s LPU-based stack runs in data centers across the world to deliver low-latency responses from the most intelligent models.\nThe LPU is the cartridge. GroqCloud is the console.\nDevs trust GroqCloud for inference that stays smart, fast and affordable.\nWhat inference provider are you using or considering using to access models?\nSource: Artificial Analysis AI Adoption Survey 2025\nPartnership Spotlight\nThe McLaren Formula 1 Team chooses Groq for inference.\nThe McLaren F1 Team is fueled by decision-making, analysis, development and real-time insights. So the McLaren F1 Team chose Groq.\nIf we have things where performance matters more, we come to Groq - you deliv",
+    "source_url": "https://groq.com",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Groq Blog — day-zero-support-for-openai-open-models",
+    "description": "Day Zero Support for OpenAI Open Models\nFast and Affordable AI Inference For the World’s Most Popular Models\nWe're excited to announce that GroqCloud now supports the much anticipated OpenAI open models, openai/gpt-oss-120B\nand openai/gpt-oss-20B\n! This launch brings day-zero support for the latest open models, empowering developers worldwide to build innovative AI applications with unprecedented speed, scale, and production reliability.\nFull Model Capabilities\nTo get the most out of OpenAI's open models, extended context and tools like code execution and browser search are essential. Groq's platform delivers these capabilities from day zero, with full support for 128K token context length and built-in tools such as code execution and browser search. This enables developers to build complex workflows, provide accurate and relevant information, and leverage real-time reasoning.\nIn conjunction with the release of these models, we have also added a new Responses API on GroqCloud that is fully compatible with OpenAI's Responses API, making it easy to integrate advanced conversational AI capabilities into your applications.\nOpenAI GPT-OSS-120B/20B Pricing\nGroq's purpose-built stack is d",
+    "source_url": "https://groq.com/blog/day-zero-support-for-openai-open-models",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Groq Blog — from-speed-to-scale-how-groq-is-optimized-for-moe-other-large-models",
+    "description": "From Speed to Scale: How Groq Is Optimized for MoE & Other Large Models\nYou know Groq runs small models. But did you know we run large models including MoE uniquely well? Here’s why.\nThe Evolution of Advanced Openly-Available LLMs\nThere’s no argument that Artificial intelligence (AI) has exploded, in part because of the advancements in large language models (LLMs). These models have shown some amazing capabilities when it comes to natural language processing, from text generation to complex reasoning. As LLMs become even more sophisticated, one of the biggest challenges is scaling them efficiently. That’s where Groq comes in, a company at the forefront of AI hardware innovation, addressing this challenge with its groundbreaking LPU.\nIn the past few years, the AI community has seen a surge in open-source LLMs, including models like Llama, DeepSeek, and Qwen. These models have democratized AI – making it possible for researchers and developers to access cutting-edge AI technology without being limited by proprietary systems. As a result, we’ve seen the emergence of smaller, more efficient models, as well as larger, more powerful ones. While smaller models are ideal for more general p",
+    "source_url": "https://groq.com/blog/from-speed-to-scale-how-groq-is-optimized-for-moe-other-large-models",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cursor — cursor.com",
+    "description": "Context Usage Breakdown\nBuilt to make you extraordinarily productive, Cursor is the best way to code with AI.\nThis element contains an interactive demo for sighted users showing multiple Cursor interfaces: Cursor Desktop interface, Cursor CLI interface. The interface is displayed over a subtle, solid brand background.\nTrusted every day by teams that build world-class software\nAgents turn ideas into code\nAccelerate development by handing off tasks to Cursor, while you focus on making decisions.\nLearn about agentic development →\nThis element contains an interactive demo for sighted users. It's a demonstration of Cursor's IDE showing AI-powered coding assistance features. The interface is displayed over a subtle, solid brand background.\nWorks autonomously, runs in parallel\nAgents use their own computers to build, test, and demo features end to end for you to review.\ncursor.com/agent\nAcme Research Dashboard\nAdd a follow up...\nIn every tool, at every step\nCursor runs in your terminal, collaborates in Slack, and reviews PRs in GitHub.\ncurl https://cursor.com/install -fsS | bash\nThis element contains an interactive demo for sighted users showing multiple Cursor interfaces: the CLI with co",
+    "source_url": "https://cursor.com",
+    "tags": [
+      "coding-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cursor Blog — composer-2-technical-report",
+    "description": "A technical report on Composer 2\nWe posted to the arXiv a technical report on the training of Composer 2, our coding model for agentic software engineering. The report covers the full training process, from continued pretraining on an open base model, Kimi K2.5, through large-scale reinforcement learning, with a focus on closely emulating the real Cursor environment.\nContinued pretraining and RL\nComposer 2 is trained in two phases: continued pretraining on a data mix that emphasizes code to deepen the base model's coding knowledge, followed by large-scale reinforcement learning to improve end-to-end agent performance. We find that reducing pretraining loss improves downstream RL performance, with better base knowledge reliably translating into a better agent.\nComposer 2 RL training occurs in realistic Cursor sessions with the same tools and harness the deployed model uses, applied to a problem distribution that reflects the full range of what developers ask Composer to do. We find that RL training improves both average and best-of-K performance, suggesting the model is learning new solution paths rather than just concentrating on known ones.\nReal-world evaluation with CursorBench\nA",
+    "source_url": "https://cursor.com/blog/composer-2-technical-report",
+    "tags": [
+      "coding-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cursor Blog — cursor-3",
+    "description": "Meet the new Cursor\nSoftware development is changing, and so is Cursor.\nIn the last year, we moved from manually editing files to working with agents that write most of our code. How we create software will continue to evolve as we enter the third era of software development, where fleets of agents work autonomously to ship improvements.\nWe're building toward this future, but there is a lot of work left to make it happen. Engineers are still micromanaging individual agents, trying to keep track of different conversations, and jumping between multiple terminals, tools, and windows.\nWe're introducing Cursor 3, a unified workspace for building software with agents. The new Cursor interface brings clarity to the work agents produce, pulling you up to a higher level of abstraction, with the ability to dig deeper when you want. It's faster, cleaner, and more powerful, with a multi-repo layout, seamless handoff between local and cloud agents, and the option to switch back to the Cursor IDE at any time.\nWhat's new in Cursor 3\nWhen we started building Cursor, we forked VS Code instead of building an extension so we could shape our own surface. With Cursor 3, we took that a step further by b",
+    "source_url": "https://cursor.com/blog/cursor-3",
+    "tags": [
+      "coding-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cursor Blog — composer-2",
+    "description": "Introducing Composer 2\nComposer 2 is now available in Cursor.\nIt's frontier-level at coding and priced at $0.50/M input and $2.50/M output tokens, making it a new, optimal combination of intelligence and cost. We also released a technical report on how we trained it.\nFrontier-level coding intelligence\nWe're rapidly improving the quality of our model. Composer 2 delivers large improvements on all benchmarks we measure, including Terminal-Bench 2.01 and SWE-bench Multilingual:\nThese quality improvements come from our first continued pretraining run, which provides a far stronger base to scale our reinforcement learning.\nFrom this base, we train on long-horizon coding tasks through reinforcement learning. Composer 2 is able to solve challenging tasks requiring hundreds of actions.\nTry Composer 2\nComposer 2 is priced at $0.50/M input and $2.50/M output tokens.\nThere is also a faster variant with the same intelligence at $1.50/M input and $7.50/M output tokens, which has a lower cost than other fast models2. We're making fast the default option. See our model docs for full details.\nOn individual plans, Composer usage is part of a standalone usage pool with generous usage included. Try C",
+    "source_url": "https://cursor.com/blog/composer-2",
+    "tags": [
+      "coding-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Cursor Blog — cursorbench",
+    "description": "How we compare model quality in Cursor\nDevelopers are asking coding agents to take on longer, more complex tasks that span multiple files, tools, and steps. As these requests grow in scope, the evals that measure agent performance need to evolve with them.\nAt Cursor, we use a hybrid online-offline eval process to keep our understanding of model quality aligned with what developers actually do.\nThe offline part uses CursorBench, our internal eval suite based on real Cursor sessions from our engineering team. Because tasks come from actual Cursor usage rather than public repositories, CursorBench is both better at distinguishing between models and more aligned with real developer outcomes than public benchmarks.\nWe built CursorBench to measure multiple dimensions of agent performance including solution correctness, code quality, efficiency, and interaction behavior. This blog focuses on solution correctness results, but in practice we evaluate agents across all of these axes.\nWe supplement CursorBench with controlled analysis on live traffic. These online evals catch regressions that offline suites miss, like where the agent's output looks correct to a grader but feels worse to a dev",
+    "source_url": "https://cursor.com/blog/cursorbench",
+    "tags": [
+      "coding-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Replit — replit.com",
+    "description": "Creativity runs on Replit\nInfinite Canvas\nIntroducing a new space that allows you to explore and tweak designs visually, and then apply them directly to your app.\nParallel Agents\nParallel Agents run tasks together, keeping progress visible. Handle auth, database, and design seamlessly.\nMultiple Artifacts\nCreate mobile and web apps, landing pages, and videos in one project with shared design. Build everything as your project scales without context switching.\nSupport for Teams\nYour team can focus on planning your app while the Agent handles all the messy coordination and execution. Submit requests in any order, and Agent 4 intelligently sequences them and executes in the best order.\nAgent chat\nDescribe it.\nPublish it.\nDescribe and publish your project. The Agent writes production-ready code, evolves it, and stays out of your way.\nFull stack infrastructure\nBuild & scale your apps easily.\nBuilt-in services with zero setup- Authentication, Database, Hosting, and Monitoring, enabling you to build fully scalable apps easily and securely from day one.\nIntegrations\nConnect to AI & services.\nEnhance your apps with AI and 100+ integrations. Connect to OpenAI, Stripe, Google Workspace, and mor",
+    "source_url": "https://replit.com",
+    "tags": [
+      "coding-agents"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Replit — about",
+    "description": "Empowering the next billion software creators\nYour full-stack solution for building apps that scale.\nWho we are\nWe believe software creation should be accessible to everyone,\nnot just programmers.\nOur mission is to empower anyone to bring their digital ideas to life, regardless of their technical background.\nWe envision a world where turning an idea into working software is as intuitive as drawing a picture or writing a story.\nWhat we're building\nWe're creating a platform that eliminates barriers between imagination and implementation by creating:\n- Intuitive tools that make software creation feel more natural\n- An Agent that empowers human creativity by handling technical complexities\nWhat inspires us\nWe focus on inspiring creativity, generating value for creators, and fostering a community where:\n- Software creation is as accessible as using a smartphone\n- Ideas become reality through conversation rather than code\nWhat drives us\nOur success is measured by:\n- Empowering more people to create software\n- Democratizing software creation\nMeet our leadership team\nAmjad Masad\nFounder & CEO\nHaya Odeh\nCo-Founder, Design\nLuis Héctor Chávez\nCTO\nMichele Catasta\nPresident\nScott Kennedy\nVP of ",
+    "source_url": "https://replit.com/about",
+    "tags": [
+      "coding-agents"
+    ],
+    "publish_date": ""
+  }
+]

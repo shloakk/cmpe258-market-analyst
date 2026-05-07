@@ -1,0 +1,322 @@
+[
+  {
+    "title": "LangChain Blog —",
+    "description": "Featured stories\nThank you! Your submission has been received!\nOops! Something went wrong while submitting the form.\nRecent stories\nPartner\nDeep Agents\nBuilding a company due diligence agent with Deep Agents, LangSmith and Parallel\n9\nmin\nCase Studies\nHow Madrigal Built a Flexible and Scalable Multi-Agent Research and Intelligence Platform for Pharma with LangChain and LangSmith\n11\nmin\nAgent Architecture\nLangSmith\nOpen Source\nHow LangSmith and LangChain OSS Help You Meet EU AI Act Requirements\n7\nmin\nCase Studies\nLangSmith\nHow Credit Genie used Insights Agent to improve their AI financial assistant\n5\nmin\nWe couldn't find anything matching that.\nTry a broader term, or explore all posts.\nSee what your agent is really doing\nLangSmith, our agent engineering platform, helps developers debug every agent decision, eval changes, and deploy in one click.",
+    "source_url": "https://blog.langchain.dev/",
+    "tags": [
+      "multi-agent-orchestration"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "LangChain Blog — Deep Agents",
+    "description": "Using an LLM to call tools in a loop is the simplest form of an agent. This architecture, however, can yield agents that are “shallow” and fail to plan and act over longer, more complex tasks. Applications like “Deep Research”, “Manus”, and “Claude Code” have gotten around this limitation by implementing a combination of four things: a planning tool, sub agents, access to a file system, and a detailed prompt.\nAcknowledgements: this exploration was primarily inspired by Claude Code and reports of people using it for more than just coding. What about Claude Code made it general purpose, and could we abstract out and generalize those characteristics?\nDeep agents in the wild\nThe dominant agent architecture to emerge is also the simplest: running in a loop, calling tools.\nDoing this naively, however, leads to agents that are a bit shallow. “Shallow” here refers to the agents inability to plan over longer time horizons and do more complex tasks.\nResearch and coding have emerged as two areas where agents have been created that buck this trend. All of the major model providers have an agent for Deep Research and for “async” coding tasks. Many startups and customers are creating versions of",
+    "source_url": "https://blog.langchain.dev/deep-agents",
+    "tags": [
+      "multi-agent-orchestration"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "HuggingFace Blog — Community",
+    "description": "NEW Articles from Team or Enterprise organizations will get promoted to the main section.\nLearning Maths for the Last Time\n•\n4\nIntroducing the agentic robotics appstore for 10,000 Reachy Minis\n•\n15\nThe 100 Most Popular Hardware Setups for AI Builders on Hugging Face\nSPIRALbase, Part 3: SPIRAL Cortex and Policy-First Memory\n🧠 I trained my own French LLM from scratch — alone, with a 1080 Ti, and the power went out ⚡🇫🇷\n•\n3\n🧠 J'ai entraîné mon propre LLM français from scratch — seul, avec une 1080 Ti, et le courant a coupé ⚡🇫🇷\n•\n1\nAI Safety Without Panopticons: A Canadian Framework for Companion AI That Protects Users Without Turning Private Chats Into Police Files\n•\n1\nBuilding MoulSot: How We Curated 1,500 Hours of Moroccan Darija Speech, Selected the Best 80 Hours for Transcription, and Fine-Tuned Qwen3-ASR on Top of It\n•\n1\nOrganon: a skill-first agent architecture for end-to-end scientific workflows\n•\n1\nPixel Art Bench: Evaluating Structured Generation in Language Models\n•\n1\nBuild a legal RAG app that won't be held in contempt\n•\n3\nPRO-D ECOSYSTEM: REI_484x\n•\n1\nCiberIA CRS Benchmark: Technical Evaluation of GROK AUTO under Cognitive Stability and Cybersecurity Criteria\nTHE RANDOM CUR",
+    "source_url": "https://huggingface.co/blog/community",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "HuggingFace Blog — Eval Costs Bottleneck",
+    "description": "AI evals are becoming the new compute bottleneck\nSummary. AI evaluation has crossed a cost threshold that changes who can do it. The Holistic Agent Leaderboard (HAL) recently spent about $40,000 to run 21,730 agent rollouts across 9 models and 9 benchmarks. A single GAIA run on a frontier model can cost $2,829 before caching. Exgentic's $22,000 sweep across agent configurations found a 33× cost spread on identical tasks, isolating scaffold choice as a first-order cost driver, and UK-AISI recently scaled agentic steps into the millions to study inference-time compute. In scientific ML, The Well costs about 960 H100-hours to evaluate one new architecture and 3,840 H100-hours for a full four-baseline sweep. While compression techniques have been proposed for static benchmarks, new agent benchmarks are noisy, scaffold-sensitive, and only partly compressible. Training-in-the-loop benchmarks are expensive by construction, and when you try to add reliability to these evals, repeated runs further multiply the cost.\nMaking static LLM benchmarks cheaper\nThe cost problem started before agents. When Stanford's CRFM released HELM in 2022, the paper's own per-model accounting showed API costs ra",
+    "source_url": "https://huggingface.co/blog/evaleval/eval-costs-bottleneck",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "HuggingFace Blog — Reachymini Appstore",
+    "description": "Introducing the agentic robotics appstore for 10,000 Reachy Minis\nToday we're shipping an agentic toolkit for Reachy Mini, our open-source desktop robot. You describe the behavior you want in plain English, and an AI agent writes, tests, ships the code to the robot and iterates with you to get it working. No SDK to learn, no robotics background needed.\nIf you have a Reachy Mini (or just want to play in the browser simulator), you can get started right now by asking your favorite agent something like:\nHelp me build a Reachy Mini app that waves and says hello when\nsomeone walks into the room.\nUse the open-source code at https://github.com/pollen-robotics/reachy_mini\nand the docs at https://huggingface.co/docs/reachy_mini/index\nSo far, the community has shipped over 200 apps, built by 150+ different creators, most of whom had never written robotics code before. Last week another batch of almost 3,000 robots went out to customers worldwide, taking the install base to nearly 10,000 units in the wild. More than 1,000 additional units will ship in the next 30 days.\nFor sixty years, robots were built by roboticists. When the hardware is open-source, the software is open-source, and an AI a",
+    "source_url": "https://huggingface.co/blog/clem/reachymini-appstore",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "HuggingFace Blog — Neo Unify",
+    "description": "NEO-unify: Building Native Multimodal Unified Models End to End\nExisting Multimodal AI Dilemma\nFor years, multimodal AI typically adopts a vision encoder (VE) to perceive and a variational autoencoder (VAE) to generate. Recent efforts seek to unify both with a shared tokenizer — but often with trade-offs. We return to the first principles: Building a model that directly engages with native inputs — pixels and words.Today, SenseTime, in collaboration with NTU, introduces a native, unified, end-to-end paradigm dubbed NEO-unify (preview) — stepping beyond representation arguments, and breaking free from pre-trained priors or scaling-law bottlenecks. No VE! No VAE!\nNEO-unify: End-to-End Native Unified Model Paradigm\nNEO-unify is the first step toward truly end-to-end unified models, learning directly from near-lossless inputs via a representation space shaped by the model itself. NEO-unify incorporates: 1) near-lossless visual interface for input and output, 2) native Mixture-of-Transformer (MoT) synergizing understanding and generation, 3) unified learning with autoregressive cross-entropy for texts and pixel flow matching for vision.\nModel Performance\n1. Quantitative Results\n2. Quali",
+    "source_url": "https://huggingface.co/blog/sensenova/neo-unify",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "HuggingFace Blog — Pallas For Beginners",
+    "description": "Pallas for people who know JAX but not kernels yet\njax.numpy\nergonomics.\nPallas currently lowers to Mosaic on TPUs and Mosaic GPU on newer NVIDIA GPUs. There is also a Triton GPU backend, but it is maintained on a best-effort basis and not recommended for new use. Mosaic GPU is currently aimed at Hopper and newer GPUs.\nWhat is a kernel?\nIn operating systems, “kernel” means the core program managing the machine. In numerical programming, a kernel is different, it is a small function intended to run close to the hardware, often many times in parallel.\nA good mental model is:\nA kernel is not “the whole computation”. A kernel is the work done by one worker on one piece of the computation.\nFor example, if you add two vectors of length 1024, ordinary JAX lets you write:\nx + y\nPallas asks a more explicit question:\nWhich slice of\nx\nandy\ndoes this particular program instance read, and where does it write the answer?\nPallas is not just “JAX but faster”. It is JAX with memory and tiling model exposed.\nHello world in Pallas: adding two vectors\nimport jax\nimport jax.numpy as jnp\nfrom jax.experimental import pallas as pl\ndef add_vectors_kernel(x_ref, y_ref, o_ref):\nx = x_ref[...]\ny = y_ref[...]\n",
+    "source_url": "https://huggingface.co/blog/ariG23498/pallas-for-beginners",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "HuggingFace Blog — Kv Caching",
+    "description": "KV Caching Explained: Optimizing Transformer Inference Efficiency\nIntroduction\nWhen AI models generate text, they often repeat many of the same calculations, which can slow things down. Key-Value caching is a technique that helps speed up this process by remembering important information from previous steps. Instead of recomputing everything from scratch, the model reuses what it has already calculated, making text generation much faster and more efficient.\nIn this blogpost, we’ll break down KV caching in an easy-to-understand way, explain why it’s useful, and show how it helps AI models work faster.\nPrerequisites\nTo fully grasp the content, readers should be familiar with:\n- Transformer Architecture: Familiarity with components such as the attention mechanism.\n- Autoregressive Modeling: Understanding of how models like GPT generate sequences.\n- Linear Algebra Basics: Concepts like matrix multiplication and transposition, which are essential for understanding attention computations.\nThis 👉 BLOG should cover up most of the prerequisites needed for this article.\nclick here for some of the most essential takeaways.\n- attention weight has a shape of\n- masked multi-head attention allows",
+    "source_url": "https://huggingface.co/blog/not-lain/kv-caching",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "HuggingFace Blog — Finetuning Ternary Llms Tii Axolotl",
+    "description": "Training low-bit ternary models with Axolotl\nModels: https://huggingface.co/collections/axolotl-ai-co/falcon-e-bitnet\nRecent work such as Bonsai-1bit showed strong interests in producing low-bit LLMs for the community, to enable more capabilities that can be run on edge devices and constrained resources. Throughout this collaboration, we focused on making 1.58-bit (ternary LLMs) training more accessible to the community, by integrating the training of TII's Falcon BitNet series of models into axolotl. We also release to the community experimental models, trained with a pure SFT stage using axolotl starting from prequantized and bfloat16 versions of existing ternary format LLMs, as well as DPO-finetuned variants, in order to demonstrate the feasibility of BitNet fine-tuning to the community.\nWhat is BitNet (ternary format LLMs)?\nBitnet has been introduced by Microsoft in the paper The Era of 1-bit LLMs: All Large Language Models are in 1.58 bits back in 2024, where the idea is to simply train models to become resilient to ternary format quantization (i.e. weights being either -1, 0 or 1). This is achieved by injecting quantization errors during training into the model weights and ac",
+    "source_url": "https://huggingface.co/blog/axolotl-ai-co/finetuning-ternary-llms-tii-axolotl",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "HuggingFace Blog — Abliteration",
+    "description": "Uncensor any LLM with abliteration\nThe third generation of Llama models provided fine-tunes (Instruct) versions that excel in understanding and following instructions. However, these models are heavily censored, designed to refuse requests seen as harmful with responses such as \"As an AI assistant, I cannot help you.\" While this safety feature is crucial for preventing misuse, it limits the model's flexibility and responsiveness.\nIn this article, we will explore a technique called \"abliteration\" that can uncensor any LLM without retraining. This technique effectively removes the model's built-in refusal mechanism, allowing it to respond to all types of prompts.\nThe code is available on Google Colab and in the LLM Course on GitHub.\n✂️ What is abliteration?\nModern LLMs are fine-tuned for safety and instruction-following, meaning they are trained to refuse harmful requests. In their blog post, Arditi et al. have shown that this refusal behavior is mediated by a specific direction in the model's residual stream. If we prevent the model from representing this direction, it loses its ability to refuse requests. Conversely, adding this direction artificially can cause the model to refuse ",
+    "source_url": "https://huggingface.co/blog/mlabonne/abliteration",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Mistral Blog — Vibe Remote Agents Mistral Medium 3 5",
+    "description": "Remote agents in Vibe.\nPowered by Mistral Medium 3.5.\nIntroducing Mistral Medium 3.5, remote coding agents in Vibe, plus new Work mode in Le Chat for complex tasks.\nCoding agents have mostly lived on your laptop. Today we're moving them to the cloud, where they run on their own, in parallel, and notify you when they're done. You can start them from the Mistral Vibe CLI or directly in Le Chat, offloading a coding task without leaving the conversation.\nPowering this is Mistral Medium 3.5 in public preview, our new default model in Mistral Vibe and Le Chat, built to run for long stretches on coding and productivity work. The new Work mode in Le Chat (Preview) extends this with a powerful agent for complex, multi-step tasks like research, analysis, and cross-tool actions.\nHighlights.\n- Mistral Medium 3.5, a new flagship model that merges instruction-following, reasoning, and coding into a single 128B dense model. Released as open weights, under a modified MIT license.\n- Strong real-world performance at a size that runs self-hosted on as few as four GPUs.\n- Mistral Vibe remote agents for async coding: sessions run in the cloud, can be spawned from the CLI or Le Chat, and a local CLI ses",
+    "source_url": "https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5",
+    "tags": [
+      "agent-runtime",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Pinecone Blog — Knowledge Infrastructure For Agents",
+    "description": "The Primary User Is Changing\nEvery technological paradigm shift produces a defining data infrastructure category. Relational databases for client-server. Object stores for clouds. Vector databases for Assistive AI.\nPinecone built the market-leading vector database. 800,000+ active developers and 9,000+ paying customers run their AI on it: semantic search, recommendation systems, retrieval-augmented generation. We defined the category.\nThat Assistive AI category was built for a human user; type a query, get relevant documents back. It worked.\nNow agents are surpassing humans as the primary consumers of knowledge infrastructure. In this Agentic AI era, agents are performing tasks, stuck in brute-force loops. Retrieve a set of chunks. Read them. Realize something is missing. Retrieve more. Synthesize. Hit a conflict. Retrieve again. Roughly 85% of an agent’s effort is spent on knowledge retrieval and the output still requires human review before anyone can act on it.\nThe inevitable result: task completion rates stuck at 50–60%. Unpredictable latency that kills production SLOs. Outputs no enterprise can govern. And, downstream of all of it, runaway token costs. This is the “ten blue li",
+    "source_url": "https://www.pinecone.io/blog/knowledge-infrastructure-for-agents/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Pinecone Blog — Full Text Search",
+    "description": "For the technical deep dive into how FTS is built, see Full Text Search: Architecture and Design\nWhen semantic search hit production scale, the default move for retrieval was to embed text and search by meaning. As such, the surface area of what a query could match expanded: the same corpus, searched semantically, contained more retrievable signal than it had before.\nBut expanded coverage cuts both ways. The same property that lets a vague query find a relevant document also makes it harder to pin down an exact one. Precision for searching on specifics (i.e. a product SKU, a legal citation, a person's name, an error code) doesn't live in embedding space. So as retrieval systems matured, keyword matching came back into purview, not as a replacement for semantic search but as the natural complement.\nFull text search is now available in Pinecone, in Public Preview. BM25 scoring across multiple text fields per index, Lucene query syntax, and multi-language tokenization are all built in.\nOne index, text and vectors together\nA single index now holds text fields, dense vectors, sparse vectors, and filterable metadata, defined together in a schema set at index creation. Each text field tak",
+    "source_url": "https://www.pinecone.io/blog/full-text-search/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Pinecone Blog — Full Text Search Architecture",
+    "description": "Pinecone now supports full text search with a broad set of features: full Lucene-syntax queries, multi-field schemas, BM25 scoring, tokenization in 18 languages, stemming and stop-word removal, phrase matching search, new filters based on text match for vector search, and more.\n# Query: keyword search across title/body using Lucene query syntax (BM25 ranking)\nindex = pc.preview.index(name=\"transcripts\")\nresponse = index.documents.search(\nnamespace=\"animal-kingdom\",\nscore_by=[\n{\n\"type\": \"query_string\",\n\"query\": 'body:(\"nice marmot\")'\n}\n],\ntop_k=10,\ninclude_fields=[\"title\"],\n)\nfor match in response.matches:\nprint(match._id, match._score)\nWhy this matters: agents\nAgents need to complete tasks, write code, and answer questions. To retrieve the exact data needed, they have to combine different kinds of filters and scoring. Text is a big part of that.\nFor example, an agent might search through customer support transcriptions for new insights. It looks for user interactions that indicate frustration with wait times — but it has already flagged interactions that contain the words \"wait\" or \"waiting\" and wants to exclude those. And, it needs to consider only a specific geographic and time p",
+    "source_url": "https://www.pinecone.io/blog/full-text-search-architecture/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Pinecone Blog — Builder Plan",
+    "description": "I joined Pinecone six months ago to lead product-led growth. My focus: what it takes to go from building to scaling on the platform.\nTalking to customers, I learned what they were building: legal research tools, medical search assistants, educational knowledge bases replacing scattered docs and whitepapers. Real products, with real users, doing real work.\nWhat I heard consistently was that while the Starter tier is generous, free and capable enough to get a lot done, it started to feel tight past the prototype stage. The next available tier is Standard at $50/month, which is reasonable for teams already at scale, but hard to justify when your usage is still early and your workload generates nowhere near that every month. Having worked on developer tooling for close to a decade, much of it in open source, I recognized this friction immediately. Making powerful tooling accessible without surprising developers on cost was the job.\nBuilder is our attempt to fix that: a $20/month flat-rate plan designed for builders who've outgrown Starter, are ready to take their app to production, but haven't yet reached the scale that justifies Standard.\nWhat Builder is designed for\nThe limits on Bui",
+    "source_url": "https://www.pinecone.io/blog/builder-plan/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Pinecone Blog — Marketplace",
+    "description": "A surprising amount of what your team knows is already written down. It's in the manual somebody put together last year, in the onboarding doc that gets passed around every time a new hire starts, in the thread where the tricky edge case finally got resolved, in the contract language your legal team has explained a hundred times. The knowledge exists. It's catalogued, stored, and searchable in theory.\nBut it doesn't help the person who needs it at the moment they need it.\nSo you answer the question. Again. And again. You find yourself reaching for the same Google Doc, pasting the same three paragraphs into Slack, saying some version of \"we covered this in the handbook, let me find the section.\" The handbook has the answer. You have the answer. The person asking still can't get to it.\nThe part that's been broken\nThe tools that were supposed to solve this haven't. Enterprise search finds the document but leaves you to read the whole thing. Generic AI chatbots confidently make things up, or blend two policies together into an answer that sounds right but is wrong in a way you won't catch until it matters. Stuffing everything into a long context window works until the knowledge doesn't",
+    "source_url": "https://www.pinecone.io/blog/marketplace/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Pinecone Blog — Introducing Nexus Knowledge Engine",
+    "description": "Anyone building agents in production today has run into the same wall. The model itself is rarely the limiting factor as frontier models are capable of the reasoning most jobs require. What breaks is everything before the reasoning step. The agent gets a task, decides it needs information, searches, retrieves, evaluates results, decides it needs more, searches again, reads, fragments together a partial picture, and loops. By the time the model is in a position to produce an answer, most of the token and latency budget is already gone.\nThis is the gap that defines agent infrastructure right now. The discipline that's emerged around this problem is context engineering: shaping data into knowledge the model can use, instead of asking the agent to reassemble it from raw data at query time.\nOperationalizing these context pipelines is where teams get stuck, especially across a real company where the context needed for every domain (sales, legal, finance, support, R&D, ops) is shaped differently. Hand-building one context layer per domain doesn't scale past the first one or two.\nWe spent the last year working on this. The rest of this post is about why it's hard, what we built, and what w",
+    "source_url": "https://www.pinecone.io/blog/introducing-nexus-knowledge-engine/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Pinecone Blog — Dedicated Read Nodes Ga Features",
+    "description": "Pinecone Dedicated Read Nodes (DRN) are now generally available. For the full story on what DRN is and why it matters, read Pinecone Dedicated Read Nodes: Now Generally Available.\nDRN gives teams running revenue-critical systems a clear path to consistent low-latency retrieval under sustained load with predictable cost scaling. But once you ship to production, new questions surface: How do I know if I'm over-provisioned? How do I keep multi-tenant workloads isolated? Can I hit a latency target by trading off recall? Without answers, teams either over-spend on capacity they don't need or under-provision and risk latency spikes that hurt conversion.\nDRN answers those questions with four new capabilities that give teams deeper control and better observability.\nTL;DR\nWith GA, DRN adds four new production capabilities:\n- Configurable performance vs. recall per query\n- Metrics exporting for CPU visibility and external observability\n- A web console experience for day-2 operations\n- Multi-namespace support — early access\n1) Configurable performance versus recall, per query\nNot every query needs maximum recall. Some queries require high throughput at cost.\nInteractive experiences often requ",
+    "source_url": "https://www.pinecone.io/blog/dedicated-read-nodes-ga-features/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Pinecone Blog — Dedicated Read Nodes Ga",
+    "description": "Vector workloads aren't one-size-fits-all. Some applications, such as RAG systems, agents, prototypes, and scheduled jobs, have bursty, variable traffic. They spike, they idle, they spike again. Pinecone's On-Demand service is built for exactly this: elastic, usage-based, and cost-effective when query volume is unpredictable.\nBut when retrieval is both revenue-critical and consistently running at scale, the requirements change. Query volume is high and sustained, latency SLOs are tight, finance needs a number they can forecast, and per-request pricing stops being your friend. The cost curve steepens. Rate limits constrain throughput. And the question shifts from “does retrieval work?” to “can we run it affordably and predictably at this scale?”\nToday, we're announcing Pinecone Dedicated Read Nodes (DRN) is generally available. DRN indexes are designed for workloads that need predictable performance, high throughput, and cost-efficient scaling under sustained load.\nTL;DR\nIf you run search, recommendations, or agents with sustained, high-volume traffic, DRN gives you:\n- Lower, more predictable cost with fixed hourly per-node pricing that is significantly more cost-effective than per-",
+    "source_url": "https://www.pinecone.io/blog/dedicated-read-nodes-ga/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Weaviate Blog — Agents",
+    "description": "Oh Memories, Where'd You Go\nTwo weeks of dogfooding Engram, Weaviate's memory product, in daily Claude Code sessions. This surfaced where a dedicated memory product adds value, and the specific mechanics that prevent integration with coding assistants from working well.",
+    "source_url": "https://weaviate.io/blog/tags/agents",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Weaviate Blog — Concepts",
+    "description": "Your LLM Is Only as Good as What It Retrieves\nA Researcher's Perspective on Retrieval Quality in RAG Systems\nA Researcher's Perspective on Retrieval Quality in RAG Systems\nA deep dive into Engram, our managed memory service for agents which is simple to get started but adaptable to any use case.\nTwo weeks of dogfooding Engram, Weaviate's memory product, in daily Claude Code sessions. This surfaced where a dedicated memory product adds value, and the specific mechanics that prevent integration with coding assistants from working well.\nMemory isn't just a feature for AI applications—it's infrastructure. As agents scale, the limited loop of stateless interactions breaks down, and continuity becomes a systems problem that requires active maintenance.\nContext engineering is how AI agents manage LLM memory—selecting, retrieving, and organizing context from short-term and long-term memory to improve reliability in production.\nHands-on patterns: Design pattern for gen-AI enterprise applications, with Arize AI.\nA strategic guide to the costs, risks and rewards of upgrading embedding models in production AI\nHands-on patterns: LLM-as-Judge with LangChain and W&B\nLearn how chunking strategies ",
+    "source_url": "https://weaviate.io/blog/tags/concepts",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Weaviate Blog — Engineering",
+    "description": "Weaviate 1.37 Release\nThis release introduces the built-in MCP Server, Extensible Tokenizers, Diversity Search (MMR), and Query Profiling as previews, along with Incremental Backups, Gemini audio support for multi2vec-google, and the new BlobHash property type.",
+    "source_url": "https://weaviate.io/blog/tags/engineering",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Weaviate Blog — Integrations",
+    "description": "Oh Memories, Where'd You Go\nTwo weeks of dogfooding Engram, Weaviate's memory product, in daily Claude Code sessions. This surfaced where a dedicated memory product adds value, and the specific mechanics that prevent integration with coding assistants from working well.",
+    "source_url": "https://weaviate.io/blog/tags/integrations",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Weaviate Blog — How To",
+    "description": "Multimodal Embeddings and RAG: A Practical Guide\nMultimodal embeddings allow AI systems to search and reason across text, images, audio, and video in their native formats. This blog covers the key intuitions behind how this all works and walks through three practical implementations using Weaviate and Gemini.",
+    "source_url": "https://weaviate.io/blog/tags/how-to",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Weaviate Blog — Release",
+    "description": "Weaviate 1.37 Release\nThis release introduces the built-in MCP Server, Extensible Tokenizers, Diversity Search (MMR), and Query Profiling as previews, along with Incremental Backups, Gemini audio support for multi2vec-google, and the new BlobHash property type.",
+    "source_url": "https://weaviate.io/blog/tags/release",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Weaviate Blog — Research",
+    "description": "How we speed up filtered vector search with ACORN\nLearn about the challenges of filtered vector search and how Weaviate tackles them with ACORN.\nLearn about the challenges of filtered vector search and how Weaviate tackles them with ACORN.\nIn-depth technical breakdown of how binary quantization works and how to use it in Weaviate.\nBoosting Weaviate using SIMD-AVX512, Loop Unrolling and Compiler Optimizations\nThe details behind how you can compress vectors using PQ with little loss of recall!\nFine-tuning LlaMA 7B to use the Weaviate GraphQL APIs\nUsing the Weaviate Tile Encoder to compress vectors with Product Quantization.\nImplementing HNSW + Product Quantization (PQ) vector compression in Weaviate.\nVector search on disks: How does Vamana compare to HNSW?\nSelf-Supervised Retrieval can surpass BM25 and Supervised techniques. This technique also pairs very well alongside BM25 in Hybrid Retrieval. Learn more about it.",
+    "source_url": "https://weaviate.io/blog/tags/research",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Qdrant Blog — Gen Ai Zurich Winners",
+    "description": "Presenting Sentinel - Gen AI Zürich Hackathon Winner\nManas Chopra\n·April 29, 2026\nOn this page:\nWhen Ali Aoun Mehdi watched two major global news outlets report opposite facts during the Iran-US conflict, he saw a critical problem: misinformation spreading in real-time. From Islamabad, participating virtually in the Gen AI Zürich Hackathon, he built Sentinel to close this “fact-gap” by detecting contradictions across news sources instantly.\nSentinel is an AI-powered early warning system that monitors 20 global news sources every 30 minutes. It identifies factual contradictions in under 30 seconds, providing users with a misinformation risk score and narrative traction assessment.\n🏆 Hackathon Success\n🥇 Winner — Qdrant Challenge\n🥉 3rd Place — Apify Challenge\n🎯 Top 10 Finalist\nHow Sentinel Works\nData Collection\nSentinel uses a custom Apify Actor with Python SDK to automatically scrape news from 20 global sources every 30 minutes.\nVector Search with Qdrant\nThis is where Qdrant Cloud shines. Sentinel uses semantic search to find related articles based on meaning, not just keywords. This allows the system to compare different sources even when they use completely different wording to des",
+    "source_url": "https://qdrant.tech/blog/gen-ai-zurich-winners/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Qdrant Blog — Qdrant Cloud Enterprise Launch",
+    "description": "Now Available on Qdrant Cloud: GPU Indexing, Multi-AZ, and Audit Logging\nDaniel Azoulai\n·April 28, 2026\nOn this page:\nNow Available on Qdrant Cloud: GPU Indexing, Multi-AZ, and Audit Logging\nWe’re excited to announce some Qdrand Cloud upgrades to address AI workloads that write continuously, must meet higher uptime SLAs, and require audit logging.\nSpeed Indexing with GPUs\nGPUs aren’t just for model inference; they’re for indexing too. Qdrant Cloud GPU-accelerated indexing delivers up to 4x faster HNSW index builds on dedicated GPUs, based on Qdrant benchmarks. That’s helpful for high-write workloads (e.g. dynamic content catalogs, real-time recommendation systems, agentic).\nGPU Indexing is available today in Qdrant Cloud on AWS clusters.\nHow It Works\nGPU indexing is a cluster-level capability. When you create or scale a cluster to a GPU-enabled package, every node in your cluster gets a dedicated GPU. Customers can add GPUs to existing clusters for high-volume indexing. This requires at least 16 GiB RAM per node and uses the NVIDIA T4 (shown below).\nMulti-Availability-Zone (Multi-AZ) Replication\nFor teams needing vector search with stronger guarantees on availability, and higher up",
+    "source_url": "https://qdrant.tech/blog/qdrant-cloud-enterprise-launch/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Qdrant Blog — Qdrant Skills Release",
+    "description": "Qdrant Skills for AI Agents\nThierry Damiba\n·March 31, 2026\nOn this page:\nThe standard RAG tutorial teaches a simple pattern: embed your documents, store them in a vector database, retrieve the top K, and feed them to the LLM. The vector engine is passive infrastructure. Put vectors in, get neighbors out. Configure once, forget about it forever.\nThis mental model is why most AI agents treat vector search as a black box. They can call the API. They cannot make the engineering decisions that determine whether it works well.\nWe built Qdrant skills to change that: deep Qdrant knowledge, encoded so agents (and humans if you’re reading this!) can navigate it.\nVector search has evolved\nProduction vector search is built from independent primitives that interact, not a single retrieval call:\n- Quantization for memory compression\n- HNSW parameter tuning for recall and latency tradeoffs\n- Payload filtering with indexed fields\n- Fusion strategies for hybrid retrieval (dense + sparse)\n- Sharding and replication for scale\nEach one of these is a lever. Pull one and it changes the others. Enable binary quantization and you cut memory 32x, but you need oversampling with rescore to preserve recall. M",
+    "source_url": "https://qdrant.tech/blog/qdrant-skills-release/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Qdrant Blog — Multi Vector Search Course",
+    "description": "Master Multi-Vector Search With Qdrant\nNeil Kanungo\n·March 24, 2026\nOn this page:\nMost vector search tutorials stop at single-vector embeddings: one document, one vector, one similarity score. That works for demos. It falls apart when your retrieval pipeline needs to capture fine-grained token-level interactions across text, images, and PDFs at production scale.\nUntil now, engineers who wanted to go deeper had to piece together scattered papers, blog posts, and half-documented repos. There was no structured, hands-on resource that connected the theory of late interaction models to real implementation in a production search engine.\nWe built one.\nIntroducing the Multi-Vector Search Course\nQdrant’s Multi-Vector Search Course is a free, advanced course created by Kacper Łukawski. Kacper designed this course to fill a real gap in the developer community: practical, production-focused education on multi-vector retrieval that goes well beyond “here’s how embeddings work.”\nThis is an advanced course! It’s built for ML engineers, backend engineers, and search engineers who already understand vector search fundamentals and want to master what comes next.\nWhat You’ll Learn\nThe course is organ",
+    "source_url": "https://qdrant.tech/blog/multi-vector-search-course/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Qdrant Blog — Case Study Datagraphs",
+    "description": "How Data Graphs Built a True Hybrid Graph RAG Platform\nDaniel Azoulai\n·April 22, 2026\nOn this page:\nData Graphs is a UK-based platform company that provides a knowledge graph-as-a-service polystore, built on a proprietary, high-performance graph database engine. Co-founded by Paul Wilton over 10 years ago as a consultancy, Data Graphs has evolved into a platform that serves industries ranging from sports media and publishing to GLAM (galleries, libraries, archives, museums), Agri-Tech, and Regulatory Technology.\nThe Data Graphs platform combines a proprietary graph database, full-text search, vector embeddings, workflow automation, and an Agentic AI layer into a single, unified backbone for enterprise data. For organizations managing complex, highly connected data, the platform acts as both the system of record and the context layer that reasons across it.\nThe Hard Truth about RAG: Vector Alone isn’t Enough\nWhen AI-powered retrieval started gaining traction, the Data Graphs team saw the same pattern play out across the industry: vendors and teams claiming to do Graph RAG, but in practice running little more than vector retrieval dressed up with a different name.\nThe Microsoft Graph",
+    "source_url": "https://qdrant.tech/blog/case-study-datagraphs/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Qdrant Blog — Vector Space Day Sf 2026",
+    "description": "Announcing Vector Space Day 2026 in San Francisco\nQdrant\n·April 21, 2026\nOn this page:\nVector Space Day 2026: Powered by Qdrant\nAbout\nWe’re hosting our second-ever full-day in-person Vector Space Day (https://luma.com/vsd-sf) on June 11th at The Midway in San Francisco, and you’re invited.\nLast year in Berlin we brought together 400+ engineers, researchers, and AI builders to explore the cutting edge of retrieval, vector search infrastructure, and agentic AI. And we’re excited to now bring that to San Francisco.\nWhy You Should Attend\n- Deep-dives, lightning talks, sessions you won’t want to miss: Learn from the teams solving hard problems in AI infrastructure, search relevance, and semantic retrieval in production.\n- Meet the community: This isn’t just a conference. It’s a gathering of the developers rethinking how AI systems search, retrieve, and reason at scale. Network or not, productive conversations will be had.\nTopics We’ll Explore\nIf you work on any of the following, the Vector Space Day 2026 is your event:\n- Search & AI Retrieval\n- Agents & Memory\n- Edge & Robotics AI\n- Happy Hour\nHappy Hour\nThe day won’t end when the last session wraps. Your ticket includes access to the h",
+    "source_url": "https://qdrant.tech/blog/vector-space-day-sf-2026/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  },
+  {
+    "title": "Qdrant Blog — Pgvector Tradeoffs",
+    "description": "Start with pgvector: Why You'll Outgrow It Faster Than You Think\nNathan LeRoy\n·March 17, 2026\nOn this page:\nThe most common advice in every vector database thread online is some version of “start with pgvector, graduate later.” We analyzed 110+ community threads from Hacker News and Reddit to see if the data supports this heuristic. The short answer is that it’s more nuanced than it sounds, and most applications will hit its limits sooner than expected.\nThe Appeal of “Just Use pgvector”\nThis advice is attractive for obvious reasons. If you’re already running Postgres — and most teams are — pgvector gives you vector search without new infrastructure, new ops burden, or new sync headaches. One system, one deployment.\n“My decision tree looks like this: Use pgvector until I have a very specific reason not to.”\n“Default to pgvector, avoid premature optimization.”\nThe people giving this advice are usually running Postgres for transactional data and found pgvector sufficient for a few thousand vectors. For that use case it works.\nSix Conditions That Must All Hold\nAfter reading through these 110+ threads, a clear pattern emerged. The developers who are happy with pgvector are more than jus",
+    "source_url": "https://qdrant.tech/blog/pgvector-tradeoffs/",
+    "tags": [
+      "rag",
+      "infra"
+    ],
+    "publish_date": ""
+  }
+]
