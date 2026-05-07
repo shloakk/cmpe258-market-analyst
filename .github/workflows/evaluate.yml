@@ -24,4 +24,5 @@ jobs:
       - name: Run evaluation suite
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          PYTHONPATH: ${{ github.workspace }}
         run: python eval/evaluator.py
