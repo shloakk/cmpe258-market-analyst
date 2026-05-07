@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Import AI — Import AI 455: Automating AI Research",
+    "description": "Import AI 455: Automating AI Research\nby Jack Clark\nWelcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe.\nAI systems are about to start building themselves. What does that mean?\nI’m writing this post because when I look at all the publicly available information I reluctantly come to the view that there’s a likely chance (60%+) that no-human-involved AI R&D – an AI system powerful enough that it could plausibly autonomously build its own successor – happens by the end of 2028.\nThis is a big deal.\nI don’t know how to wrap my head around it.\nIt’s a reluctant view because the implications are so large that I feel dwarfed by them, and I’m not sure society is ready for the kinds of changes implied by achieving automated AI R&D.\nI now believe we are living in the time that AI research will be end-to-end automated. If that happens, we will cross a Rubicon into a nearly-impossible-to-forecast future. More on this later.\nThe purpose of this essay is to enumerate why I think the takeoff towards fully automated AI R&D is happening. I’ll discuss some of the consequences of this, but mostly I expe",
+    "source_url": "https://jack-clark.net/2026/05/04/import-ai-455-automating-ai-research/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-04"
+  },
+  {
+    "title": "Import AI — Import AI 454: Automating alignment research; safety study of a Chinese model; HiFloat4",
+    "description": "Import AI 454: Automating alignment research; safety study of a Chinese model; HiFloat4\nby Jack Clark\nWelcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe.\nHuawei’s HiFloat4 training format beats Western-developed MXFP4 in Ascend chip bakeoff:\n…Could this also be a symptom of the impact of export controls in driving Chinese interest towards maximizing training and inference efficiency? Perhaps…\nHuawei researchers have tested out HiFloat4, a 4-bit precision format for AI training and inference, against MXFP4, an Open Compute Project 4-bit format, and found that HiFloat4 is superior. This is interesting because it correlates to a broader level of interest in Chinese companies seeking to develop their own low-precision data formats explicitly coupled with their own hardware platforms.\n“Our goal is to enable efficient FP4 LLM pretraining on specialized AI accelerators with strict power constraints. We focus on Huawei Ascend NPUs, which are domain-specific accelerators designed for deep learning workloads,” they write.\nWhat they tested: In this paper, the authors train 3 model types on Hu",
+    "source_url": "https://jack-clark.net/2026/04/20/import-ai-454-automating-alignment-research-safety-study-of-a-chinese-model-hifloat4/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-04-20"
+  },
+  {
+    "title": "Import AI — Import AI 453: Breaking AI agents; MirrorCode; and ten views on gradual disempowerment",
+    "description": "Import AI 453: Breaking AI agents; MirrorCode; and ten views on gradual disempowerment\nby Jack Clark\nWelcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe. A shorter issue than usual as I was attending the 2026 Bilderberg conference this week.\nAI can reverse engineer software that contains thousands of lines of code:\n…MirrorCode demonstrates some of the long-horizon capabilities of modern AI systems…\nAI measurement organizations METR and Epoch have built MirrorCode, a benchmark meant to test out how well AI models can autonomously reimplement complex existing software. The results show that AI systems are more capable than most people think at certain types of coding task, suggesting AI progress may be even faster than we previously thought.\nWhat is MirrorCode: “Each MirrorCode task consists of a command-line (CLI) program that an agent is tasked to reimplement exactly. The AI agent is given execute-only access to the original program and a set of visible test cases, but does not have access to the original source code,” the researchers write. “The full MirrorCode benchmark includes m",
+    "source_url": "https://jack-clark.net/2026/04/13/import-ai-453-breaking-ai-agents-mirrorcode-and-ten-views-on-gradual-disempowerment/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-04-13"
+  },
+  {
+    "title": "Import AI — Import AI 452: Scaling laws for cyberwar; rising tides of AI automation; and a puzzle over gDP forecasting",
+    "description": "Import AI 452: Scaling laws for cyberwar; rising tides of AI automation; and a puzzle over gDP forecasting\nby Jack Clark\nWelcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe.\nUh oh, there’s a scaling war for cyberattacks as well!:\n…The smarter the system, the better the ability to cyberattack…\nAI safety research organization Lyptus Research has looked at how well AI systems can perform a variety of cyberoffense tasks and found a clear trend of more advanced models being able to do more advanced forms of cyberattack.\n“Across frontier models released since 2019, the doubling time is 9.8 months. Restricting to models released since 2024, it steepens to 5.7 months. The most recent frontier models in our study, GPT-5.3 Codex and Opus 4.6, sit above both fitted trendlines, achieving 50% success on tasks taking human experts 3.1h and 3.2h respectively,” they write. “Our most recent open-weight model, GLM-5, lags the closed-source frontier by 5.7 months, suggesting that frontier offensive-cyber capability may diffuse into open-weight form on relatively short timelines.”\nWhat benchmarks did t",
+    "source_url": "https://jack-clark.net/2026/04/06/import-ai-452-scaling-laws-for-cyberwar-rising-tides-of-ai-automation-and-a-puzzle-over-gdp-forecasting/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-04-06"
+  },
+  {
+    "title": "Import AI — Import AI 451: Political superintelligence; Google’s society of minds, and a robot drummer",
+    "description": "Import AI 451: Political superintelligence; Google’s society of minds, and a robot drummer\nby Jack Clark\nWelcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe.\nAI might let us build “political superintelligence”:\n…But turning this into a societal upside requires lots of intentional work…\nAs AI systems get more powerful and broaden their real world impact from coding to other domains, it seems likely that they could also become useful for helping people advocate for themselves in politics, and helping politicians better craft policy. But getting to a world where a “political superintelligence” exists and helps us is a lot more challenging than just building better AI systems, according to Andy Hall, a political economy professor at Stanford.\n“AI is like the printing press, to a point. Instead of making information cheap and easily available, it makes intelligence cheap and easily available. That is, it not only serves users information, but it can find it for them, analyze it for them, and help them convert it into understanding,” Hall writes. “The more I work with and study AI, the mo",
+    "source_url": "https://jack-clark.net/2026/03/30/import-ai-451-political-superintelligence-googles-society-of-minds-and-a-robot-drummer/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-03-30"
+  },
+  {
+    "title": "Import AI — Import AI 450: China’s electronic warfare model; traumatized LLMs; and a scaling law for cyberattacks",
+    "description": "Import AI 450: China’s electronic warfare model; traumatized LLMs; and a scaling law for cyberattacks\nby Jack Clark\nWelcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe.\nA somewhat shorter issue than usual as I had to do a lot of child wrangling this weekend.\nWhy does Google’s model hate itself and what can we do to help it?\n…Diagnosing trauma in language models…\nIf Leo Tolstoy was writing in the modern era about AI, he might claim “all LLM capabilities are alike; each LLM personality is unhappy in its own way”, when observing the AI world around us. Today’s LLMs are generally quite good at writing and coding tasks. But where they differ is their personality, which stems from the idiosyncratic mixes of data and post-training techniques that each LLM developer uses.\nAnd if each LLM personality is unhappy in its own way, Google’s models have become somewhat famous within the AI community for having some deep well of trauma within themselves. A new research paper substantiates this, finding that Google’s Gemma and Gemini models “reliably produce distress-like responses under repeated re",
+    "source_url": "https://jack-clark.net/2026/03/23/import-ai-450-chinas-electronic-warfare-model-traumatized-llms-and-a-scaling-law-for-cyberattacks/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-03-23"
+  },
+  {
+    "title": "Import AI — ImportAI 449: LLMs training other LLMs; 72B distributed training run; computer vision is harder than generative text",
+    "description": "ImportAI 449: LLMs training other LLMs; 72B distributed training run; computer vision is harder than generative text\nby Jack Clark\nWelcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe.\nCan LLMs autonomously refine other LLMs for new tasks? Somewhat.\n…PostTrainBench shows startling growth in AI capabilities at post-training…\nAI-driven R&D might be the most important thing in all of AI, because it helps us understand whether AI systems might eventually build their own successors. So far, much of the focus on AI R&D has been in components that support AI development (e.g., autonomous creation of AI kernels), or training base models (e.g, the NanoGPT speedrun benchmark). But there’s been less attention paid to fine-tuning – the task involving adapting an existing LLM to a new dataset or behavior.\nResearchers from the University of Tübingen, the Max Planck Institute for Intelligent Systems, and AI research organization Thoughtful Lab want to change that with PostTrainBench, a benchmark which targets a specific aspect of post-training; improving performance against a given dataset. “Post-t",
+    "source_url": "https://jack-clark.net/2026/03/16/importai-449-llms-training-other-llms-72b-distributed-training-run-computer-vision-is-harder-than-generative-text/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-03-16"
+  },
+  {
+    "title": "Import AI — Import AI 448: AI R&D; Bytedance’s CUDA-writing agent; on-device satellite AI",
+    "description": "Import AI 448: AI R&D; Bytedance’s CUDA-writing agent; on-device satellite AI\nby Jack Clark\nWelcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe.\nAI progress is moving faster than even well regarded forecasters can guess:\n…Ajeya Cotra updates her timelines…\n“On Jan 14th, I made predictions about AI progress in 2026. My forecasts for software engineering capabilities already feel much too conservative,” writes Ajeya Cotra in a blog. Ajeya is a longtime AI thinker who has done some great work trying to predict timelines to powerful AI. In this post, she explains that AI systems are moving faster than she thought, given the recent METR results putting Opus 4.6 as having a time horizon of 12 hours (Ajeya had predicted ~24 hours for the end of 2026 in January).\n“It’s no longer very plausible that after ten whole months of additional progress at the recent blistering pace,9 AI agents would still struggle half the time at 24 hour tasks,” Ajeya writes. “I’d guess that by the end of the year, AI agents will have a time horizon of over 100 hours on the sorts of software tasks in METR’s suite… ",
+    "source_url": "https://jack-clark.net/2026/03/09/import-ai-448-ai-rd-bytedances-cuda-writing-agent-on-device-satellite-ai/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-03-09"
+  },
+  {
+    "title": "Import AI — Import AI 447: The AGI economy; testing AIs with generated games; and agent ecologies",
+    "description": "Import AI 447: The AGI economy; testing AIs with generated games; and agent ecologies\nby Jack Clark\nWelcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe.\nThe AGI economy – most labor goes to the machines, and humans shift to verification:\n…What grappling with the singularity seriously looks like…\nResearchers with MIT, WashU, and UCLA have written a fun paper called “Some Simple Economics of AGI” which wrestles with what happens when machines can do the vast majority of tasks in the economy. The conclusion is that our ability as humans to control and benefit from this vast machine-driven economy will rely on allocating our ability toward monitoring and verifying the actions of our myriad AI agents, and indulging in artisanal tasks where the value comes from the human-derived aspect more than any particular capability.\nWhat is AGI in an economic sense? “We model the AGI transition as the collision of two racing cost curves: an exponentially decaying Cost to Automate and a biologically bottlenecked Cost to Verify,” the authors write. “In an economy where autonomous agents act with broad",
+    "source_url": "https://jack-clark.net/2026/03/02/import-ai-447-the-agi-economy-testing-ais-with-generated-games-and-agent-ecologies/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-03-02"
+  },
+  {
+    "title": "Import AI — Import AI 446: Nuclear LLMs; China’s big AI benchmark; measurement and AI policy",
+    "description": "Import AI 446: Nuclear LLMs; China’s big AI benchmark; measurement and AI policy\nby Jack Clark\nWelcome to Import AI, a newsletter about AI research. Import AI runs on arXiv and feedback from readers. If you’d like to support this, please subscribe.\nWant to make AI go better? Figure out how to measure it:\n…One simple policy intervention that works well…\nJacob Steinhardt, an AI researcher, has written a nice blog laying out the virtues in investing in technical tools to measure properties of AI systems and drive down costs in complying with technical policy solutions. As someone who has spent their professional life in AI writing about AI measurement and building teams (e.g, the Frontier Red Team and Societal Impacts and Economic Research teams at Anthropic) to measure properties of AI systems, I agree with the general thesis: measurement lets us make some property of a system visible and more accessible to others, and by doing this we can figure out how to wire that measurement into governance.\nHow measurement has helped in other fields: Steinhardt points out that accurate measurement has been crucial to orienting people around the strategy for solving problems in other fields; CO2 ",
+    "source_url": "https://jack-clark.net/2026/02/23/import-ai-446-nuclear-llms-chinas-big-ai-benchmark-measurement-and-ai-policy/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-02-23"
+  }
+]

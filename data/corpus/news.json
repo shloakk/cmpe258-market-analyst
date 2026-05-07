@@ -1,0 +1,362 @@
+[
+  {
+    "title": "Five architects of the AI economy explain where the wheels are coming off",
+    "description": "Earlier this week, five people who touch every layer of the AI supply chain sat down at the Milken Global Conference in Beverly Hills, where they talked with this editor about everything from chip shortages to orbital data centers to the possibility that the whole architecture that undergirds the tech is wrong.\nOn stage with TechCrunch: Christophe Fouquet, CEO of ASML, the Dutch company that holds a monopoly on the extreme ultraviolet lithography machines without which modern chips would not exist; Francis deSouza, COO of Google Cloud, who is overseeing one of the biggest infrastructure bets in corporate history; Qasar Younis, co-founder and CEO of Applied Intuition, a $15 billion physical AI company that started in simulation and has since moved into defense; Dimitry Shevelenko, the chief business officer of Perplexity, the AI-native search-to-agents company; and Eve Bodnia, a quantum physicist who left academia to challenge the foundational architecture most of the AI industry takes for granted at her startup, Logical Intelligence. (Meta’s former chief AI scientist, Yan LeCun, signed on as founding chair of its technical research board earlier this year.)\nHere’s what the five had",
+    "source_url": "https://techcrunch.com/2026/05/06/five-architects-of-the-ai-economy-explain-where-the-wheels-are-coming-off/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-07"
+  },
+  {
+    "title": "Barry Diller trusts Sam Altman. But ‘trust is irrelevant’ as AGI nears, he says.",
+    "description": "Billionaire media mogul Barry Diller doesn’t think OpenAI CEO Sam Altman is untrustworthy, despite recent reporting to the contrary. Onstage at The Wall Street Journal’s “Future of Everything” conference this week, Diller vouched for the AI exec, who has been accused by some former colleagues and board members of being manipulative and deceptive at times.\nDiller, who is friendly with Altman, was responding to a question about whether or not people should put their faith in Altman to ensure that artificial intelligence benefits humanity.\nIn particular, he was asked about the theoretical form of AI known as artificial general intelligence, or AGI, which could one day outperform humans on any task.\nThe media exec, a co-founder of Fox Broadcasting and chairman of IAC and Expedia Group, said that while he believes Altman is sincere in his pursuits, that’s not really the area of concern people should be focused on. Rather, it’s the unknown consequences that will result from AI.\n“One of the big issues with AI is it goes way beyond trust,” Diller said. “It may be that trust is irrelevant because the things that are happening are a surprise to the people who are making those things happen. ",
+    "source_url": "https://techcrunch.com/2026/05/06/barry-diller-trusts-sam-altman-but-trust-is-irrelevant-as-agi-nears-he-says/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Snap says its $400M deal with Perplexity ‘amicably ended’",
+    "description": "Snap no longer has a deal with Perplexity, the company revealed on Wednesday as part of its quarterly earnings report. The deal, announced last November, would have seen Perplexity’s AI search engine integrated directly into Snapchat. Perplexity was set to pay Snap $400 million in cash and equity over one year as part of the deal.\nSnap said that the companies “amicably ended the relationship in Q1″ and that its sales guidance “assumes no contribution from Perplexity.” When Snap announced the deal as part of its third-quarter earnings last year, it said it expected revenue from the partnership to begin contributing to its financials in 2026.\nThe deal would have seen Perplexity integrated into Snapchat’s “Chat” interface, allowing users to ask questions and receive conversational answers directly within the app. Although the integration was being tested with select users, Snap said in February that the companies had “yet to mutually agree on a path to a broader roll out.”\nSnap CEO Evan Spiegel said at the time of the initial announcement that the deal reflected the company’s vision to use AI to enhance discovery on Snapchat, and that Snap was looking forward to “collaborating with mo",
+    "source_url": "https://techcrunch.com/2026/05/06/snap-says-its-400m-deal-with-perplexity-amicably-ended/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Is xAI a neocloud now?",
+    "description": "On Wednesday, xAI and Anthropic announced a surprise partnership that has the Claude-maker buying out “all of the compute capacity at [xAI’s] Colossus 1 data center,” roughly 300MW that allowed Anthropic to immediately raise its usage limits. It’s a huge deal for xAI, likely worth billions of dollars. More importantly, it immediately monetized one of the company’s most impressive accomplishments, turning xAI from a consumer to a provider of compute.\nIt’s tempting to see the arrangement as a shot at OpenAI amid the ongoing lawsuit. But Musk’s explanation on X was that xAI had already moved training to a newer data center, Colossus 2, and xAI simply didn’t need them both.\nIn the short term, there’s an obvious logic at work. xAI’s existing products are mostly focused on Grok, which has seen plummeting usage since the image generation debacles earlier this year. If xAI’s data center buildout is much more than what Grok needs to operate, partnering with Anthropic adds a lot of green to the balance sheet. This is especially useful as the company, now combined with SpaceX, speeds toward an IPO. More broadly, having Anthropic lined up as a customer makes it easier to believe that SpaceX’s ",
+    "source_url": "https://techcrunch.com/2026/05/06/is-xai-a-neocloud-now/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "How Elon Musk left OpenAI, according to Greg Brockman",
+    "description": "In late August 2017, key figures at OpenAI (then a small nonprofit research lab) gathered to discuss how they would create a for-profit to commercialize its technology and raise the funds needed to realize AGI.\nElon Musk was demanding full control of the company and had just given each of his co-founders a Tesla Model 3. CTO Greg Brockman said he saw that as way of buttering them up at a time when Musk and Sam Altman were vying to win support for their respective visions of the company’s future. OpenAI’s head of research, Ilya Sutskever, had commissioned a painting of a Tesla to give Musk during the meeting as a friendly gesture.\nThe conversation didn’t follow that mood: When Musk was told the others would not accede to his demand for control of the company, Brockman said he got angry and upset. He sat for several minutes thinking quietly.\nThen, in Brockman’s telling, Musk said, “I decline.” The SpaceX and Tesla founder “stood up and stormed around the table…I thought he was going to hit me. He grabbed the painting and started to storm out of the room. And then he turned around and said, ‘When will you be departing OpenAI?’”\nBrockman and Sutskever didn’t leave or commit to Musk’s v",
+    "source_url": "https://techcrunch.com/2026/05/06/how-elon-musk-left-openai-according-to-greg-brockman/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "SpaceX may spend up to $119B on ‘Terafab’ chip factory in Texas",
+    "description": "SpaceX, Elon Musk’s space company that also houses his AI company, xAI, is considering spending $55 billion, at least initially, to build a semiconductor factory in Grimes County, Texas, according to a proposal on the county website.\nThe company estimates it may spend a total of $119 billion on the project, which would be a “multi-phase, next-generation, vertically integrated semiconductor manufacturing and advanced computing fabrication facility,” according to the filing.\nMusk has previously outlined plans for the project, dubbed “Terafab,” that will also see Tesla contributing resources. The companies have roped chipmaking giant Intel into the effort, aiming to develop chips for AI servers, satellites, SpaceX’s proposed data center in space, as well as autonomous Tesla vehicles and robots.\nThe billionaire has said the manufacturing facility will, sometime in the future, manufacture enough chips to provide 1 terawatt of power per year, arguing that semiconductor manufacturers aren’t making chips quickly enough for his companies’ artificial intelligence and robotics needs. “We either build the Terafab or we don’t have the chips, and we need the chips, so we build the Terafab,” he w",
+    "source_url": "https://techcrunch.com/2026/05/06/spacex-may-spend-up-to-119-billion-on-terafab-chip-factory-in-texas/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "DeepSeek could hit $45B valuation from its first investment round",
+    "description": "DeepSeek is in talks to raise its first round of venture capital, and in just a few weeks, its potential valuation has soared from $20 billion to $45 billion, the Financial Times and Bloomberg reported.\nThe Chinese AI lab came to prominence in early 2025 after launching a large language model that trained on a fraction of the compute power and at a fraction of the cost of the big U.S. models like those from OpenAI and Anthropic. It has since kept reasonable pace with the top models in the world in areas like reasoning and coding while remaining open weight (versions are freely available on Hugging Face).\nFounded by Chinese hedge fund billionaire Liang Wenfeng, who controls nearly 90% of the company, the lab has not previously sought out investors, the FT reports. However, faced with competitors poaching DeepSeek’s researchers, Liang opted to raise funds in order to offer employees shares in the company, sources tell the FT.\nThe round is said to be led by the state investment vehicle China Integrated Circuit Industry Investment Fund, Bloomberg reports. China is seeking to fund homegrown AI technology to sidestep the difficulty of obtaining U.S. technology, particularly chips. DeepSe",
+    "source_url": "https://techcrunch.com/2026/05/06/deepseek-could-hit-45b-valuation-from-its-first-investment-round/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Google updates AI search to include quotes from Reddit and other sources",
+    "description": "Google is updating search to refine its AI experience by adding additional context to links, like excerpts from web forums and blogs, as well as a feature that highlights links from a user’s news subscriptions.\nWhile citing web forums and discussion boards can help users find answers to more niche queries, this design choice could also prove chaotic.\nTwo years ago, Google overhauled its search experience to put AI front and center — when you search for something, Google will often summon an “AI Overview,” which has spurred mixed reception from users. People quickly pointed out how the feature could be exploited, since it failed to recognize sarcasm or information that comes from dubious sources. (It cited The Onion when telling someone to eat “one small rock per day,” and used Reddit to advise someone to put glue on their pizza to make the cheese stick better.)\nThough Google’s AI Overviews have improved significantly, they still — like anything powered by an LLM — are prone to hallucination. A recent New York Times analysis found that the AI Overviews were correct about nine times out of 10. But for a company that processes trillions of queries a year, that success rate would mean ",
+    "source_url": "https://techcrunch.com/2026/05/06/google-updates-ai-search-to-include-expert-advice-from-reddit-and-other-web-forums/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Khosla-backed robotics startup Genesis AI has gone full stack, demo shows",
+    "description": "Genesis AI, a startup that raised a $105 million seed round to build foundational AI for robotics, has unveiled its first model, GENE-26.5, and it comes with surprise hands. In a demo video, the company showcased various advanced tasks performed by a set of robotic hands it has designed in-house.\n“The model has always been the goal, because a better model means better intelligence,” Genesis co-founder and CEO Zhou Xian told TechCrunch. But the company soon realized that it needed control over the hardware. “So we decided to go full stack,” he said.\nOther well-funded companies operate at the intersection of AI and robotics — such as Physical Intelligence and Skild AI. Zhou also acknowledged that “there’s probably 50 or 100 robotic hand companies out there.” But he and his co-founder Théophile Gervet hope that building their own will give them the upper hand.\nThe key difference is that Genesis’ hand has the same size and shape as a human hand — rather than the two-finger grippers many robotics companies have been using — reducing the gap with real-world conditions.\n“That lets us collect a lot more data than was previously possible, to train a model that can do many more tasks,” said ",
+    "source_url": "https://techcrunch.com/2026/05/06/khosla-backed-robotics-startup-genesis-ai-has-gone-full-stack-demo-shows/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Tinder owner Match Group is slowing hiring to pay for its increased use of AI tools",
+    "description": "You might think the big story out of Match Group’s first-quarter earnings is Tinder’s turnaround. The dating app’s revenue is slightly up again after quarter-after-quarter of declines.\nBut we’d like to point to a comment the chief financial officer made about how the company is slowing its hiring right now because it needs more money to pay for AI tools for its employees.\nAh, yes, the good ol’ “let’s blame AI” strategy!\nWhile speaking to analysts on the first-quarter earnings call, Match Group CFO Steven Bailey talked about how the dating app giant was investing in AI technology for internal use at the company — as well as how Match was paying for it.\n“We’re making a big push around AI enablement. We’re giving every employee in the company access to all the cutting-edge tools. We’re giving them the training they need to succeed. We’re setting expectations. We really want to become an AI-native company,” Bailey said.\n“We think it’s a huge opportunity. But these tools cost a lot of money, as I’m sure you know, and so the way we’re helping to pay for that is by slowing our hiring plans for the rest of the year,” he added.\nThe company assured investors that the impact would be cost-neu",
+    "source_url": "https://techcrunch.com/2026/05/06/tinder-owner-match-group-is-slowing-hiring-to-pay-for-its-increased-use-of-ai-tools/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Apple to pay $250M to settle lawsuit over Siri’s delayed AI features",
+    "description": "Apple has agreed to pay $250 million to settle a class action lawsuit over how it marketed its AI features ahead of the launch of the iPhone 16. The Financial Times was the first to report the news.\nThe lawsuit alleged that Apple exaggerated the breadth of features Apple Intelligence would bring, which included a significantly upgraded version of its assistant, Siri. The complaint alleges that the company created the impression that advanced AI capabilities would be available to users sooner than they actually were. In particular, the plaintiffs allege that Apple overstated both the readiness and functionality of these features, particularly the promised improvements to Siri, which have yet to fully materialize.\nAs a result, the complaint claims, people who bought the iPhone 15 or iPhone 16 believed they were paying for cutting-edge AI tools that were not actually available at the time of purchase. The lawsuit framed this as false advertising, and says Apple’s marketing influenced buying decisions based on features that were incomplete or delayed.\nApple did not admit to wrongdoing in court, but has chosen to settle the case rather than continue with litigation. Under the proposed a",
+    "source_url": "https://techcrunch.com/2026/05/06/apple-to-pay-250m-to-settle-lawsuit-over-siris-delayed-ai-features/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Ethos raises $22.75M from a16z for its expert network with voice onboarding",
+    "description": "When companies are looking for opinions or advice on a project, they tend to go to LinkedIn or use expert networks such as GLG, Third Bridge, or AlphaSights. But they often don’t find quality inputs, despite their searches.\nToday, these sites ask experts to fill in a form based on their job title, which is then used to match them with companies in need of their help.\nLondon-based Ethos thinks that AI can improve both sides of this experience. For experts, it offers voice-powered onboarding to ask a broader set of questions and get more data about their knowledge in various domains that their job titles don’t cover. For companies, Ethos can better match natural language queries posed by these organizations for their project, thanks to the wider range of data it has collected.\nEthos said that its voice-based onboarding and data allows it to answer complex client questions like, “Find me people who worked at a funded startup by A-grade investors solving for finance automation.”\nAnother example the startup gave was how a pharma company using its platform could search for doctors who specialize in a certain area, but who have also written papers on the subject or have an understanding o",
+    "source_url": "https://techcrunch.com/2026/05/06/ethos-raises-22-75m-from-a16z-for-its-expert-network-with-voice-onboarding/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "At TechCrunch Disrupt 2026, all your M&A questions will be answered",
+    "description": "The year keeps moving swiftly, and so is all of our planning for TechCrunch Disrupt 2026! We have an exciting new panel in store for founders in need of merger and acquisition advice … but first, we have a limited-time ticket offer to share.\nDisrupt will once again be held in San Francisco’s Moscone West from October 13–15, and for a limited time, attendees can also bring a colleague, co-founder, investor, or teammate for less! You can buy one Disrupt 2026 pass here, and get 50% off a second pass of the same ticket type with a limited-time offer that ends May 8 at 11:59 p.m. PT.\nAs for the kind of programming that’ll keep you locked in during Disrupt’s three days, let’s dive into our newest panel that will be on the Builders Stage.\nHear at Disrupt how M&A is now an early-stage strategy\nIf you’ve been following our recent coverage, acquisitions and acqui-hires remain in vogue, especially within the AI scene. Whether it’s OpenAI buying Hiro, Anthropic acquiring Vercept, Google taking the team behind Hume AI, or Databricks pulling in two startups just for its security product, it’s been a busy year!\nAnd being acquired is far from being the end of a long road for founders; it can be pa",
+    "source_url": "https://techcrunch.com/2026/05/06/at-techcrunch-disrupt-2026-all-your-ma-questions-will-be-answered/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "3 days left to lock in 50% off a second ticket to TechCrunch Disrupt 2026",
+    "description": "Three days. That’s all that’s left to decide, not just whether you’ll be at TechCrunch Disrupt 2026, but also who you’ll show up with from October 13 to 15 at San Francisco’s Moscone West — and how much credibility you gain from the opportunity.\nRight now, you can buy one pass and get 50% off a second of the same ticket type. That offer ends May 8 at 11:59 p.m. PT. After that, prices go up — and so does the cost of showing up without the coverage, visibility, and presence that actually make the experience count.\nBecause at a certain point, what determines how quickly a company moves is whether it is seen, understood, and taken seriously by the people who can influence what happens next.\nYou only have three days left to act. Who will you bring to Disrupt? Choose your ticket type and lock in your 50% savings.\nGain visibility across every interactive session\nMost founders don’t struggle to generate attention. There are more channels than ever to get in front of people, and more ways to create surface-level visibility. What’s harder, and far more important, is earning credibility.\nInvestors don’t respond to visibility alone; they respond to confidence. Partners don’t engage based on aw",
+    "source_url": "https://techcrunch.com/2026/05/06/3-days-left-to-lock-in-50-off-a-second-ticket-to-techcrunch-disrupt-2026/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "AI boom pushes Samsung to $1T",
+    "description": "Samsung reached a $1 trillion valuation on Wednesday as shares of the South Korean tech giant surged more than 10%, driven by the ongoing artificial intelligence frenzy fueling demand for chips. The milestone makes Samsung only the second Asian company to cross the trillion-dollar threshold, after TSMC.\nThe news comes on the heels of a blockbuster earnings report last week, in which Samsung posted profits eight times higher than the same period a year ago.\nEvery company building AI right now needs chips, and Samsung makes the memory chips that power those AI systems. Demand is surging while supply struggles to keep up, pushing prices higher and boosting Samsung’s profits.\nThere’s another reason shares surged on Wednesday. Reports came out yesterday that Apple has been in talks with both Samsung and Intel to manufacture chips for Apple devices on U.S. soil. Apple has long relied almost exclusively on TSMC in Taiwan for its chip production. If Samsung lands the deal, it would mark a significant shift in the global semiconductor supply chain.\nAt the heart of Samsung’s profit boom is high-bandwidth memory (HBM), a type of chip critical to running AI systems, which has dramatically impr",
+    "source_url": "https://techcrunch.com/2026/05/06/ai-boom-pushes-samsung-to-1t/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Peter Sarlin’s QuTwo reaches $380M valuation in angel round",
+    "description": "QuTwo, the Finnish AI lab founded by former AMD Silo AI CEO Peter Sarlin, is now valued at €325 million (approximately $380 million) after raising a €25 million ($29 million) angel round. It’s a sign of enduring tailwinds for AI, quantum computing, and sovereign tech, especially for Europe-made companies.\nQuTwo’s name is a nod to quantum computing, but it hasn’t gone all in on quantum. Its core product, QuTwo OS, is an orchestration layer that directs tasks to classical, quantum, or hybrid architectures — with the idea that enterprise use cases are often best served by “quantum-inspired” computing, which uses classical chips to simulate quantum behavior on more reliable hardware.\nEnterprise AI will be QuTwo’s bread and butter. The company already secured some $23 million in committed revenue thanks to design partnerships with the likes of retail giant Zalando, for which it helped develop AI assistants. “AI is the north star that we will continue to aim for. Quantum is just a new type of compute,” said Sarlin, who is adamant that QuTwo is an AI company.\nMomentum has been building around Europe-based AI labs, and several of them have become overnight unicorns. Just last week, former ",
+    "source_url": "https://techcrunch.com/2026/05/05/peter-sarlins-qutwo-reaches-380m-valuation-in-angel-round/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Marc Lore says that AI will soon enable anyone to open a restaurant",
+    "description": "Marc Lore, the veteran e-commerce entrepreneur who sold his previous startups to Amazon and Walmart, has big plans to infuse AI into his current venture, Wonder.\nThe centerpiece of those plans is Wonder Create, an initiative that would let anyone — from food entrepreneurs to social media influencers — use AI to design and launch their own restaurant brand in under a minute. The virtual restaurant would then go live across Wonder’s growing network of tech-enabled kitchen locations, currently numbering 120 and expected to reach 400 next year.\nLore’s startup, a vertically integrated dining and delivery platform, has evolved from food trucks to fast casual restaurants with 10 to 20 seats. These are not normal restaurants, though; they are “programmable cooking platforms” capable of operating as 25 different types of restaurants based on cuisine, within their all-electric kitchens that are increasingly becoming robotic.\nSpeaking at The Wall Street Journal’s Future of Everything conference this week, Lore said these kitchens have a 700-ingredient library. The “restaurants” they house actually consist of many different brands that operate from within these locations.\nIn addition to a staf",
+    "source_url": "https://techcrunch.com/2026/05/05/marc-lore-says-that-ai-will-soon-enable-anyone-open-a-restaurant/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "SAP bets $1.16B on 18-month-old German AI lab and says yes to NemoClaw",
+    "description": "By OpenAI COO’s own admission last February, “we have not yet really seen AI penetrate enterprise business processes.” But for enterprise software giant SAP, whose stock has dropped significantly in 2026 in part from the “SaaSpocalypse,” the issue is still front and center.\nOn Monday, the European heavyweight announced its intention to acquire German AI startup Prior Labs for an undisclosed amount. Pending regulatory approval, SAP plans to invest €1 billion (approximately $1.16 billion) into the business over the next four years to grow it into an AI lab focused on structured data — the tables and databases where enterprise information typically sits.\nSAP declined to disclose how much it spent on the acquisition itself, but sources told Pathfounders that this was a healthy exit: an “almost all cash” deal, with well over half a billion dollars in cash up front for the startup’s founders — Frank Hutter, Noah Hollmann, and Sauraj Gambhir.\nThe trio co-founded Prior Labs just 18 months ago with a focus on tabular foundation models (TFMs) — AI models that can make predictions from data that sits in tables and databases. This is potentially a better fit for enterprises than language model",
+    "source_url": "https://techcrunch.com/2026/05/05/sap-bets-1-16b-on-18-month-old-german-ai-lab-and-says-yes-to-nemoclaw/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-05"
+  },
+  {
+    "title": "Altara secures $7M to bridge the data gap that’s slowing down physical sciences",
+    "description": "Companies working on batteries, semiconductors, and medical devices generate vast amounts of data — and much of it ends up scattered across spreadsheets and legacy systems, making it hard to use to improve products or understand failures.\nSan Francisco-based startup Altara, which just secured $7 million in seed funding, says it has built an AI layer designed to bridge these data gaps and bring fragmented technical information into a single platform. The round was led by Greylock, with participation from Neo, BoxGroup, Liquid 2 Ventures, and Jeff Dean.\nAltara was founded in 2025 by Eva Tuecke (pictured right), who previously conducted particle physics research at Fermilab and worked at SpaceX; and Catherine Yeo (pictured left), a former AI engineer at Warp. The two met while studying computer science at Harvard University.\n“Imagine if you’re a company building next-generation batteries, and a battery fails during the cell testing in the R&D process,” Yeo said. “A team of engineers has to go in and manually check a lot of different sources of data, anything from their sensor logs to their temperature data, moisture data. They cross-check historical failure reports.”\nScientists and en",
+    "source_url": "https://techcrunch.com/2026/05/05/altara-secures-7m-to-bridge-the-data-gap-thats-slowing-down-physical-sciences/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-05"
+  },
+  {
+    "title": "Apple plans to make iOS 27 a Choose Your Own Adventure of AI models",
+    "description": "When iOS 27 is released later this year, iPhone users will reportedly have a lot of choice when it comes to which AI models they want to use on-device.\nA new report from Bloomberg says that Apple plans to give users their pick of a number of third-party large language models that will be capable of powering various functions within the iPhone’s operating system. The new feature, dubbed “Extensions” internally, will allow users to “access generative AI capabilities from installed apps on demand, through Apple Intelligence features such as Siri, Writing Tools, Image Playground and more,” reads a message reportedly shown in test versions of the software.\nThe new capability will also be available for iPadOS 27 and macOS 27, the outlet writes, adding that models from Google and Anthropic are being tested now. Less clear is where ChatGPT stands. Since it is currently the model available to users, one implication is that it will remain a choice.\nTechCrunch reached out to Apple for more information.\nWith long-serving CEO Tim Cook soon stepping down, Apple’s incoming top executive, John Ternus, is tasked with charting the future of the company — including its AI strategy. The company is wid",
+    "source_url": "https://techcrunch.com/2026/05/05/apple-plans-to-make-ios-27-a-choose-your-own-adventure-of-ai-models/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-05"
+  },
+  {
+    "title": "Musk’s biggest loyalist became his biggest liability",
+    "description": "I sat down in the Musk v. Altman trial courtroom today, painfully aware that no one was going to ask Shivon Zilis the question on everyone’s minds: Girl, what the fuck are you doing?\nMusk’s biggest loyalist became his biggest liability\nShivon Zilis’ notes might be the most important evidence we’ve seen so far.\nShivon Zilis’ notes might be the most important evidence we’ve seen so far.\nZilis, who testified under oath that she is the mother of four of Musk’s children, was… what’s the best way to characterize this? A Musk advisor? She denies she was a “chief of staff” but says she worked for Musk’s “entire AI portfolio: Tesla, Neuralink, and OpenAI” starting in 2017. The two met through OpenAI, and they had what she referred to as a “one off” before becoming “friends and colleagues.” The “one off,” she confirmed, was “romantic in nature.”\nHer job under Musk was “to go find bottlenecks and solve them,” and she claims to have worked 80 to 100 hours a week doing that. “It was just bananas,” she said. Her first two children by Musk — twins — were born in 2021, while Zilis was serving on OpenAI’s board. She kept this a secret. She did not tell the board who the father was until Business In",
+    "source_url": "https://www.theverge.com/ai-artificial-intelligence/925665/musk-altman-trial-shivon-zilis-testimony",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Google shuts down Project Mariner",
+    "description": "Google has pulled the plug on Project Mariner, an experimental feature designed to perform tasks for you across the web, as reported earlier by Wired’s Maxwell Zeff. The Project Mariner landing page now contains a message that says: “Thank you for using Project Mariner. It was shut down on May 4th, 2026 and its technology voyaged to other Google products.”\nGoogle shuts down Project Mariner\nThe Project Mariner experiment lives on in Gemini Agent and AI Mode.\nThe Project Mariner experiment lives on in Gemini Agent and AI Mode.\nGoogle first revealed Project Mariner in December 2024 and later announced an update allowing it to perform up to 10 tasks at a time. Over the past year, Google has integrated features powered by Project Mariner into its other AI tools, including Gemini Agent, which can do things like archive emails on your behalf or help you book a hotel. Google also folded Project Mariner’s agentic capabilities into its AI-powered search feature, AI Mode.\nEarlier this year, Google showed off a new AI-powered feature, called “auto-browse,” that can perform multi-step tasks in Chrome, like researching flight costs. Though Google doesn’t say whether it’s powered by Project Marin",
+    "source_url": "https://www.theverge.com/tech/925559/google-project-mariner-shut-down",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "How David Sacks crashed and burned in the White House",
+    "description": "Hello and welcome to Regulator, a newsletter exclusively for Verge subscribers about tech, politics, and Washington intrigue. (It’s basically House of Cards, but for nerds.) Not a subscriber yet? You really should become one, and to save you a Google search, here is the direct link to do so! And do you think I should know something? Send it to tina.nguyen+tips@theverge.com.\nHow David Sacks crashed and burned in the White House\nThe Trump administration pulled a 180 on AI oversight, inducing Sacks’ worst nightmare: more government regulation on technology.\nThe Trump administration pulled a 180 on AI oversight, inducing Sacks’ worst nightmare: more government regulation on technology.\nOn Monday, The New York Times reported that the White House was considering having the government review AI models before release. To the casual Verge reader, it appeared to be a total reversal in Donald Trump’s policies. For the past year, he had been a vocal champion of pro-industry deregulation, repealing former President Joe Biden’s massive executive order on AI safety, lifting export controls on advanced chips, and signing executive orders that would have legally punished states for passing and enfo",
+    "source_url": "https://www.theverge.com/column/925487/david-sacks-trump-administration-ai-model-review",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Mira Murati tells the court that she couldn’t trust Sam Altman’s words",
+    "description": "Mira Murati, OpenAI’s former CTO, has testified under oath that CEO Sam Altman lied to her about the safety standards for a new AI model. In a video deposition shown during the ongoing Musk v. Altman trial on Wednesday, Murati said Altman falsely stated that OpenAI’s legal department determined a new AI model did not need to go through the company’s deployment safety board. “As you understand it, was Mr. Altman telling the truth when he made that statement to you?” Murati was asked in the deposition. “No,” Murati said.\nMira Murati tells the court that she couldn’t trust Sam Altman’s words\nOpenAI’s former CEO testified under oath that Altman lied to her.\nOpenAI’s former CEO testified under oath that Altman lied to her.\nMurati said that during her tenure at OpenAI, Altman made her work more difficult. Her criticism “is completely management related,” she said. “I had an incredibly hard job to do in an organization that was very complex. I was asking Sam to lead, and lead with clarity, and not undermine my ability to do my job.”\nThe safety situation around one of OpenAI’s GPT models was an example. Murati testified that after speaking with Altman, she checked with Jason Kwon, who join",
+    "source_url": "https://www.theverge.com/ai-artificial-intelligence/925338/openai-musk-v-altman-mira-murati",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Live updates from Elon Musk and Sam Altman’s court battle over the future of OpenAI",
+    "description": "Sam Altman and Elon Musk are facing off in a high-stakes trial that could alter the future of OpenAI and its most well-known product, ChatGPT. In 2024, Musk filed a lawsuit accusing OpenAI of abandoning its founding mission of developing AI to benefit humanity and shifting focus to boosting profits instead.\nElon Musk, his financial manager and Neuralink CEO, Jared Birchall, and OpenAI cofounder Greg Brockman have already testified before the jury. Now, on Wednesday, May 6th, Shivon Zilis, a former OpenAI board member who shares four children with Musk, is taking the stand, and the courtroom is seeing testimony from former OpenAI exec Mira Murati via video.\nMicrosoft CEO Satya Nadella is scheduled to appear on Monday, with OpenAI cofounder and former chief scientist Ilya Sutskever lined up to testify after that.\nMusk was a cofounder of OpenAI and claims that Altman and Brockman tricked him into giving the company money, only to turn their backs on their original goal. However, OpenAI says that “This lawsuit has always been a baseless and jealous bid to derail a competitor” in a bid to boost Musk’s own SpaceX / xAI / X companies that have launched Grok as a competitor to ChatGPT.\nIn ",
+    "source_url": "https://www.theverge.com/tech/917225/sam-altman-elon-musk-openai-lawsuit",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Google&#8217;s AI search summaries will now quote Reddit",
+    "description": "Google is updating its AI Search features to make it easier for users to find information from sources they know and trust. One of the more notable changes introduces “a preview of perspectives” from firsthand sources like social media, Reddit, and other web forums, effectively linking your search queries with online conversations around similar topics.\nGoogle’s AI search summaries will now quote Reddit\nThe new AI Mode and AI Overviews updates bring in perspectives from firsthand sources like social media and web forums.\nThe new AI Mode and AI Overviews updates bring in perspectives from firsthand sources like social media and web forums.\nGoogle says this update aims to address that “people are increasingly seeking out advice from others” when searching for information online. This will be relatable for anyone who’s added “Reddit” to the end of Google Search terms to find experiences from real humans instead of SEO-optimized web results. It also backs up claims made by Reddit CEO Steve Huffman last year that “just about anybody using Google at this point will end up on Reddit.”\nBy building these features into its AI Search tools, Google is trying to encourage more users to try them",
+    "source_url": "https://www.theverge.com/tech/924993/google-ai-search-mode-overviews-update-reddit-links",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Microsoft’s Office and LinkedIn chief now runs Teams in latest reshuffle",
+    "description": "Microsoft’s LinkedIn chief, Ryan Roslansky, took on an expanded role at the company as head of Office last year, and he’s now getting more responsibilities as part of the latest leadership reshuffle inside Microsoft. Sources tell me that the Microsoft Teams organization is moving to report to Roslansky, who will now lead a new Work Experiences Group at Microsoft.\nMicrosoft’s Office and LinkedIn chief now runs Teams in latest reshuffle\nThe departure of veteran executive Rajesh Jha has triggered big organizational changes inside Microsoft.\nThe departure of veteran executive Rajesh Jha has triggered big organizational changes inside Microsoft.\nThe changes, which come a week after Roslansky named a new CEO of LinkedIn, are part of a broader reshuffle triggered by Rajesh Jha, executive vice president of Microsoft’s experiences and devices group, retiring from Microsoft after more than 35 years. Jha was responsible for the teams behind Windows, Office, Copilot, and Microsoft 365, and Microsoft has been trying to divide up his responsibilities ever since his retirement announcement in March.\nCharles Lamanna, who has risen quickly through the ranks at Microsoft, is also taking on more resp",
+    "source_url": "https://www.theverge.com/tech/924931/microsoft-office-copilot-windows-reorg-shuffle",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Chrome’s AI features may be hogging 4GB of your computer storage",
+    "description": "Google Chrome may be taking up more of your storage than expected thanks to a large on-device AI model file that, in some cases, is being automatically downloaded to the browser’s system folders. Users who have noticed unexplained drops in their available desktop device storage are now discovering that Chrome is installing a 4GB weights.bin file inside their browser directory when certain AI features are enabled.\nChrome’s AI features may be hogging 4GB of your computer storage\nHere’s how you can find out, and get that storage back if you need it.\nHere’s how you can find out, and get that storage back if you need it.\nThe weights.bin file in question is connected to Google’s Gemini Nano AI model, which powers Chrome AI tools like scam detection, writing assistance, autofill, and suggestion features. As the Gemini Nano model is designed to run locally, it needs to use training parameters stored on your device rather than pulling information from cloud-based models. That provides some privacy benefits, but isn’t ideal if you’re low on storage — especially as users aren’t being clearly notified about the file size requirements.\nIf you have certain Gemini AI features enabled on Chrome, i",
+    "source_url": "https://www.theverge.com/tech/924933/google-chrome-4gb-gemini-nano-ai-features",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "Google Home&#8217;s Gemini AI can handle more complicated requests",
+    "description": "Google Home users can now ask Gemini to complete more complex, multi-step tasks and combine multiple tasks in a single command. Google has updated Gemini for Home to Gemini 3.1, which it says will improve the smart home assistant’s ability to interpret and act on requests. The upgrade will also make Gemini for Home better at handling recurring and all-day events and allow users to “move around” upcoming events.\nGoogle Home’s Gemini AI can handle more complicated requests\nAn upgrade to Gemini 3.1 lets Google’s smart home assistant handle multiple requests in the same voice command.\nAn upgrade to Gemini 3.1 lets Google’s smart home assistant handle multiple requests in the same voice command.\nLast month, Google also updated Gemini for Home with improvements for understanding natural language and identifying devices correctly. The upgrades follow reports of bugs in Google’s new smart home assistant, like confusing different animals in camera footage or struggling with accuracy in activity summaries.\nIn addition to the Gemini upgrade, Google also announced improvements to the camera experience, new automation capabilities, and two public previews: Ask Home on Web and a new notification",
+    "source_url": "https://www.theverge.com/tech/924755/google-home-gemini-3-1-upgrade",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-05"
+  },
+  {
+    "title": "Apple agrees to pay iPhone owners $250 million for not delivering AI Siri",
+    "description": "Apple has agreed to pay $250 million to settle a class action lawsuit that accused it of misleading customers about the availability of its Apple Intelligence features. The proposed settlement would apply to people in the US who purchased all models of the iPhone 16 and the iPhone 15 Pro between June 10th, 2024 and March 29th, 2025.\nApple agrees to pay iPhone owners $250 million for not delivering AI Siri\nThe proposed settlement in a class action lawsuit will get some cash back to people who bought the iPhone 16 lineup and the iPhone 15 Pro.\nThe proposed settlement in a class action lawsuit will get some cash back to people who bought the iPhone 16 lineup and the iPhone 15 Pro.\nPeople who submit qualifying claims can receive $25 for each eligible device, “which may decrease or increase up to $95 per device, depending on claim volume and other factors,” according to Clarkson Law Firm, the legal team behind the class action lawsuit.\nThe settlement will resolve a 2025 lawsuit, alleging Apple’s advertisements created a “clear and reasonable consumer expectation” that Apple Intelligence features would be available with the launch of the iPhone 16. The lawsuit claimed Apple’s products “o",
+    "source_url": "https://www.theverge.com/tech/924706/apple-iphone-siri-intelligence-class-action-lawsuit-settlement",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-05"
+  },
+  {
+    "title": "The Download: seafloor science and military chatbots",
+    "description": "The Download: seafloor science and military chatbots\nPlus: Elon Musk pushed OpenAI to go commercial, its president has testified.\nThis is today's edition of The Download, our weekday newsletter that provides a daily dose of what's going on in the world of technology.\nInexpensive seafloor-hopping submersibles could stoke deep-sea science—and mining\nLast week, two oblong neon submersibles started to descend nearly 6,000 meters into the Pacific Ocean. Throughout the rest of May, they will map the seafloor in search of critical mineral deposits.\nIf all goes well, the vehicles, built by Orpheus Ocean, could help scientists probe the vastly understudied deep sea—and the resources it holds—at a fraction of the cost of existing systems.\nBut the same submersibles are also attracting deep-sea mining companies, raising concerns about environmental impacts. Find out why they’re drawing so much attention.\n—Hannah Richter\nThe new war room: 10 Things That Matter in AI Right Now\nA new kind of system has entered the war room: conversational AI tools that commanders turn to not just for analysis, but for advice.\nOne US defense official told MIT Technology Review that personnel might give these advic",
+    "source_url": "https://www.technologyreview.com/2026/05/06/1136917/the-download-seafloor-science-military-ai-chatbots/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-06"
+  },
+  {
+    "title": "The Download: inside the Musk v. Altman trial, and AI for democracy",
+    "description": "The Download: inside the Musk v. Altman trial, and AI for democracy\nPlus: The Pentagon has struck sweeping AI deals for classified work.\nThis is today's edition of The Download, our weekday newsletter that provides a daily dose of what's going on in the world of technology.\nWeek one of the Musk v. Altman trial: what it was like in the room\nTwo of the most powerful figures in AI—Sam Altman and Elon Musk—are in the middle of a landmark legal showdown, with Musk alleging he was misled about OpenAI becoming a for-profit company.\nOur reporter Michelle Kim, who also happens to be a lawyer, has been in court each day, and has broken down the first week’s key moments in her latest report. In a new Q&A, she also reveals what it was like in the room, the new details that have emerged about how Musk and OpenAI operate—and what we can expect from this week’s proceedings.\nFind out what she’s discovered so far, and if you want to keep up with MIT Technology Review’s ongoing coverage of the Musk v. Altman trial, follow @techreview or @michelletomkim on X.\n—James O'Donnell\nThis story is from The Algorithm, our weekly newsletter giving you the inside track on all things AI. Sign up to receive it in",
+    "source_url": "https://www.technologyreview.com/2026/05/05/1136848/the-download-musk-openai-altman-trial-ai-democracy/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-05"
+  },
+  {
+    "title": "A blueprint for using AI to strengthen democracy",
+    "description": "A blueprint for using AI to strengthen democracy\nAI is changing what it means to be a democratic citizen. Here’s how we can harness it for good.\nEvery few centuries, changes in how information moves reshape how societies govern themselves. The printing press spread vernacular literacy, helping give rise to the Reformation and, eventually, representative government. The telegraph made it possible to administer vast nations like the US, accelerating the growth of the modern bureaucratic state. Broadcast media created shared national audiences, which in turn fueled mass democracy.\nWe are now in the early stages of another such shift. Faster than many realize, AI is becoming the primary interface through which we form beliefs and participate in democratic self-governance. If left unchecked, this shift could further strain America’s already fragile institutions. But it could also help address long-standing problems, like lagging civic engagement and deepening polarization. What happens next depends on design choices that are already being made, whether we know it or not.\nStart with what might be called the epistemic layer—how we come to know things. People are increasingly relying on AI",
+    "source_url": "https://www.technologyreview.com/2026/05/05/1136843/ai-democracy-blueprint/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-05"
+  },
+  {
+    "title": "Week one of the Musk v. Altman trial: What it was like in the room",
+    "description": "Week one of the Musk v. Altman trial: What it was like in the room\nHere’s what we learned from Elon Musk’s testimony, and what to expect this week.\nThis story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here.\nTwo of the most powerful people in AI—Sam Altman and Elon Musk—began their face-off in court in Oakland, California, last week. Musk is suing OpenAI, alleging that the millions he spent to fund it around a decade ago were meant for a nonprofit, not a corporation, and that the company has reneged on that mission since.\nThe stakes are high—even a partial win for Musk could set OpenAI back as it reportedly plans to go public this year. But most of the attention comes from the spectacle of a feud on X now playing out in federal court. “Cringey texts, raw diary entries, and endless scheming behind the founding and growth of OpenAI are expected to come to light,” my colleague Michelle Kim wrote before it began. And the trial unfolds as the cultural backlash against AI swells; some of the signs held by protesters outside the courthouse suggest that to a significant number of people, whatever the outcome of M",
+    "source_url": "https://www.technologyreview.com/2026/05/04/1136826/week-one-of-the-musk-v-altman-trial-what-it-was-like-in-the-room/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-04"
+  },
+  {
+    "title": "Tailoring AI solutions for health care needs",
+    "description": "Sponsored\nTailoring AI solutions for health care needs\nBy tapping into sector-specific data and expertise, developers can build AI applications that address some of health care’s biggest challenges.\nIn partnership withMayo Clinic Platform\nThe AI market is full of big promises of grand transformation. Health care is a prime target for those promises, beset as it is by financial pressures, labor shortages, and the growing burden of caring for an aging population. AI developers are targeting functions that vary widely, from curing cancer and performing surgery to streamlining routine administrative tasks.\nThe opportunity is genuine, but execution can be difficult. Numerous software vendors have tried to “fix” health care challenges but failed because they misunderstood the environment. “Health care is very complex,” says Steve Bethke, vice president of the solution developer market for Mayo Clinic Platform, which supports the buildout and deployment of digital solutions for health care companies through data-based insights and expert validation. “Solution developers must have a deep focus on clinical and technical capabilities, and then align their solutions to the relevant business i",
+    "source_url": "https://www.technologyreview.com/2026/05/04/1134425/tailoring-ai-solutions-for-health-care-needs/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-04"
+  },
+  {
+    "title": "Musk v. Altman week 1: Elon Musk says he was duped, warns AI could kill us all, and admits that xAI distills OpenAI’s models",
+    "description": "Musk v. Altman week 1: Elon Musk says he was duped, warns AI could kill us all, and admits that xAI distills OpenAI’s models\nMusk kept his cool, and OpenAI’s lawyer bulldozed him with piercing questions about his motivations for suing the company.\nIn the first week of the landmark trial between Elon Musk and OpenAI, Musk took the stand in a crisp black suit and tie and argued that OpenAI CEO Sam Altman and president Greg Brockman had deceived him into bankrolling the company. Along the way, he warned that AI could destroy us all and sat through revelations that he had poached OpenAI employees for his own companies. He even confessed, to some audible gasps in the courtroom, that his own AI company, xAI, which makes the chatbot Grok, uses OpenAI’s models to train its own.\nThe federal courthouse in Oakland, California, was packed with armies of lawyers carrying boxes of exhibits, journalists typing away at their laptops, and a handful of concerned OpenAI employees. Outside, protesters lined the streets, carrying signs urging people to quit ChatGPT, boycott Tesla, or both. Musk looked calm and comfortable, slipping in the occasional quip in his distinct South African accent. But he was",
+    "source_url": "https://www.technologyreview.com/2026/05/01/1136800/musk-v-altman-week-1-musk-says-he-was-duped-warns-ai-could-kill-us-all-and-admits-that-xai-distills-openais-models/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-01"
+  },
+  {
+    "title": "Cyber-Insecurity in the AI Era",
+    "description": "Sponsored\nCyber-Insecurity in the AI Era\nPresented byGC Cybersecurity\nCybersecurity was already under strain before AI entered the stack. Now, as AI expands the attack surface and adds new complexity, the limits of legacy approaches are becoming harder to ignore. This session from MIT Technology Review's EmTech AI conference explores why security must be rethought with AI at its core, not layered on after the fact.\nAbout the speaker\nTarique Mustafa, Cofounder, CEO, and CTO, GC Cybersecurity\nTarique Mustafa is Cofounder and CEO/CTO of two AI-powered cybersecurity companies: GCCybersecurity, Inc. and its data compliance spinout, Chorology, Inc. A prolific inventor and internationally recognized authority in knowledge representation, inference calculus, and AI planning, Tarique has spent his career applying autonomously collaborative AI to solve complex, ultra-high-scale challenges across cybersecurity, data security, and compliance — with deep expertise spanning Data Classification, DLP, and DSPM industries. His groundbreaking innovations and multiple USPTO patents have earned him global recognition, including frequent invitations to deliver keynote addresses at prestigious internati",
+    "source_url": "https://www.technologyreview.com/2026/05/01/1136779/cyber-insecurity-in-the-ai-era/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-01"
+  },
+  {
+    "title": "Operationalizing AI for Scale and Sovereignty",
+    "description": "Sponsored\nOperationalizing AI for Scale and Sovereignty\nCompanies are taking control of their own data to tailor AI for their needs. The challenge lies in balancing ownership with the safe, trusted flow of high‑quality data needed to power reliable insights. This conversation from MIT Technology Review's EmTech AI conference examines how AI factories unlock new levels of scale, sustainability, and governance—positioning data control as a strategic imperative for governments and enterprises.\nAbout the speakers\nChris Davidson, Vice President, HPC & AI Customer Solutions, HPE\nChris Davidson is Vice President of HPC & AI Customer Solutions at Hewlett Packard Enterprise. He leads HPE’s global strategy for AI Factory solutions and Sovereign AI, working with governments, enterprises, and research institutions to build secure, scalable national- and enterprise-grade AI capabilities.\nHe also directs Product Management and Performance Engineering across HPE’s HPC and AI portfolio, including large-model training platforms and Cray exascale systems. His teams define product strategy, performance architecture, and deployment models that position HPE at the forefront of high-performance and AI c",
+    "source_url": "https://www.technologyreview.com/2026/05/01/1136772/operationalizing-ai-for-scale-and-sovereignty/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-01"
+  },
+  {
+    "title": "The Download: a new Christian phone network, and debugging LLMs",
+    "description": "The Download: a new Christian phone network, and debugging LLMs\nPlus: Elon Musk has admitted that xAI trained Grok on OpenAI models.\nThis is today's edition of The Download, our weekday newsletter that provides a daily dose of what's going on in the world of technology.\nA new US phone network for Christians aims to block porn and gender-related content\nA new US-wide cell phone network marketed to Christians is set to launch next week. It blocks porn using network-level controls that can’t be turned off—even by adult account owners.\nIt’s also rolling out a filter on sexual content aimed at blocking material related to gender and trans issues, optional but turned on by default across all plans.\nThe trouble is, many websites don’t fit neatly into one category. That leaves its maverick founder with broad, subjective control over what is allowed or banned. Read the full story.\n—James O'Donnell\nThis startup’s new mechanistic interpretability tool lets you debug LLMs\nThe San Francisco–based startup Goodfire has released a new tool, Silico, that lets researchers peer inside an AI model and adjust its parameters during training. It could give users more control over how this technology is b",
+    "source_url": "https://www.technologyreview.com/2026/05/01/1136762/the-download-christian-phone-network-debugging-llms/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-01"
+  },
+  {
+    "title": "Inexpensive seafloor-hopping submersibles could stoke deep-sea science—and mining",
+    "description": "Inexpensive seafloor-hopping submersibles could stoke deep-sea science—and mining\nA company called Orpheus Ocean wants to go “deep for cheap.”\nSmack dab between Australia and South America, the US National Oceanic and Atmospheric Administration (NOAA) research vessel Rainier is currently on a mission to map more than 8,000 square nautical miles of the Pacific seafloor in search of critical mineral deposits. But it isn’t doing it alone; for a month starting this week, it will deploy two oblong neon submersibles as the project’s special agents, sending them nearly 6,000 meters down to hop along the seafloor.\nThe submersibles, built by the young company Orpheus Ocean, are designed to explore just this environment: a squelchy substrate that teems with life of all kinds, from tiny microbes to worms and snails, along with egg-size “nodules” of metals—such as copper, cobalt, nickel, and manganese—that are crucial for technologies worldwide.\nScientists and companies have long sought to probe the deep sea and bring such treasures to the surface. Orpheus, which spun off from the Woods Hole Oceanographic Institution (WHOI) in 2024, could be well positioned to make those possibilities a lot mo",
+    "source_url": "https://www.technologyreview.com/2026/05/01/1136734/inexpensive-seafloor-hopping-submersibles-could-stoke-deep-sea-science-and-mining/",
+    "tags": [
+      "infra"
+    ],
+    "publish_date": "2026-05-01"
+  }
+]
