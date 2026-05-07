@@ -22,24 +22,28 @@ class ResearchState(TypedDict):
     theme_map: list[dict]
     reviewed_map: list[dict]
     error: str | None
+    timings: dict
 
 
 def scout_node(state: ResearchState) -> ResearchState:
     agent = ScoutAgent()
-    docs = agent.run(state["query"])
-    return {**state, "retrieved_docs": docs}
+    docs, stats = agent.run(state["query"])
+    timings = {**state.get("timings", {}), "scout": stats}
+    return {**state, "retrieved_docs": docs, "timings": timings}
 
 
 def mapper_node(state: ResearchState) -> ResearchState:
     agent = MapperAgent()
-    theme_map = agent.run(state["query"], state["retrieved_docs"])
-    return {**state, "theme_map": theme_map}
+    theme_map, stats = agent.run(state["query"], state["retrieved_docs"])
+    timings = {**state.get("timings", {}), "mapper": stats}
+    return {**state, "theme_map": theme_map, "timings": timings}
 
 
 def critic_node(state: ResearchState) -> ResearchState:
     agent = CriticAgent()
-    reviewed = agent.run(state["theme_map"], state["retrieved_docs"])
-    return {**state, "reviewed_map": reviewed}
+    reviewed, stats = agent.run(state["theme_map"], state["retrieved_docs"])
+    timings = {**state.get("timings", {}), "critic": stats}
+    return {**state, "reviewed_map": reviewed, "timings": timings}
 
 
 def build_graph() -> StateGraph:
@@ -71,6 +75,21 @@ def run_pipeline(query: str) -> list[dict]:
         Verified list of theme dicts, each with:
         {theme_name, companies, rationale, citations}
     """
+    return run_pipeline_full(query)["reviewed_map"]
+
+
+def run_pipeline_full(query: str) -> dict:
+    """
+    Run the full Scout → Mapper → Critic pipeline and return the complete result.
+
+    Args:
+        query: Natural language market research query.
+
+    Returns:
+        Dict with keys:
+            reviewed_map: Verified list of theme dicts.
+            retrieved_docs: Documents retrieved by the Scout agent.
+    """
     global _pipeline
     if _pipeline is None:
         _pipeline = build_graph()
@@ -81,6 +100,11 @@ def run_pipeline(query: str) -> list[dict]:
         "theme_map": [],
         "reviewed_map": [],
         "error": None,
+        "timings": {},
     }
     final_state = _pipeline.invoke(initial_state)
-    return final_state["reviewed_map"]
+    return {
+        "reviewed_map": final_state["reviewed_map"],
+        "retrieved_docs": final_state["retrieved_docs"],
+        "timings": final_state["timings"],
+    }

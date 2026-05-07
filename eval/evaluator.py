@@ -4,6 +4,7 @@ Evaluation metrics for the multi-agent market research pipeline.
 Metrics:
 - entity_precision_recall: how well the pipeline identifies the gold companies
 - hallucination_rate: fraction of predicted companies with no source document support
+- theme_coverage: fraction of gold themes covered by predicted theme names
 - run_eval: runs all queries in the eval set and prints aggregate results
 
 Usage:
@@ -46,6 +47,25 @@ def entity_precision_recall(
     return {"precision": round(precision, 3), "recall": round(recall, 3), "f1": round(f1, 3)}
 
 
+def theme_coverage(gold_themes: list[str], predicted_themes: list[str]) -> float:
+    """
+    Fraction of gold themes covered by at least one predicted theme name.
+    Matching is case-insensitive substring (e.g. "RAG" matches "RAG and retrieval").
+
+    Returns:
+        Float between 0.0 (no themes covered) and 1.0 (all gold themes covered).
+    """
+    if not gold_themes:
+        return 1.0
+    gold_lower = [t.lower() for t in gold_themes]
+    pred_lower = [t.lower() for t in predicted_themes]
+    covered = sum(
+        1 for g in gold_lower
+        if any(g in p or p in g for p in pred_lower)
+    )
+    return round(covered / len(gold_lower), 3)
+
+
 def hallucination_rate(
     reviewed_map: list[dict], retrieved_docs: list[dict]
 ) -> float:
@@ -77,18 +97,19 @@ def hallucination_rate(
 
 
 def run_eval(
-    pipeline_fn: Callable[[str], list[dict]],
+    pipeline_fn: Callable[[str], dict],
     queries_path: pathlib.Path = EVAL_PATH,
 ) -> dict:
     """
     Run the pipeline on every query in the eval set and compute aggregate metrics.
 
     Args:
-        pipeline_fn: Callable that takes a query string and returns a reviewed_map.
+        pipeline_fn: Callable that takes a query string and returns a dict with
+            keys ``reviewed_map`` (list[dict]) and ``retrieved_docs`` (list[dict]).
         queries_path: Path to the JSON eval query file.
 
     Returns:
-        Dict with mean precision, recall, f1, and hallucination rate.
+        Dict with mean precision, recall, f1, hallucination rate, and theme coverage.
     """
     with open(queries_path) as f:
         queries = json.load(f)
@@ -97,26 +118,42 @@ def run_eval(
     for item in queries:
         query = item["query"]
         gold_entities = item["gold_entities"]
+        gold_themes = item.get("gold_themes", [])
         print(f"Running: {query[:60]}...")
 
         try:
-            reviewed_map = pipeline_fn(query)
+            pipeline_result = pipeline_fn(query)
+            reviewed_map = pipeline_result["reviewed_map"]
+            retrieved_docs = pipeline_result["retrieved_docs"]
+
             predicted_entities = [
                 company
                 for theme in reviewed_map
                 for company in theme.get("companies", [])
             ]
+            predicted_themes = [
+                theme.get("theme_name", "") for theme in reviewed_map
+            ]
+
             metrics = entity_precision_recall(gold_entities, predicted_entities)
-            h_rate = hallucination_rate(reviewed_map, [])
+            h_rate = hallucination_rate(reviewed_map, retrieved_docs)
+            t_coverage = theme_coverage(gold_themes, predicted_themes)
         except Exception as e:
             print(f"  ERROR: {e}")
             metrics = {"precision": 0.0, "recall": 0.0, "f1": 0.0}
             h_rate = 1.0
+            t_coverage = 0.0
 
-        results.append({**metrics, "hallucination_rate": h_rate, "query_id": item["id"]})
+        results.append({
+            **metrics,
+            "hallucination_rate": h_rate,
+            "theme_coverage": t_coverage,
+            "query_id": item["id"],
+        })
         print(
             f"  P={metrics['precision']:.2f}  R={metrics['recall']:.2f}  "
-            f"F1={metrics['f1']:.2f}  Halluc={h_rate:.2f}"
+            f"F1={metrics['f1']:.2f}  Halluc={h_rate:.2f}  "
+            f"ThemeCov={t_coverage:.2f}"
         )
 
     n = len(results)
@@ -127,6 +164,9 @@ def run_eval(
         "mean_hallucination_rate": round(
             sum(r["hallucination_rate"] for r in results) / n, 3
         ),
+        "mean_theme_coverage": round(
+            sum(r["theme_coverage"] for r in results) / n, 3
+        ),
         "num_queries": n,
     }
     print("\n=== Aggregate Results ===")
@@ -136,5 +176,5 @@ def run_eval(
 
 
 if __name__ == "__main__":
-    from pipeline.orchestrator import run_pipeline
-    run_eval(run_pipeline)
+    from pipeline.orchestrator import run_pipeline_full
+    run_eval(run_pipeline_full)

@@ -95,17 +95,21 @@ User Query
 - [x] LangGraph StateGraph orchestrating all three agents end-to-end
 - [x] Evaluation framework: entity precision/recall and hallucination rate metrics
 - [x] FastAPI backend with `/query` endpoint and minimal web UI
+- [x] Fixed hallucination metric — evaluator now grounds predictions against actual retrieved docs (was always passing an empty list)
+- [x] Added `theme_coverage` eval metric using the `gold_themes` field in the evaluation query set
+- [x] Per-agent cost and latency tracking — Scout, Mapper, and Critic each report `latency_ms`; LLM agents report `input_tokens`, `output_tokens`, and `cost_usd` (Claude Sonnet pricing)
+- [x] Pipeline stats surfaced in API response (`PipelineStats` model with per-agent breakdown and totals)
+- [x] Web UI displays a Pipeline Stats panel after each query (latency, cost, token counts per agent)
 
 ---
 
 ## Next Steps
 
 - [ ] Expand corpus to 200–300 documents from all planned sources
-- [ ] Build and annotate the full 50-query evaluation set with gold labels
-- [ ] Integrate a second LLM (e.g., GPT-4o) and an open-source model (e.g., Llama 3) for the comparison view
-- [ ] Add cost and latency tracking per model per query
-- [ ] Polish the web UI: expandable citations, side-by-side LLM comparison panel
-- [ ] Run full eval sweep and report aggregate accuracy, hallucination rate, cost/latency
+- [ ] Build and annotate the full 50-query evaluation set with gold labels (currently 10)
+- [ ] Integrate a second LLM (e.g., GPT-4o) and an open-source model (e.g., Llama 3) for side-by-side comparison
+- [ ] Add side-by-side LLM comparison panel to the web UI
+- [ ] Run full eval sweep and report aggregate accuracy, hallucination rate, cost/latency across models
 
 ---
 
