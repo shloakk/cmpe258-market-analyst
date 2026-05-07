@@ -1,19 +1,20 @@
 """
-Mapper Agent: given retrieved documents, uses Claude to cluster companies
-into named themes (e.g., multi-agent orchestration, RAG tools, evaluation).
-Returns a structured market map with citations for each theme.
+Mapper Agent: clusters retrieved documents into market themes using a
+configurable LLM (Claude / GPT / Llama).
+
+The model is selected at construction time (``model="claude" | "gpt" | "llama"``)
+so the same pipeline can be compiled per model and run side-by-side for the
+multi-LLM comparison view without changes to agent code.
 """
 
-import json
-import time
-from langchain_anthropic import ChatAnthropic
-from langchain.schema import HumanMessage, SystemMessage
+from langchain_core.messages import HumanMessage, SystemMessage
 
-MODEL = "claude-sonnet-4-6"
-# Claude Sonnet pricing (per token)
-_INPUT_COST_PER_TOKEN = 3.0 / 1_000_000
-_OUTPUT_COST_PER_TOKEN = 15.0 / 1_000_000
+from agents.llm_client import LLMClient, ModelId, truncate_docs_to_budget
+from agents.parsers import parse_theme_map_response
 
+# The schema example in the prompt MUST match agents/schemas.Theme exactly
+# (theme_name / companies / rationale / citations). When updating Theme,
+# update this prompt too — the parser will reject responses that drift.
 SYSTEM_PROMPT = """You are a market research analyst specializing in AI infrastructure and emerging startups.
 Given a list of documents about AI companies and tools, your job is to:
 1. Identify distinct market themes or categories
@@ -34,62 +35,65 @@ Respond ONLY with valid JSON in the following format:
 
 
 class MapperAgent:
-    """Clusters retrieved documents into market themes using Claude."""
+    """Clusters retrieved documents into market themes using a configurable LLM."""
 
-    def __init__(self) -> None:
-        self.llm = ChatAnthropic(model=MODEL, temperature=0)
-
-    def run(self, query: str, retrieved_docs: list[dict]) -> tuple[list[dict], dict]:
+    def __init__(self, model: ModelId = "claude") -> None:
         """
         Args:
+            model: Short model id ("claude", "gpt", or "llama"). Determines
+                which provider/model the LLMClient wraps. Defaults to "claude"
+                to preserve the previous single-model behavior.
+        """
+        self.client = LLMClient(model=model, temperature=0.0)
+
+    def run(
+        self, query: str, retrieved_docs: list[dict]
+    ) -> tuple[list[dict], dict]:
+        """Cluster ``retrieved_docs`` into themes via the configured LLM.
+
+        Args:
             query: The original user query.
-            retrieved_docs: Documents returned by the Scout agent.
+            retrieved_docs: Documents from Scout. Keys: title, source_url,
+                tags, publish_date, snippet, score.
 
         Returns:
-            Tuple of (theme_map, stats) where stats contains latency, token
-            counts, and estimated cost.
+            Tuple of ``(theme_map, stats)`` where:
+                theme_map: list[dict] with keys theme_name, companies,
+                    rationale, citations.
+                stats: dict with keys model, input_tokens, output_tokens,
+                    cost_usd, latency_ms (totals across any JSON-retry).
+
+        Raises:
+            ValueError: If the LLM response cannot be parsed even after one
+                retry. The original raw output is included in the message.
         """
+        # Shrink snippets if the prompt would overrun the model's context.
+        # Critic applies the same truncation independently on the raw
+        # retrieved_docs so it sees the same evidence the Mapper saw.
+        docs = truncate_docs_to_budget(retrieved_docs, self.client.provider_model)
+
         docs_text = "\n\n".join(
-            f"[{i+1}] Title: {d['title']}\n{d['snippet']}"
-            for i, d in enumerate(retrieved_docs)
+            f"[{i + 1}] Title: {d['title']}\n{d['snippet']}"
+            for i, d in enumerate(docs)
         )
         user_message = (
             f"User query: {query}\n\n"
             f"Retrieved documents:\n{docs_text}\n\n"
             "Based on these documents, produce a structured market map."
         )
-        t0 = time.perf_counter()
-        response = self.llm.invoke(
-            [
-                SystemMessage(content=SYSTEM_PROMPT),
-                HumanMessage(content=user_message),
-            ]
-        )
-        latency_ms = round((time.perf_counter() - t0) * 1000, 1)
+        messages = [
+            SystemMessage(content=SYSTEM_PROMPT),
+            HumanMessage(content=user_message),
+        ]
 
-        usage = response.usage_metadata or {}
-        input_tokens = usage.get("input_tokens", 0)
-        output_tokens = usage.get("output_tokens", 0)
-        cost_usd = round(
-            input_tokens * _INPUT_COST_PER_TOKEN
-            + output_tokens * _OUTPUT_COST_PER_TOKEN,
-            6,
+        theme_map, response = self.client.invoke_with_json_retry(
+            messages, parse_theme_map_response
         )
         stats = {
-            "model": MODEL,
-            "input_tokens": input_tokens,
-            "output_tokens": output_tokens,
-            "cost_usd": cost_usd,
-            "latency_ms": latency_ms,
+            "model": response.model,
+            "input_tokens": response.input_tokens,
+            "output_tokens": response.output_tokens,
+            "cost_usd": response.cost_usd,
+            "latency_ms": response.latency_ms,
         }
-
-        raw = response.content.strip()
-        # Strip markdown code fences if present
-        if raw.startswith("```"):
-            raw = raw.split("```")[1]
-            if raw.startswith("json"):
-                raw = raw[4:]
-        try:
-            return json.loads(raw), stats
-        except json.JSONDecodeError as e:
-            raise ValueError(f"Mapper returned invalid JSON: {e}\nRaw output:\n{raw}")
+        return theme_map, stats

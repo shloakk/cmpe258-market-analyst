@@ -2,6 +2,7 @@ langgraph>=0.2
 langchain>=0.3
 langchain-anthropic
 langchain-openai
+langchain-groq
 langchain-community
 faiss-cpu
 fastapi

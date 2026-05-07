@@ -12,12 +12,11 @@ Environment variables required:
 import json
 import os
 import pathlib
-import pickle
 
 from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain.schema import Document
+from langchain_core.documents import Document
 
 load_dotenv()
 
