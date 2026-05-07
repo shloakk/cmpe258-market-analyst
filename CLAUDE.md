@@ -2,6 +2,23 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Project Overview
+
+This project is a **multi-agent LLM research pipeline** built for CMPE 258 (Deep Learning, Spring 2026) as an Option 2 — LLMs + AI Agent System project. It implements a Scout → Mapper → Critic LangGraph pipeline that accepts a natural language query, retrieves relevant documents via FAISS similarity search, groups results into themes using Claude, and removes unsupported claims before returning a structured JSON response through a FastAPI + vanilla-JS web interface.
+
+## Submission Standards
+
+These rules must be followed in all code produced for this project to meet professor requirements:
+
+- **Every major function must have a docstring** explaining its purpose, parameters, and return value. No exceptions, including helper functions.
+- **Every major component must be evaluable.** If you add a new agent or pipeline stage, a corresponding test case or eval metric must exist in `eval/evaluator.py`.
+- **No fabricated or placeholder results.** If a component does not work, raise a clear exception — do not silently return dummy data or hardcoded outputs.
+- **Code comments must explain *why*, not just *what*.** A comment like `# strip fences before parsing` is not enough; write `# LLM sometimes wraps JSON in markdown fences; strip them to avoid json.loads() failure`.
+- **All JSON schemas must be documented inline.** Anywhere a `list[dict]` is produced or consumed, include a comment listing the expected keys (e.g., `# keys: theme_name, companies, rationale, citations`).
+- **Commit-ready code only.** Do not leave debugging `print()` statements, commented-out dead code blocks, or `TODO` stubs in finished files.
+- **Use type hints on all function signatures.** Prefer `TypedDict` for shared state structures (already established via `ResearchState`).
+- **Evaluation evidence is required.** Any claim about model behavior (e.g., "Critic reduces hallucinations") must be backed by a metric printed by `eval/evaluator.py`, not just described in prose.
+
 ## Setup
 
 ```bash
@@ -13,17 +30,31 @@ cp .env.example .env   # add ANTHROPIC_API_KEY and OPENAI_API_KEY
 python data/scripts/ingest.py
 ```
 
-## Common Commands
+## Build / Test Commands
 
 ```bash
-# Run the API server (with hot reload)
+# ── Local development server (hot reload) ──────────────────────────────────
 uvicorn app.main:app --reload
 
-# Run the full evaluation suite against the seed query set
+# ── Rebuild the FAISS index (required after any corpus change) ─────────────
+python data/scripts/ingest.py
+
+# ── Run the full evaluation suite against the seed query set ───────────────
 python eval/evaluator.py
 
-# Run the pipeline directly from Python
-python -c "from pipeline.orchestrator import run_pipeline; import json; print(json.dumps(run_pipeline('map the key players in agentic AI platforms'), indent=2))"
+# ── Smoke-test the pipeline end-to-end from the command line ───────────────
+python -c "
+from pipeline.orchestrator import run_pipeline
+import json
+print(json.dumps(run_pipeline('map the key players in agentic AI platforms'), indent=2))
+"
+
+# ── Run a single agent in isolation (useful for debugging) ─────────────────
+python -c "from agents.scout import ScoutAgent; s = ScoutAgent(); print(s.retrieve('LLM evaluation frameworks'))"
+python -c "from agents.mapper import MapperAgent; help(MapperAgent.map)"
+
+# ── Check that all imports resolve (catches missing deps before demo) ───────
+python -c "from pipeline.orchestrator import run_pipeline; from eval.evaluator import run_eval; print('All imports OK')"
 ```
 
 ## Architecture
