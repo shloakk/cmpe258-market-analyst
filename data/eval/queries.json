@@ -314,7 +314,7 @@
   },
   {
     "id": "q041",
-    "query": "List the companies mentioned in Anthropic's engineering blog posts.",
+    "query": "List the companies mentioned in recent agent runtime engineering blog posts.",
     "gold_entities": [],
     "gold_themes": ["agent-runtime", "eval-tools"],
     "gold_snippets": []

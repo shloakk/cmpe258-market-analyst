@@ -7,8 +7,8 @@
 | Corpus | 200–300 docs | 10 docs (`data/corpus/sample_docs.json`) | +190–290 docs |
 | Eval set | ≥50 queries with gold labels | 10 queries (`data/eval/queries.json`) | +40 queries |
 | Pipeline (Scout→Mapper→Critic) | LangGraph 3-agent | Implemented (`pipeline/orchestrator.py`) | Tracing, robustness |
-| Web UI | Market map + citations + 3-LLM comparison | Single-model UI (`app/static/index.html`) | Comparison view missing |
-| Multi-LLM | 3 models incl. 1 open-source | Only `claude-sonnet-4-6` | +GPT, +OSS model |
+| Web UI | Market map + citations + 3-LLM comparison | Comparison UI implemented (`app/static/index.html`) | Eval polish |
+| Multi-LLM | 3 models incl. 1 open-source | `gemini`, `llama`, `qwen` (+ optional `nemotron`) | Run full eval sweep |
 | Metrics | Entity P/R, theme quality, hallucination, cost, latency | P/R + hallucination + cost/latency (`eval/evaluator.py`) | Theme/cluster quality metric |
 | Observability | Langfuse | Not integrated | Add Langfuse |
 
@@ -24,7 +24,7 @@ Build `data/scripts/scrape.py` that pulls from these sources, normalizes to `{ti
 - **YC RFS** (~30 docs): scrape `ycombinator.com/rfs` and recent batch pages tagged AI.
 - **Newsletters** (~60 docs): Latent Space (Substack RSS), The AI Corner, Import AI, Ben's Bites — RSS → HTML extract.
 - **News** (~50 docs): TechCrunch + VentureBeat AI tags via RSS, filtered to 2025–2026.
-- **Technical posts** (~40 docs): Anthropic, OpenAI, LangChain, LlamaIndex engineering blogs.
+- **Technical posts** (~40 docs): LangChain, LlamaIndex, Hugging Face, Mistral, Cohere, and vector database engineering blogs.
 
 **Tag taxonomy** (enables learnable themes): `multi-agent-orchestration`, `rag`, `observability`, `agent-runtime`, `voice-agents`, `coding-agents`, `vertical-agents`, `eval-tools`, `memory-tools`, `infra`.
 
@@ -49,13 +49,14 @@ For each query: hand-label `gold_entities`, `gold_themes`, `gold_snippets`. Docu
 
 Refactor `agents/mapper.py` and `agents/critic.py` to take a `model_id` constructor arg. Create `agents/llm_client.py` that returns a unified `.invoke(messages) -> (text, usage, latency)` interface for:
 
-- `claude-sonnet-4-6` (Anthropic)
-- `gpt-4.1` or `gpt-5` (OpenAI)
-- `meta-llama/Llama-3.3-70B-Instruct` via Together AI or Groq (open-source requirement)
+- `gemini-2.0-flash` via Google AI Studio
+- `llama-3.3-70b-versatile` via Groq (open-weight requirement)
+- `qwen/qwen3-coder:free` via OpenRouter (open-weight requirement)
+- Optional: `nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free` via OpenRouter
 
 ### 2.2 Pipeline Parameterization
 
-`run_pipeline` in `pipeline/orchestrator.py` gains a `model: str = "claude"` argument. The `_pipeline` module-level cache becomes a `dict[str, CompiledGraph]` keyed by model. Scout stays model-agnostic (embeddings only).
+`run_pipeline` in `pipeline/orchestrator.py` gains a `model: str = "gemini"` argument. The `_pipeline` module-level cache becomes a `dict[str, CompiledGraph]` keyed by model. Scout stays model-agnostic (embeddings only).
 
 ### 2.3 Robustness Improvements
 
@@ -78,7 +79,7 @@ Add to `eval/evaluator.py`:
 
 ### 3.2 Per-Model Eval Runner
 
-Extend `run_eval` to loop `for model in ["claude", "gpt", "llama"]`, writing results to `eval/results/<model>_<timestamp>.json` with: per-query metrics, aggregate scores, cost (from token usage × per-model rates), and latency (wall-clock per agent).
+Extend `run_eval` to loop `for model in ["gemini", "llama", "qwen"]` (optionally `nemotron`), writing results to `eval/results/<model>_<timestamp>.json` with: per-query metrics, aggregate scores, cost (from token usage × per-model rates), and latency (wall-clock per agent).
 
 ### 3.3 Report Generator
 
@@ -104,7 +105,7 @@ Use Langfuse Cloud free tier for the demo. Document a `docker-compose` self-host
 
 ### 5.1 New `/compare` Endpoint
 
-Add `POST /compare` to `app/main.py` with body `{query, models: ["claude","gpt","llama"]}`. Returns `{model: {themes, latency_ms, cost_usd, trace_url}}`. Run the three pipelines concurrently via `asyncio.gather` (each `run_pipeline` wrapped with `asyncio.to_thread`).
+Add `POST /compare` to `app/main.py` with body `{query, models: ["gemini","llama","qwen"]}` plus optional `nemotron`. Returns `{model: {themes, latency_ms, cost_usd, trace_url}}`. Run the pipelines concurrently via `asyncio.gather` (each `run_pipeline` wrapped with `asyncio.to_thread`).
 
 ### 5.2 Comparison Tab in UI
 

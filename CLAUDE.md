@@ -1,10 +1,10 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides coding-agent guidance for working with this repository.
 
 ## Project Overview
 
-This project is a **multi-agent LLM research pipeline** built for CMPE 258 (Deep Learning, Spring 2026) as an Option 2 — LLMs + AI Agent System project. It implements a Scout → Mapper → Critic LangGraph pipeline that accepts a natural language query, retrieves relevant documents via FAISS similarity search, groups results into themes using Claude, and removes unsupported claims before returning a structured JSON response through a FastAPI + vanilla-JS web interface.
+This project is a **multi-agent LLM research pipeline** built for CMPE 258 (Deep Learning, Spring 2026) as an Option 2 — LLMs + AI Agent System project. It implements a Scout → Mapper → Critic LangGraph pipeline that accepts a natural language query, retrieves relevant documents via FAISS similarity search, groups results into themes using the configured LLM, and removes unsupported claims before returning a structured JSON response through a FastAPI + vanilla-JS web interface.
 
 ## Submission Standards
 
@@ -24,7 +24,7 @@ These rules must be followed in all code produced for this project to meet profe
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env   # add GROQ_API_KEY (Groq) or GOOGLE_API_KEY (Google AI Studio)
+cp .env.example .env   # add GOOGLE_API_KEY, GROQ_API_KEY, and OPENROUTER_API_KEY
 
 # Must be run before using the pipeline — builds data/index/ from the corpus
 python data/scripts/ingest.py
@@ -68,15 +68,15 @@ Scout → Mapper → Critic
 **Data flow via `ResearchState` (TypedDict in `pipeline/orchestrator.py`):**
 - `query` → input from user
 - `retrieved_docs` → populated by Scout (FAISS similarity search results)
-- `theme_map` → populated by Mapper (Claude groups companies into themes)
-- `reviewed_map` → populated by Critic (Claude removes unsupported claims)
+- `theme_map` → populated by Mapper (configured LLM groups companies into themes)
+- `reviewed_map` → populated by Critic (configured LLM removes unsupported claims)
 
 ### Agents (`agents/`)
 
 - **`scout.py` — `ScoutAgent`**: Loads `data/index/` (FAISS), embeds the query with `sentence-transformers/all-MiniLM-L6-v2` (local, no API key), returns top-k docs as `list[dict]` with keys `title, source_url, tags, publish_date, snippet, score`.
-- **`mapper.py` — `MapperAgent`**: Sends retrieved docs to Groq (`llama-3.3-70b-versatile`) with a structured prompt. Parses the JSON response into `list[dict]` with keys `theme_name, companies, rationale, citations`.
-- **`critic.py` — `CriticAgent`**: Sends the theme map + source docs to Groq. Returns a cleaned map with unsupported companies/themes removed. Uses same JSON schema as Mapper output.
-  - You can switch the LLM provider by running eval/pipeline with `--model gemini` (Google AI Studio) and setting `GOOGLE_API_KEY`.
+- **`mapper.py` — `MapperAgent`**: Sends retrieved docs to the configured model (`gemini`, `llama`, or `qwen`) with a structured prompt. Parses the JSON response into `list[dict]` with keys `theme_name, companies, rationale, citations`.
+- **`critic.py` — `CriticAgent`**: Sends the theme map + source docs to the configured model. Returns a cleaned map with unsupported companies/themes removed. Uses same JSON schema as Mapper output.
+  - You can switch the LLM provider by running eval/pipeline with `--model gemini`, `--model llama`, or `--model qwen` and setting the matching API key.
   - If you see `404 ... model is not found`, run ListModels and set `GEMINI_MODEL` in `.env` to one of the returned ids (for example `gemini-2.0-flash`).
 
 Both Mapper and Critic strip markdown code fences from the LLM response before `json.loads()`.
@@ -108,6 +108,6 @@ Three exported functions:
 ## Key Design Decisions
 
 - **FAISS index is not committed** — it must be rebuilt with `ingest.py` whenever the corpus changes.
-- **Both Mapper and Critic use the same LLM** (`llama-3.3-70b-versatile` via Groq). Swapping to a different model for comparison requires changing the `MODEL` constant in the respective agent file.
+- **Both Mapper and Critic use the same configured LLM** for a given pipeline run. The comparison view runs separate cached graphs for `gemini`, `llama`, and `qwen`.
 - **Agent classes are stateless** — `ScoutAgent` loads the FAISS index at `__init__` time; Mapper and Critic instantiate a new `ChatGroq` client each call. For production, these should be singletons.
 - **JSON parsing is strict** — if the LLM returns malformed JSON, agents raise `ValueError` with the raw output. The FastAPI handler converts this to a 500 response.

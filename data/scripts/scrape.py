@@ -135,7 +135,7 @@ NEWS_RSS_FEEDS: list[tuple[str, str, list[str]]] = [
 
 # Each tuple: (display_name, blog_index_url, post_path_prefix, tags)
 TECH_BLOG_TARGETS: list[tuple[str, str, str, list[str]]] = [
-    # Anthropic/OpenAI/LlamaIndex-Medium block scrapers via robots.txt; replaced with open blogs
+    # Some provider blogs block scrapers via robots.txt; use sources that serve public pages reliably.
     ("LangChain Blog",    "https://blog.langchain.dev",              "/",           ["multi-agent-orchestration"]),
     ("HuggingFace Blog",  "https://huggingface.co/blog",             "/blog/",      ["infra"]),
     ("Cohere Blog",       "https://cohere.com/blog",                 "/blog/",      ["agent-runtime", "infra"]),

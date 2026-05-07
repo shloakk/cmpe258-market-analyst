@@ -76,9 +76,11 @@ User Query
 ```
 
 **Models used:**
-- Claude Sonnet (claude-sonnet-4-6) — Mapper and Critic agents
-- OpenAI `text-embedding-3-small` — Scout embedding
-- One open-source model (planned for comparison view)
+- Gemini 2.0 Flash (`gemini`) — default Mapper/Critic model via Google AI Studio
+- Llama 3.3 70B (`llama`) — open-weight Mapper/Critic model via Groq
+- Qwen (`qwen`) — open-weight Mapper/Critic model via OpenRouter free models
+- Nemotron (`nemotron`) — optional NVIDIA reasoning model via OpenRouter free models
+- `sentence-transformers/all-MiniLM-L6-v2` — local Scout embedding model
 
 **Frameworks:** LangGraph, LangChain, FAISS, FastAPI
 
@@ -90,14 +92,14 @@ User Query
 - [x] Seed corpus (10 documents) and evaluation query set (10 queries) created
 - [x] Document ingestion pipeline: normalizes raw docs to JSON and builds a FAISS vector index
 - [x] Scout Agent: embeds queries and retrieves top-k relevant documents
-- [x] Mapper Agent: clusters retrieved companies into themes via Claude
-- [x] Critic Agent: enforces citations and removes unsupported claims
+- [x] Mapper Agent: clusters retrieved companies into themes via configurable LLM
+- [x] Critic Agent: enforces citations and removes unsupported claims via configurable LLM
 - [x] LangGraph StateGraph orchestrating all three agents end-to-end
 - [x] Evaluation framework: entity precision/recall and hallucination rate metrics
 - [x] FastAPI backend with `/query` endpoint and minimal web UI
 - [x] Fixed hallucination metric — evaluator now grounds predictions against actual retrieved docs (was always passing an empty list)
 - [x] Added `theme_coverage` eval metric using the `gold_themes` field in the evaluation query set
-- [x] Per-agent cost and latency tracking — Scout, Mapper, and Critic each report `latency_ms`; LLM agents report `input_tokens`, `output_tokens`, and `cost_usd` (Claude Sonnet pricing)
+- [x] Per-agent cost and latency tracking — Scout, Mapper, and Critic each report `latency_ms`; LLM agents report `input_tokens`, `output_tokens`, and `cost_usd`
 - [x] Pipeline stats surfaced in API response (`PipelineStats` model with per-agent breakdown and totals)
 - [x] Web UI displays a Pipeline Stats panel after each query (latency, cost, token counts per agent)
 - [x] Langfuse observability: one trace per query with Scout, Mapper, Critic, and LLM generation spans
@@ -108,8 +110,8 @@ User Query
 
 - [ ] Expand corpus to 200–300 documents from all planned sources
 - [ ] Build and annotate the full 50-query evaluation set with gold labels (currently 10)
-- [ ] Integrate a second LLM (e.g., GPT-4o) and an open-source model (e.g., Llama 3) for side-by-side comparison
-- [ ] Add side-by-side LLM comparison panel to the web UI
+- [x] Integrate free multi-LLM comparison models: Gemini, Llama, and Qwen
+- [x] Add side-by-side LLM comparison panel to the web UI
 - [ ] Run full eval sweep and report aggregate accuracy, hallucination rate, cost/latency across models
 
 ---
@@ -192,7 +194,7 @@ cmpe258-market-analyst/
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env   # fill in your API keys; set DEFAULT_MODEL to gemini/llama/gpt/claude
+cp .env.example .env   # fill in keys; set DEFAULT_MODEL to gemini/llama/qwen/nemotron
 
 # Build the FAISS index from the seed corpus
 python data/scripts/ingest.py
