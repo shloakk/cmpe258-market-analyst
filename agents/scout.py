@@ -9,7 +9,7 @@ from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 
 INDEX_DIR = pathlib.Path(__file__).parent.parent / "data" / "index"
-DEFAULT_TOP_K = 5
+DEFAULT_TOP_K = 10  # 10 is appropriate for a 200+ doc corpus; was 5 for the 10-doc seed
 
 
 class ScoutAgent:
