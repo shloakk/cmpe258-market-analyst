@@ -1,8 +1,9 @@
 """
 Mapper Agent: clusters retrieved documents into market themes using a
-configurable LLM (Claude / GPT / Llama).
+configurable LLM (Gemini / Llama / Qwen).
 
-The model is selected at construction time (``model="claude" | "gpt" | "llama"``)
+The model is selected at construction time (for example, ``"gemini"``,
+``"llama"``, or ``"qwen"``)
 so the same pipeline can be compiled per model and run side-by-side for the
 multi-LLM comparison view without changes to agent code.
 """
@@ -40,9 +41,9 @@ class MapperAgent:
     def __init__(self, model: ModelId = "llama") -> None:
         """
         Args:
-            model: Short model id ("claude", "gpt", or "llama"). Determines
-                which provider/model the LLMClient wraps. Defaults to "llama"
-                (Groq, free tier).
+            model: Short model id from agents.llm_client.MODEL_REGISTRY.
+                Determines which provider/model the LLMClient wraps. Defaults
+                to "llama" (Groq, free tier).
         """
         self.client = LLMClient(model=model, temperature=0.0)
 

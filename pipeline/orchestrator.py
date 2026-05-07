@@ -1,6 +1,6 @@
 """
 LangGraph orchestrator: wires Scout → Mapper → Critic into a stateful directed
-graph and runs it for a chosen LLM ("claude" / "gpt" / "llama").
+graph and runs it for a chosen LLM ("gemini" / "llama" / "qwen" / etc.).
 
 A separate compiled graph is built and cached per model. This keeps the
 graph compilation overhead a one-time cost per model and lets the agents
@@ -9,8 +9,8 @@ index and the chat model on every invocation).
 
 Usage:
     from pipeline.orchestrator import run_pipeline, run_pipeline_full
-    themes = run_pipeline("map agentic AI platforms", model="claude")
-    full = run_pipeline_full("...", model="gpt")  # includes timings + docs
+    themes = run_pipeline("map agentic AI platforms", model="gemini")
+    full = run_pipeline_full("...", model="qwen")  # includes timings + docs
 """
 
 from typing import Optional, TypedDict
@@ -59,10 +59,10 @@ class ResearchState(TypedDict):
     trace_id: str
 
 
-def build_graph(model: ModelId = "claude"):
+def build_graph(model: ModelId = "gemini"):
     """Build and compile the Scout → Mapper → Critic graph for one model.
 
-    Scout is model-agnostic (it only uses OpenAI embeddings via the FAISS
+    Scout is model-agnostic (it only uses local embeddings via the FAISS
     index). Mapper and Critic both bind to ``model`` and are captured via
     closure inside the node functions, so the model selection does not need
     to live in ``ResearchState``. This keeps the state shape stable across
@@ -140,14 +140,13 @@ def _get_pipeline(model: ModelId):
     return _pipelines[model]
 
 
-def run_pipeline(query: str, model: ModelId = "claude") -> list[dict]:
+def run_pipeline(query: str, model: ModelId = "gemini") -> list[dict]:
     """Run the Scout → Mapper → Critic pipeline and return only the reviewed map.
 
     Args:
         query: Natural language market research query.
         model: Short model id selecting which LLM Mapper and Critic use.
-            Defaults to "claude" for backwards compatibility with single-model
-            callers.
+            Defaults to "gemini" for the local free-tier demo path.
 
     Returns:
         Verified list of theme dicts. Keys: theme_name, companies, rationale,
@@ -156,12 +155,12 @@ def run_pipeline(query: str, model: ModelId = "claude") -> list[dict]:
     return run_pipeline_full(query, model=model)["reviewed_map"]
 
 
-def run_pipeline_full(query: str, model: ModelId = "claude") -> dict:
+def run_pipeline_full(query: str, model: ModelId = "gemini") -> dict:
     """Run the full pipeline and return the reviewed map plus diagnostics.
 
     Args:
         query: Natural language market research query.
-        model: Short model id ("claude" / "gpt" / "llama").
+        model: Short model id from agents.llm_client.MODEL_REGISTRY.
 
     Returns:
         Dict with keys:

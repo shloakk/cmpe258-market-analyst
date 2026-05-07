@@ -1,5 +1,5 @@
 """
-Unified LLM client wrapping Anthropic, OpenAI, and Groq behind a single
+Unified LLM client wrapping free/free-tier providers behind a single
 ``invoke()`` interface.
 
 Why a thin custom wrapper instead of using LangChain's BaseChatModel directly?
@@ -12,7 +12,8 @@ Why a thin custom wrapper instead of using LangChain's BaseChatModel directly?
   Langfuse ``@observe()`` instrumentation without polluting agent code.
 
 Public surface:
-- ``ModelId`` — short id used through the pipeline ("claude" / "gpt" / "llama" / "gemini").
+- ``ModelId`` — short id used through the pipeline ("gemini" / "llama" /
+  "qwen" / "nemotron").
 - ``LLMResponse`` — provider-agnostic response dataclass.
 - ``LLMClient`` — the wrapper itself, with ``invoke`` and
   ``invoke_with_json_retry``.
@@ -27,23 +28,17 @@ import time
 from dataclasses import dataclass
 from typing import Callable, Literal, TypeVar
 
+import httpx
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
-from langchain_anthropic import ChatAnthropic
-from langchain_openai import ChatOpenAI
 
 from agents.observability import observe, update_current_generation
 
-ModelId = Literal["claude", "gpt", "llama", "gemini"]
+ModelId = Literal["gemini", "llama", "qwen", "nemotron"]
 
 # Maps the short model id used through the pipeline to the provider's concrete
 # model name. Adding a new model requires one entry here + one entry in
 # _PRICING + (if it's a new provider) one branch in _build_client.
 MODEL_REGISTRY: dict[ModelId, str] = {
-    "claude": "claude-sonnet-4-6",
-    # GPT-5.4 is the comparable-tier model to Claude Sonnet 4.6 as of May 2026.
-    # GPT-5.5 exists but is 2x the price for marginal gains; not worth the
-    # eval cost blow-up. We can swap by changing this single entry.
-    "gpt": "gpt-5.4",
     # Llama 3.3 70B via Groq satisfies the "one open-source model" requirement
     # and Groq's throughput (~280 tok/s) keeps the demo latency tolerable.
     "llama": "llama-3.3-70b-versatile",
@@ -51,15 +46,24 @@ MODEL_REGISTRY: dict[ModelId, str] = {
     # Default to a widely-available Flash model; override with env GEMINI_MODEL
     # if your account exposes different ids (see ListModels).
     "gemini": "gemini-2.0-flash",
+    # Qwen via OpenRouter satisfies an additional free/open-weight comparison
+    # path. Override with OPENROUTER_MODEL if the free model roster changes.
+    "qwen": "qwen/qwen3-coder:free",
+    # Optional NVIDIA reasoning/multimodal model via OpenRouter. Keep unchecked
+    # by default because the core class requirement is already met by 3 models.
+    "nemotron": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
 }
 
 # Per-1M-token USD pricing. Verified against provider docs on 2026-05-06.
 # Update when providers change rates; the per-model cost reported by the
 # eval report depends on this table being current.
 _PRICING: dict[str, dict[str, float]] = {
-    "claude-sonnet-4-6": {"input": 3.00, "output": 15.00},
-    "gpt-5.4": {"input": 2.50, "output": 15.00},
     "llama-3.3-70b-versatile": {"input": 0.59, "output": 0.79},
+    "qwen/qwen3-coder:free": {"input": 0.0, "output": 0.0},
+    "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
+        "input": 0.0,
+        "output": 0.0,
+    },
 }
 
 # Conservative input-token budgets per model. Real context windows are larger
@@ -67,10 +71,10 @@ _PRICING: dict[str, dict[str, float]] = {
 # never causes a mid-stream truncation error from the provider. These are
 # applied via ``truncate_docs_to_budget`` before the prompt is built.
 _CONTEXT_BUDGETS: dict[str, int] = {
-    "claude-sonnet-4-6": 180_000,        # 200k window, 20k headroom for output
-    "gpt-5.4": 380_000,                  # 400k window, 20k headroom for output
     "llama-3.3-70b-versatile": 100_000,  # 131k window, 31k headroom for output
     "gemini-2.0-flash": 100_000,         # Conservative; keep prompts stable for JSON.
+    "qwen/qwen3-coder:free": 100_000,    # OpenRouter free models vary; stay conservative.
+    "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": 100_000,
 }
 
 
@@ -85,7 +89,7 @@ class LLMResponse:
         output_tokens: Completion token count reported by the provider.
         cost_usd: Computed cost using the ``_PRICING`` table.
         latency_ms: Wall-clock duration of the ``invoke()`` call.
-        model: Concrete provider model name (e.g. "claude-sonnet-4-6"),
+        model: Concrete provider model name (e.g. "gemini-2.0-flash"),
             useful for logs / eval where the short id is ambiguous.
     """
 
@@ -101,9 +105,9 @@ T = TypeVar("T")
 
 
 class LLMClient:
-    """Thin uniform interface over Anthropic, OpenAI, and Groq chat models."""
+    """Thin uniform interface over the configured chat model providers."""
 
-    def __init__(self, model: ModelId = "claude", temperature: float = 0.0) -> None:
+    def __init__(self, model: ModelId = "gemini", temperature: float = 0.0) -> None:
         """
         Args:
             model: Short id selecting the provider/model. Must be a key of
@@ -121,9 +125,13 @@ class LLMClient:
             )
         self.model_id: ModelId = model
         # Allow overriding concrete provider model via env vars for local experiments.
-        # Useful for Gemini where model availability can differ across accounts.
+        # Useful where model availability can differ across accounts/free tiers.
         if model == "gemini":
             self.provider_model = os.getenv("GEMINI_MODEL") or MODEL_REGISTRY[model]
+        elif model == "qwen":
+            self.provider_model = os.getenv("OPENROUTER_MODEL") or MODEL_REGISTRY[model]
+        elif model == "nemotron":
+            self.provider_model = os.getenv("NEMOTRON_MODEL") or MODEL_REGISTRY[model]
         else:
             self.provider_model = MODEL_REGISTRY[model]
         self.temperature = temperature
@@ -133,18 +141,9 @@ class LLMClient:
         """Instantiate the provider SDK client for the selected model.
 
         ``langchain_groq`` is imported lazily so a user without ``GROQ_API_KEY``
-        installed (or without the package) can still run the Claude / GPT
+        installed (or without the package) can still run the Gemini / Qwen
         paths without an ImportError at module load.
         """
-        if self.model_id == "claude":
-            _require_any_env(
-                ["ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN"],
-                "claude",
-            )
-            return ChatAnthropic(model=self.provider_model, temperature=self.temperature)
-        if self.model_id == "gpt":
-            _require_any_env(["OPENAI_API_KEY"], "gpt")
-            return ChatOpenAI(model=self.provider_model, temperature=self.temperature)
         if self.model_id == "llama":
             _require_any_env(["GROQ_API_KEY"], "llama")
             from langchain_groq import ChatGroq
@@ -164,6 +163,9 @@ class LLMClient:
                 temperature=self.temperature,
                 google_api_key=api_key,
             )
+        if self.model_id in {"qwen", "nemotron"}:
+            _require_any_env(["OPENROUTER_API_KEY"], self.model_id)
+            return None
         raise ValueError(f"No client builder for model id: {self.model_id!r}")
 
     @observe(
@@ -187,6 +189,9 @@ class LLMClient:
             input=_messages_for_trace(messages),
             metadata={"model_id": self.model_id, "temperature": self.temperature},
         )
+        if self.model_id in {"qwen", "nemotron"}:
+            return self._invoke_openrouter(messages)
+
         t0 = time.perf_counter()
         response = self._client.invoke(messages)
         latency_ms = round((time.perf_counter() - t0) * 1000, 1)
@@ -217,6 +222,81 @@ class LLMClient:
         else:
             text = str(content)
 
+        llm_response = LLMResponse(
+            text=text,
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
+            cost_usd=cost_usd,
+            latency_ms=latency_ms,
+            model=self.provider_model,
+        )
+        update_current_generation(
+            output=_truncate_for_trace(text),
+            usage_details={
+                "input_tokens": input_tokens,
+                "output_tokens": output_tokens,
+            },
+            cost_details={"total_usd": cost_usd},
+            metadata={"latency_ms": latency_ms},
+        )
+        return llm_response
+
+    def _invoke_openrouter(self, messages: list[BaseMessage]) -> LLMResponse:
+        """Call OpenRouter's chat completion API directly.
+
+        Args:
+            messages: LangChain message list to convert to OpenRouter's chat
+                completion wire format.
+
+        Returns:
+            ``LLMResponse`` with normalized text, token counts, cost, latency,
+            and concrete provider model.
+
+        Raises:
+            ValueError: If OpenRouter returns an empty or malformed completion.
+            httpx.HTTPStatusError: If the OpenRouter API returns an error.
+        """
+        api_key = os.getenv("OPENROUTER_API_KEY")
+        if not api_key:
+            _require_any_env(["OPENROUTER_API_KEY"], self.model_id)
+
+        payload = {
+            "model": self.provider_model,
+            "messages": _messages_for_openrouter(messages),
+            "temperature": self.temperature,
+        }
+        t0 = time.perf_counter()
+        with httpx.Client(timeout=120.0) as client:
+            response = client.post(
+                "https://openrouter.ai/api/v1/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json",
+                    "HTTP-Referer": "https://github.com/cmpe258-market-analyst",
+                    "X-Title": "CMPE 258 Market Analyst",
+                },
+                json=payload,
+            )
+            if response.status_code >= 400:
+                raise ValueError(
+                    "OpenRouter request failed "
+                    f"({response.status_code}) for model {self.provider_model!r}: "
+                    f"{response.text}"
+                )
+        latency_ms = round((time.perf_counter() - t0) * 1000, 1)
+        data = response.json()
+
+        choices = data.get("choices") or []
+        if not choices:
+            raise ValueError(f"OpenRouter returned no choices: {data}")
+        text = str(choices[0].get("message", {}).get("content", ""))
+        if not text:
+            raise ValueError(f"OpenRouter returned empty content: {data}")
+
+        usage = data.get("usage") or {}
+        input_tokens = int(usage.get("prompt_tokens", 0) or 0)
+        output_tokens = int(usage.get("completion_tokens", 0) or 0)
+        cost_usd = self._compute_cost(input_tokens, output_tokens)
         llm_response = LLMResponse(
             text=text,
             input_tokens=input_tokens,
@@ -388,6 +468,29 @@ def _messages_for_trace(messages: list[BaseMessage]) -> list[dict[str, str]]:
     ]
 
 
+def _messages_for_openrouter(messages: list[BaseMessage]) -> list[dict[str, str]]:
+    """Convert LangChain messages to OpenRouter chat completion messages.
+
+    Args:
+        messages: LangChain BaseMessage list (System / Human / AI).
+
+    Returns:
+        list[dict] with keys: role, content.
+    """
+    role_map = {
+        "system": "system",
+        "human": "user",
+        "ai": "assistant",
+    }
+    return [
+        {
+            "role": role_map.get(getattr(message, "type", ""), "user"),
+            "content": str(message.content),
+        }
+        for message in messages
+    ]
+
+
 def _truncate_for_trace(value: str, max_chars: int = 8_000) -> str:
     """Limit prompt/response text stored in Langfuse observations.
 
@@ -419,5 +522,5 @@ def _require_any_env(names: list[str], model_id: str) -> None:
     joined = " or ".join(names)
     raise ValueError(
         f"Missing API key for model {model_id!r}. Set {joined} in .env, "
-        "or use a configured model by setting DEFAULT_MODEL=gemini/llama/gpt."
+        "or use a configured model by setting DEFAULT_MODEL=gemini/llama/qwen/nemotron."
     )

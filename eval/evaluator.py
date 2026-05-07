@@ -8,7 +8,7 @@ Metrics:
 - run_eval: runs all queries in the eval set and prints aggregate results
 
 Usage:
-    python eval/evaluator.py [--model llama] [--cache-dir eval/cache/llama]
+    python eval/evaluator.py [--model gemini] [--cache-dir eval/cache/gemini]
 """
 
 import json
@@ -258,13 +258,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run the evaluation suite.")
     parser.add_argument(
         "--model",
-        choices=["claude", "gpt", "llama", "gemini"],
-        default="llama",
+        choices=["gemini", "llama", "qwen", "nemotron"],
+        default="gemini",
         help=(
-            "LLM used by Mapper and Critic. Defaults to 'llama' (Groq, free) "
-            "so the eval CI only needs GROQ_API_KEY. Use --model claude or "
-            "--model gpt locally when you have the relevant API key, or "
-            "--model gemini (Google AI Studio) with GOOGLE_API_KEY."
+            "LLM used by Mapper and Critic. Defaults to 'gemini' because the "
+            "local demo path uses Google AI Studio. Use --model llama (Groq) "
+            "or --model qwen/--model nemotron (OpenRouter) for free "
+            "open-weight comparison."
         ),
     )
     parser.add_argument(
@@ -275,7 +275,7 @@ if __name__ == "__main__":
             "written on cache miss and read on cache hit, so repeated runs "
             "(e.g. in CI) never re-call the LLM. Commit the cache directory "
             "to avoid hitting daily token limits across runs. "
-            "Example: eval/cache/llama"
+            "Example: eval/cache/gemini"
         ),
     )
     parser.add_argument(
