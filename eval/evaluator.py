@@ -176,5 +176,21 @@ def run_eval(
 
 
 if __name__ == "__main__":
+    import argparse
     from pipeline.orchestrator import run_pipeline_full
-    run_eval(run_pipeline_full)
+    from agents.llm_client import ModelId
+
+    parser = argparse.ArgumentParser(description="Run the evaluation suite.")
+    parser.add_argument(
+        "--model",
+        choices=["claude", "gpt", "llama"],
+        default="llama",
+        help=(
+            "LLM used by Mapper and Critic. Defaults to 'llama' (Groq, free) "
+            "so the eval CI only needs GROQ_API_KEY. Use --model claude or "
+            "--model gpt locally when you have the relevant API key."
+        ),
+    )
+    args = parser.parse_args()
+    model: ModelId = args.model
+    run_eval(lambda q: run_pipeline_full(q, model=model))

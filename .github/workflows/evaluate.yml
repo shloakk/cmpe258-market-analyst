@@ -25,4 +25,4 @@ jobs:
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           PYTHONPATH: ${{ github.workspace }}
-        run: python eval/evaluator.py
+        run: python eval/evaluator.py --model llama
