@@ -1,0 +1,50 @@
+name: Scrape Corpus
+
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: "Corpus source to scrape"
+        required: false
+        default: "all"
+        type: choice
+        options: [all, startups, yc, newsletters, news, techblogs]
+      dry_run:
+        description: "Dry run (count only, no writes)"
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper
+        run: |
+          ARGS="--source ${{ inputs.source }}"
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          python data/scripts/scrape.py $ARGS
+
+      - name: Commit corpus changes
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/corpus/
+          git diff --cached --quiet || git commit -m "chore: update corpus via scrape workflow (${{ inputs.source }}) [skip ci]"
+          git push
