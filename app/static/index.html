@@ -47,6 +47,23 @@
     }
     button:disabled { background: #999; cursor: not-allowed; }
 
+    .mode-row {
+      width: 100%;
+      max-width: 720px;
+      margin-top: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      color: #555;
+      font-size: 0.9rem;
+    }
+    .mode-row label { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .model-picker { display: none; flex-wrap: wrap; gap: 0.6rem; }
+    .model-picker.visible { display: flex; }
+    .nav-link { color: #1a56db; text-decoration: none; font-weight: 600; }
+    .nav-link:hover { text-decoration: underline; }
+
     #status { margin-top: 1rem; color: #555; font-size: 0.9rem; min-height: 1.2em; }
 
     #results {
@@ -100,12 +117,57 @@
     .stats-table td { padding: 0.3rem 0.5rem 0.3rem 0; color: #444; border-bottom: 1px solid #f0f0f0; }
     .stats-table tr:last-child td { border-bottom: none; }
     .agent-name { font-weight: 600; color: #1a1a1a; }
+
+    #results.comparison-results { max-width: 1180px; }
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      align-items: start;
+    }
+    .model-column {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .model-column h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .model-footer {
+      border-top: 1px solid #eee;
+      padding-top: 0.75rem;
+      color: #555;
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .model-error {
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      color: #9b2c2c;
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+    }
+    .trace-link { color: #1a56db; text-decoration: none; font-weight: 600; }
+    .trace-link:hover { text-decoration: underline; }
+    @media (max-width: 960px) {
+      .comparison-grid { grid-template-columns: 1fr; }
+      .search-box { flex-direction: column; }
+      button { align-self: stretch; }
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Market Research Analyst</h1>
     <p>Ask about the agentic AI startup landscape. Powered by a 3-agent LangGraph pipeline.</p>
+    <p><a class="nav-link" href="/eval">Open eval dashboard</a></p>
   </header>
 
   <div class="search-box">
@@ -114,6 +176,18 @@
       placeholder='e.g. "Map the key players and approaches in agentic AI platforms"'
     ></textarea>
     <button id="submitBtn" onclick="submitQuery()">Analyze</button>
+  </div>
+  <div class="mode-row">
+    <label>
+      <input id="compareToggle" type="checkbox" onchange="toggleCompareMode()" />
+      Compare models
+    </label>
+    <div id="modelPicker" class="model-picker" aria-label="Models to compare">
+      <label><input type="checkbox" name="compareModel" value="gemini" checked /> Gemini</label>
+      <label><input type="checkbox" name="compareModel" value="llama" checked /> Llama</label>
+      <label><input type="checkbox" name="compareModel" value="qwen" checked /> Qwen</label>
+      <label><input type="checkbox" name="compareModel" value="nemotron" /> Nemotron</label>
+    </div>
   </div>
   <div id="status"></div>
   <div id="results"></div>
@@ -128,30 +202,80 @@
       const query = input.value.trim();
       if (!query) return;
 
+      const compareMode = document.getElementById("compareToggle").checked;
       btn.disabled = true;
-      status.textContent = "Running Scout → Mapper → Critic pipeline…";
+      status.textContent = compareMode
+        ? "Running model comparison..."
+        : "Running Scout -> Mapper -> Critic pipeline...";
       results.innerHTML = "";
+      results.className = compareMode ? "comparison-results" : "";
 
       try {
-        const resp = await fetch("/query", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ query }),
-        });
-        if (!resp.ok) {
-          const err = await resp.json();
-          throw new Error(err.detail || "Server error");
+        if (compareMode) {
+          await submitComparison(query);
+        } else {
+          await submitSingleModel(query);
         }
-        const data = await resp.json();
-        const s = data.stats;
-        status.textContent = `Found ${data.themes.length} theme(s) · ${(s.total_latency_ms / 1000).toFixed(1)}s · $${s.total_cost_usd.toFixed(5)}`;
-        renderStats(data.stats);
-        renderResults(data.themes);
       } catch (e) {
         status.textContent = `Error: ${e.message}`;
       } finally {
         btn.disabled = false;
       }
+    }
+
+    async function submitSingleModel(query) {
+      const resp = await fetch("/query", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
+      });
+      if (!resp.ok) {
+        const err = await resp.json();
+        throw new Error(err.detail || "Server error");
+      }
+      const data = await resp.json();
+      const s = data.stats;
+      document.getElementById("status").textContent =
+        `Found ${data.themes.length} theme(s) · ${(s.total_latency_ms / 1000).toFixed(1)}s · $${s.total_cost_usd.toFixed(5)}`;
+      renderStats(data.stats);
+      renderResults(data.themes);
+    }
+
+    async function submitComparison(query) {
+      const models = selectedModels();
+      if (models.length === 0) {
+        throw new Error("Select at least one model to compare.");
+      }
+      const resp = await fetch("/compare", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query, models }),
+      });
+      if (!resp.ok) {
+        const err = await resp.json();
+        throw new Error(err.detail || "Server error");
+      }
+      const data = await resp.json();
+      const values = Object.values(data);
+      const totalThemes = values.reduce((sum, item) => sum + item.themes.length, 0);
+      const failed = values.filter(item => item.error).length;
+      const slowest = Math.max(...values.map(item => item.latency_ms || 0));
+      const totalCost = values.reduce((sum, item) => sum + (item.cost_usd || 0), 0);
+      document.getElementById("status").textContent =
+        `Compared ${models.length} model(s) · ${totalThemes} total theme(s) · ${failed} error(s) · slowest ${(slowest / 1000).toFixed(1)}s · $${totalCost.toFixed(5)}`;
+      renderComparison(data, models);
+    }
+
+    function selectedModels() {
+      return Array.from(document.querySelectorAll('input[name="compareModel"]:checked'))
+        .map(input => input.value);
+    }
+
+    function toggleCompareMode() {
+      const compareMode = document.getElementById("compareToggle").checked;
+      const picker = document.getElementById("modelPicker");
+      picker.classList.toggle("visible", compareMode);
+      document.getElementById("submitBtn").textContent = compareMode ? "Compare" : "Analyze";
     }
 
     function renderStats(stats) {
@@ -208,29 +332,86 @@
 
     function renderResults(themes) {
       const container = document.getElementById("results");
-      themes.forEach(theme => {
-        const card = document.createElement("div");
-        card.className = "theme-card";
+      renderThemeCards(container, themes);
+    }
 
-        const chips = theme.companies
-          .map(c => `<span class="company-chip">${c}</span>`)
-          .join("");
+    function renderComparison(data, models) {
+      const container = document.getElementById("results");
+      const grid = document.createElement("div");
+      grid.className = "comparison-grid";
 
-        const citationItems = theme.citations
-          .map(c => `<li>${c}</li>`)
-          .join("");
+      models.forEach(model => {
+        const result = data[model];
+        const column = document.createElement("section");
+        column.className = "model-column";
+        column.innerHTML = `<h2>${escapeHtml(model)}</h2>`;
 
-        card.innerHTML = `
-          <h2>${theme.theme_name}</h2>
-          <div class="companies">${chips}</div>
-          <p class="rationale">${theme.rationale}</p>
-          <details>
-            <summary>Citations (${theme.citations.length})</summary>
-            <ul class="citations">${citationItems}</ul>
-          </details>
+        if (result && result.error) {
+          const error = document.createElement("div");
+          error.className = "model-error";
+          error.textContent = result.error;
+          column.appendChild(error);
+        } else if (!result || !result.themes.length) {
+          const empty = document.createElement("p");
+          empty.className = "rationale";
+          empty.textContent = "No themes returned.";
+          column.appendChild(empty);
+        } else {
+          renderThemeCards(column, result.themes);
+        }
+
+        const footer = document.createElement("div");
+        footer.className = "model-footer";
+        const trace = result && result.trace_url
+          ? `<a class="trace-link" href="${escapeHtml(result.trace_url)}" target="_blank" rel="noreferrer">Open trace</a>`
+          : "Trace link unavailable";
+        footer.innerHTML = `
+          <span>Latency: ${result ? (result.latency_ms / 1000).toFixed(1) : "0.0"}s</span>
+          <span>Cost: $${result ? result.cost_usd.toFixed(5) : "0.00000"}</span>
+          <span>${trace}</span>
         `;
-        container.appendChild(card);
+        column.appendChild(footer);
+        grid.appendChild(column);
       });
+
+      container.appendChild(grid);
+    }
+
+    function renderThemeCards(container, themes) {
+      themes.forEach(theme => container.appendChild(createThemeCard(theme)));
+    }
+
+    function createThemeCard(theme) {
+      const card = document.createElement("div");
+      card.className = "theme-card";
+
+      const chips = theme.companies
+        .map(c => `<span class="company-chip">${escapeHtml(c)}</span>`)
+        .join("");
+
+      const citationItems = theme.citations
+        .map(c => `<li>${escapeHtml(c)}</li>`)
+        .join("");
+
+      card.innerHTML = `
+        <h2>${escapeHtml(theme.theme_name)}</h2>
+        <div class="companies">${chips}</div>
+        <p class="rationale">${escapeHtml(theme.rationale)}</p>
+        <details>
+          <summary>Citations (${theme.citations.length})</summary>
+          <ul class="citations">${citationItems}</ul>
+        </details>
+      `;
+      return card;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
     document.getElementById("queryInput").addEventListener("keydown", e => {

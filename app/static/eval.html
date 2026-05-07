@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eval Dashboard</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+    main { width: 100%; max-width: 1080px; margin: 0 auto; }
+    header { margin-bottom: 1.5rem; }
+    h1 { font-size: 1.8rem; margin-bottom: 0.35rem; }
+    p { color: #555; line-height: 1.5; }
+    a { color: #1a56db; text-decoration: none; font-weight: 600; }
+    a:hover { text-decoration: underline; }
+    .panel {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-top: 1rem;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+    .model-picker { display: flex; flex-wrap: wrap; gap: 0.75rem; color: #444; }
+    .model-picker label { display: inline-flex; align-items: center; gap: 0.35rem; }
+    button {
+      padding: 0.7rem 1.2rem;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    button:disabled { background: #999; cursor: not-allowed; }
+    #status { margin-top: 0.75rem; color: #555; min-height: 1.2em; }
+    .chart {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .metric-card h3 {
+      font-size: 0.85rem;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.8rem;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 4.5rem 1fr 3rem;
+      gap: 0.6rem;
+      align-items: center;
+      margin-bottom: 0.6rem;
+      font-size: 0.85rem;
+    }
+    .bar-track {
+      height: 0.7rem;
+      background: #edf2f7;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      background: #1a56db;
+      border-radius: 999px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    th {
+      text-align: left;
+      color: #777;
+      font-weight: 600;
+      border-bottom: 1px solid #eee;
+      padding: 0.55rem 0.5rem 0.55rem 0;
+    }
+    td {
+      border-bottom: 1px solid #f0f0f0;
+      padding: 0.55rem 0.5rem 0.55rem 0;
+      color: #333;
+    }
+    tr:last-child td { border-bottom: none; }
+    .empty { color: #666; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Eval Dashboard</h1>
+      <p>Compare aggregate pipeline quality across models using the labeled eval set.</p>
+      <p><a href="/">Back to research UI</a></p>
+    </header>
+
+    <section class="panel">
+      <div class="controls">
+        <div class="model-picker" aria-label="Eval models">
+          <label><input type="checkbox" name="evalModel" value="gemini" checked /> Gemini</label>
+          <label><input type="checkbox" name="evalModel" value="llama" checked /> Llama</label>
+          <label><input type="checkbox" name="evalModel" value="qwen" checked /> Qwen</label>
+          <label><input type="checkbox" name="evalModel" value="nemotron" /> Nemotron</label>
+        </div>
+        <button id="runBtn" onclick="runEval()">Run Eval</button>
+      </div>
+      <p id="status"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Comparison Chart</h2>
+      <div id="chart" class="chart"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Metric Table</h2>
+      <div id="table"></div>
+    </section>
+  </main>
+
+  <script>
+    const METRICS = [
+      ["mean_precision", "Precision"],
+      ["mean_recall", "Recall"],
+      ["mean_f1", "F1"],
+      ["mean_hallucination_rate", "Hallucination"],
+      ["mean_theme_coverage", "Theme Coverage"],
+    ];
+
+    async function loadLatest() {
+      const status = document.getElementById("status");
+      try {
+        const resp = await fetch("/eval/results/latest.json");
+        if (!resp.ok) {
+          const err = await resp.json();
+          throw new Error(err.detail || "No eval results found.");
+        }
+        const data = await resp.json();
+        status.textContent = `Loaded results from ${new Date(data.generated_at).toLocaleString()}`;
+        renderDashboard(data);
+      } catch (e) {
+        status.textContent = e.message;
+        renderEmpty();
+      }
+    }
+
+    async function runEval() {
+      const models = selectedModels();
+      if (models.length === 0) {
+        document.getElementById("status").textContent = "Select at least one model.";
+        return;
+      }
+
+      const btn = document.getElementById("runBtn");
+      const status = document.getElementById("status");
+      btn.disabled = true;
+      status.textContent = "Running eval. This can take several minutes and may spend API budget...";
+
+      try {
+        const resp = await fetch("/eval/run", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ models }),
+        });
+        if (!resp.ok) {
+          const err = await resp.json();
+          throw new Error(err.detail || "Eval run failed.");
+        }
+        const data = await resp.json();
+        status.textContent = `Eval complete: ${new Date(data.generated_at).toLocaleString()}`;
+        renderDashboard(data);
+      } catch (e) {
+        status.textContent = `Error: ${e.message}`;
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function selectedModels() {
+      return Array.from(document.querySelectorAll('input[name="evalModel"]:checked'))
+        .map(input => input.value);
+    }
+
+    function renderDashboard(data) {
+      const models = Object.entries(data.models || {});
+      if (!models.length) {
+        renderEmpty();
+        return;
+      }
+      renderChart(models);
+      renderTable(models);
+    }
+
+    function renderChart(models) {
+      const chart = document.getElementById("chart");
+      chart.innerHTML = "";
+      METRICS.forEach(([key, label]) => {
+        const card = document.createElement("div");
+        card.className = "metric-card";
+        const rows = models.map(([model, result]) => {
+          const value = Number(result.aggregate?.[key] ?? 0);
+          const width = Math.max(0, Math.min(100, value * 100));
+          return `
+            <div class="bar-row">
+              <strong>${escapeHtml(model)}</strong>
+              <div class="bar-track"><div class="bar-fill" style="width: ${width}%"></div></div>
+              <span>${value.toFixed(3)}</span>
+            </div>
+          `;
+        }).join("");
+        card.innerHTML = `<h3>${escapeHtml(label)}</h3>${rows}`;
+        chart.appendChild(card);
+      });
+    }
+
+    function renderTable(models) {
+      const table = document.getElementById("table");
+      const rows = models.map(([model, result]) => {
+        const aggregate = result.aggregate || {};
+        return `
+          <tr>
+            <td><strong>${escapeHtml(model)}</strong></td>
+            <td>${formatMetric(aggregate.mean_precision)}</td>
+            <td>${formatMetric(aggregate.mean_recall)}</td>
+            <td>${formatMetric(aggregate.mean_f1)}</td>
+            <td>${formatMetric(aggregate.mean_hallucination_rate)}</td>
+            <td>${formatMetric(aggregate.mean_theme_coverage)}</td>
+            <td>${Number(aggregate.num_queries || 0)}</td>
+          </tr>
+        `;
+      }).join("");
+      table.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th><th>Precision</th><th>Recall</th><th>F1</th>
+              <th>Hallucination</th><th>Theme Coverage</th><th>Queries</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      `;
+    }
+
+    function renderEmpty() {
+      document.getElementById("chart").innerHTML =
+        '<p class="empty">No eval results to chart yet.</p>';
+      document.getElementById("table").innerHTML =
+        '<p class="empty">Run the eval after setting ALLOW_EVAL_RUN=true, or add eval/results/latest.json.</p>';
+    }
+
+    function formatMetric(value) {
+      return Number(value ?? 0).toFixed(3);
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    loadLatest();
+  </script>
+</body>
+</html>
