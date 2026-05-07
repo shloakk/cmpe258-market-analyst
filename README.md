@@ -192,7 +192,7 @@ cmpe258-market-analyst/
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env   # fill in your API keys
+cp .env.example .env   # fill in your API keys; set DEFAULT_MODEL to gemini/llama/gpt/claude
 
 # Build the FAISS index from the seed corpus
 python data/scripts/ingest.py

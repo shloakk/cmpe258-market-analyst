@@ -9,12 +9,16 @@ Usage:
     uvicorn app.main:app --reload
 """
 
+import os
 import pathlib
+from typing import cast
+
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
+from agents.llm_client import ModelId, MODEL_REGISTRY
 from pipeline.orchestrator import run_pipeline_full
 
 app = FastAPI(title="Market Research Analyst")
@@ -25,6 +29,7 @@ app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 class QueryRequest(BaseModel):
     query: str
+    model: ModelId | None = None
 
 
 class ThemeResult(BaseModel):
@@ -68,8 +73,9 @@ async def serve_ui():
 async def query_endpoint(request: QueryRequest):
     if not request.query.strip():
         raise HTTPException(status_code=400, detail="Query must not be empty.")
+    model = request.model or _default_model()
     try:
-        result = run_pipeline_full(request.query)
+        result = run_pipeline_full(request.query, model=model)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -93,3 +99,26 @@ async def query_endpoint(request: QueryRequest):
         stats=pipeline_stats,
         trace_id=result["trace_id"],
     )
+
+
+def _default_model() -> ModelId:
+    """Read the API's default LLM model from the environment.
+
+    Returns:
+        A valid short model id from ``MODEL_REGISTRY``. Defaults to ``"gemini"``
+        because the project CI/demo path already uses Google AI Studio and does
+        not require an Anthropic key.
+
+    Raises:
+        HTTPException: If ``DEFAULT_MODEL`` is set to an unknown model id.
+    """
+    model = os.getenv("DEFAULT_MODEL", "gemini")
+    if model not in MODEL_REGISTRY:
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                f"Invalid DEFAULT_MODEL={model!r}. "
+                f"Expected one of: {', '.join(MODEL_REGISTRY)}."
+            ),
+        )
+    return cast(ModelId, model)

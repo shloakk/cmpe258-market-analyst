@@ -137,10 +137,16 @@ class LLMClient:
         paths without an ImportError at module load.
         """
         if self.model_id == "claude":
+            _require_any_env(
+                ["ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN"],
+                "claude",
+            )
             return ChatAnthropic(model=self.provider_model, temperature=self.temperature)
         if self.model_id == "gpt":
+            _require_any_env(["OPENAI_API_KEY"], "gpt")
             return ChatOpenAI(model=self.provider_model, temperature=self.temperature)
         if self.model_id == "llama":
+            _require_any_env(["GROQ_API_KEY"], "llama")
             from langchain_groq import ChatGroq
 
             return ChatGroq(model=self.provider_model, temperature=self.temperature)
@@ -151,6 +157,8 @@ class LLMClient:
             from langchain_google_genai import ChatGoogleGenerativeAI
 
             api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+            if not api_key:
+                _require_any_env(["GOOGLE_API_KEY", "GEMINI_API_KEY"], "gemini")
             return ChatGoogleGenerativeAI(
                 model=self.provider_model,
                 temperature=self.temperature,
@@ -394,3 +402,22 @@ def _truncate_for_trace(value: str, max_chars: int = 8_000) -> str:
     if len(value) <= max_chars:
         return value
     return value[:max_chars] + "... [truncated for trace]"
+
+
+def _require_any_env(names: list[str], model_id: str) -> None:
+    """Raise a clear error when a selected provider has no API key configured.
+
+    Args:
+        names: Environment variable names accepted by the provider.
+        model_id: Short model id the user selected.
+
+    Raises:
+        ValueError: If none of ``names`` is present in the environment.
+    """
+    if any(os.getenv(name) for name in names):
+        return
+    joined = " or ".join(names)
+    raise ValueError(
+        f"Missing API key for model {model_id!r}. Set {joined} in .env, "
+        "or use a configured model by setting DEFAULT_MODEL=gemini/llama/gpt."
+    )
