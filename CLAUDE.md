@@ -24,7 +24,7 @@ These rules must be followed in all code produced for this project to meet profe
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env   # add ANTHROPIC_API_KEY
+cp .env.example .env   # add GROQ_API_KEY
 
 # Must be run before using the pipeline — builds data/index/ from the corpus
 python data/scripts/ingest.py
@@ -74,8 +74,8 @@ Scout → Mapper → Critic
 ### Agents (`agents/`)
 
 - **`scout.py` — `ScoutAgent`**: Loads `data/index/` (FAISS), embeds the query with `sentence-transformers/all-MiniLM-L6-v2` (local, no API key), returns top-k docs as `list[dict]` with keys `title, source_url, tags, publish_date, snippet, score`.
-- **`mapper.py` — `MapperAgent`**: Sends retrieved docs to Claude (`claude-sonnet-4-6`) with a structured prompt. Parses the JSON response into `list[dict]` with keys `theme_name, companies, rationale, citations`.
-- **`critic.py` — `CriticAgent`**: Sends the theme map + source docs to Claude. Returns a cleaned map with unsupported companies/themes removed. Uses same JSON schema as Mapper output.
+- **`mapper.py` — `MapperAgent`**: Sends retrieved docs to Groq (`llama-3.3-70b-versatile`) with a structured prompt. Parses the JSON response into `list[dict]` with keys `theme_name, companies, rationale, citations`.
+- **`critic.py` — `CriticAgent`**: Sends the theme map + source docs to Groq. Returns a cleaned map with unsupported companies/themes removed. Uses same JSON schema as Mapper output.
 
 Both Mapper and Critic strip markdown code fences from the LLM response before `json.loads()`.
 
@@ -106,6 +106,6 @@ Three exported functions:
 ## Key Design Decisions
 
 - **FAISS index is not committed** — it must be rebuilt with `ingest.py` whenever the corpus changes.
-- **Both Mapper and Critic use the same LLM** (`claude-sonnet-4-6`). Swapping to a different model for comparison requires changing the `MODEL` constant in the respective agent file.
-- **Agent classes are stateless** — `ScoutAgent` loads the FAISS index at `__init__` time; Mapper and Critic instantiate a new `ChatAnthropic` client each call. For production, these should be singletons.
+- **Both Mapper and Critic use the same LLM** (`llama-3.3-70b-versatile` via Groq). Swapping to a different model for comparison requires changing the `MODEL` constant in the respective agent file.
+- **Agent classes are stateless** — `ScoutAgent` loads the FAISS index at `__init__` time; Mapper and Critic instantiate a new `ChatGroq` client each call. For production, these should be singletons.
 - **JSON parsing is strict** — if the LLM returns malformed JSON, agents raise `ValueError` with the raw output. The FastAPI handler converts this to a 500 response.

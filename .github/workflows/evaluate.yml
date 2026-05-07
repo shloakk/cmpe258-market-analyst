@@ -23,5 +23,5 @@ jobs:
 
       - name: Run evaluation suite
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python eval/evaluator.py
